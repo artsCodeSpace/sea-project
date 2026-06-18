@@ -27,7 +27,7 @@ export default function Footer() {
             <div className="flex items-center mb-6 bg-white px-4 py-3 rounded-2xl max-w-[260px] shadow-sm">
               <SeatownLogo height={30} />
             </div>
-            <p className="text-gray-400 text-xs font-semibold leading-relaxed mb-6">
+            <p className="text-gray-400 text-sm font-semibold leading-relaxed mb-6">
               Empowering global trade routes since 2012. Providing premium maritime logistics, NVOCC cargo shipping, and end-to-end container tracking solutions.
             </p>
             <div className="flex gap-4">
@@ -54,7 +54,7 @@ export default function Footer() {
             <h4 className="text-sm font-bold uppercase tracking-wider text-accent mb-4">
               Explore Links
             </h4>
-            <ul className="space-y-2.5 text-xs font-semibold">
+            <ul className="space-y-2.5 text-sm font-semibold">
               <li>
                 <Link href="/" className="text-gray-400 hover:text-white transition-colors">
                   Home
@@ -88,7 +88,7 @@ export default function Footer() {
             <h4 className="text-sm font-bold uppercase tracking-wider text-accent mb-4">
               Primary Office
             </h4>
-            <ul className="space-y-3.5 text-xs font-semibold text-gray-400">
+            <ul className="space-y-3.5 text-sm font-semibold text-gray-400">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4.5 h-4.5 text-secondary shrink-0 mt-0.5" />
                 <span>
@@ -113,16 +113,16 @@ export default function Footer() {
             <h4 className="text-sm font-bold uppercase tracking-wider text-accent mb-4">
               Cargo Advisory
             </h4>
-            <p className="text-gray-400 text-xs font-semibold leading-relaxed mb-4">
+            <p className="text-gray-400 text-sm font-semibold leading-relaxed mb-4">
               Subscribe to recieve global port congestion advisories, schedules, and custom clearance updates.
             </p>
             <div className="flex gap-2">
               <input
                 type="email"
                 placeholder="Enter email address"
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-secondary transition-colors"
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-secondary transition-colors"
               />
-              <button className="bg-secondary hover:bg-secondary-hover px-4 rounded-xl text-xs font-bold transition-all uppercase tracking-wider">
+              <button className="bg-secondary hover:bg-secondary-hover px-4 rounded-xl text-sm font-bold transition-all uppercase tracking-wider">
                 Join
               </button>
             </div>
@@ -131,7 +131,7 @@ export default function Footer() {
 
         {/* Divider */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
-          <p className="text-xs font-semibold text-gray-500">
+          <p className="text-sm font-semibold text-gray-500">
             &copy; 2026 All rights reserved | by{" "}
             <a
               href="https://devspectra.in/"

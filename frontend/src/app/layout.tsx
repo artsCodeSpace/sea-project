@@ -16,6 +16,9 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "Seatown Container Line | Global Ocean Logistics Experience",
   description: "Experience premium international shipping, maritime container logistics, NVOCC cargo networks, and modern real-time ocean trade connectivity.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

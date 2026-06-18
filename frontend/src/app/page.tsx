@@ -23,7 +23,8 @@ import {
   ExternalLink,
 } from "lucide-react";
 import OceanWaveDivider from "@/components/OceanWaveDivider";
-import InteractiveWorldMap from "@/components/InteractiveWorldMap";
+import { motion, AnimatePresence } from "framer-motion";
+import TestimonialSection from "@/components/TestimonialSection";
 
 // Custom Hook to trigger animation when scrolled into view
 function useIntersectionObserver() {
@@ -45,6 +46,39 @@ function useIntersectionObserver() {
 
   return [ref, isIntersecting] as const;
 }
+
+const CONTAINER_OPTIONS = [
+  {
+    id: "dry",
+    title: "Dry Containers - 20’ & 40’",
+    desc: "Dry containers are available in standard sizes of 10, 20, and 40 feet. They are designed for transporting general cargo and are the most commonly used type of shipping container worldwide. View a visual size comparison to better understand the dimensions of this popular container type.",
+    img: "/dry_containers.png"
+  },
+  {
+    id: "opentop",
+    title: "Open Top Containers - 20’ & 40’",
+    desc: "Open Top containers have a fully removable or convertible roof, allowing easy access to cargo from the top. They are primarily used for transporting over-height or bulky items that cannot be loaded through standard doors.",
+    img: "/open_top_containers.png"
+  },
+  {
+    id: "flatrack",
+    title: "Flat Rack Containers - 20’ & 40’",
+    desc: "Flat Rack containers feature collapsible sides, making them ideal for transporting heavy loads, oversized cargo, construction equipment, building materials, and large machinery.",
+    img: "/flat_rack_containers.png"
+  },
+  {
+    id: "reefer",
+    title: "Refrigerated ISO Containers (Reefer Containers) – 20’ & 40’",
+    desc: "Refrigerated ISO containers, commonly known as reefer containers, are designed to regulate temperature and preserve temperature-sensitive goods such as fresh produce, seafood, and pharmaceuticals. Please note that in the case of temperature-sensitive shipments, spoilage is typically only covered if it results from a mechanical failure of the container sustained over an extended period.",
+    img: "/refrigerated_iso_containers.png"
+  },
+  {
+    id: "tank",
+    title: "Tank Containers – 20’",
+    desc: "Tank containers are specifically designed for the transportation of liquid materials and are widely used across the shipping industry. They are typically constructed from strong, anti-corrosive materials such as stainless steel, ensuring durability, longevity, and protection of the cargo during transit.",
+    img: "/tank_ontainers.png"
+  }
+];
 
 export default function Home() {
   // Hero Stats Counter — auto-increments on page load
@@ -83,28 +117,17 @@ export default function Home() {
   // Selected Interactive 3D Container Model
   const [selectedContainer, setSelectedContainer] = useState("dry");
 
-  // Testimonials Carousel
-  const testimonials = [
-    {
-      name: "Marcus Vance",
-      role: "VP Supply Chain, TechCorp Asia",
-      text: "Seatown restructured our oceanic route strategies. The NVOCC container operations saved us 12% on transshipment charges, and the shipping coordination was impeccable.",
-      avatar: "MV",
-    },
-    {
-      name: "Hiroshi Tanaka",
-      role: "Logistics Director, Yokohama Auto Parts",
-      text: "The container trading department supplied 100 high-spec reefer units at critical notice. Excellence in reliability, prompt customs clearances, and solid trust.",
-      avatar: "HT",
-    },
-    {
-      name: "Amara Al-Jamil",
-      role: "Managing Director, Gulf Maritime Distributors",
-      text: "Moving over-dimensional project machinery across oceans is stressful. Seatown handled the heavy crane charters and door delivery seamlessly. Highly recommended.",
-      avatar: "AA",
-    },
-  ];
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  // Auto-change container type
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSelectedContainer((prev) => {
+        const currentIndex = CONTAINER_OPTIONS.findIndex(c => c.id === prev);
+        const nextIndex = (currentIndex + 1) % CONTAINER_OPTIONS.length;
+        return CONTAINER_OPTIONS[nextIndex].id;
+      });
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [selectedContainer]);
 
   return (
     <div className="w-full flex flex-col">
@@ -175,7 +198,7 @@ export default function Home() {
               {/* NEXT GEN LABEL */}
               <div className="flex items-center gap-3 mb-6">
                 <span className="w-8 h-[1px] bg-secondary" />
-                <span className="text-secondary font-black tracking-[0.2em] text-[10px] uppercase">
+                <span className="text-secondary text-sm md:text-base font-black tracking-[0.2em] uppercase">
                   NEXT GEN MARITIME LOGISTICS
                 </span>
               </div>
@@ -281,8 +304,8 @@ export default function Home() {
 
           {/* Top content */}
           <div className="relative z-10">
-            <span className="text-accent text-[10px] font-black uppercase tracking-[0.22em] mb-4 flex items-center gap-2">
-              <span className="w-5 h-[1.5px] bg-accent" />
+            <span className="text-accent text-sm md:text-base font-black uppercase tracking-[0.22em] mb-4 flex items-center gap-2">
+              <span className="w-8 h-[2px] bg-accent" />
               Global Trade Connections
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-white leading-tight mb-3">
@@ -384,8 +407,8 @@ export default function Home() {
         {/* ── RIGHT PANEL: White About Content ── */}
         <div className="lg:w-1/2 bg-white flex flex-col justify-center px-8 md:px-12 lg:px-14 py-12">
 
-          <span className="text-accent text-[10px] font-black uppercase tracking-[0.22em] mb-4 flex items-center gap-2">
-            <span className="w-5 h-[1.5px] bg-accent" />
+          <span className="text-accent text-sm md:text-base font-black uppercase tracking-[0.22em] mb-4 flex items-center gap-2">
+            <span className="w-8 h-[2px] bg-accent" />
             About Seatown Preview
           </span>
 
@@ -440,7 +463,7 @@ export default function Home() {
           {/* Mockup Styled Header */}
           <div className="flex justify-center items-center gap-2 mb-2">
             <span className="w-6 h-[1.5px] bg-accent" />
-            <span className="text-accent text-[11px] font-black uppercase tracking-[0.2em]">
+            <span className="text-accent text-sm md:text-base font-black uppercase tracking-[0.2em]">
               OUR SERVICES
             </span>
             <span className="w-6 h-[1.5px] bg-accent" />
@@ -453,248 +476,107 @@ export default function Home() {
             Reliable. Efficient. Global.
           </p>
 
-          {/* Row 1: 4 Cards */}
+          {/* SERVICES GRID */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-            {/* Card 1: NVOCC */}
-            <div className="bg-white border border-gray-100 rounded-[24px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group relative">
-              <div className="h-[170px] w-full relative overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=500&q=80" 
-                  alt="NVOCC Operations" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-4 left-4 bg-secondary text-white border-2 border-white/20 rounded-full p-2.5 shadow-md z-10 flex items-center justify-center">
-                  <Anchor className="w-4.5 h-4.5" />
+            {[
+              {
+                id: "01",
+                title: "NVOCC Operations",
+                desc: "Operating our own fleet and global network to provide reliable and cost-effective shipping solutions.",
+                img: "/services/NVOCCO.png",
+                icon: Anchor,
+                link: "/services#nvocc"
+              },
+              {
+                id: "02",
+                title: "Freight Forwarding",
+                desc: "Comprehensive door-to-door freight solutions across sea, air, rail, and land with global reach.",
+                img: "/services/Freight_Forwarding.png",
+                icon: Globe,
+                link: "/services#freight-forwarding"
+              },
+              {
+                id: "03",
+                title: "Air Freight Logistics",
+                desc: "Fast, secure and reliable air freight services for time-sensitive cargo across the world.",
+                img: "/services/Air_Freight_Forwarding.png",
+                icon: Plane,
+                link: "/services#air-freight"
+              },
+              {
+                id: "04",
+                title: "Customs Brokerage",
+                desc: "Expert handling of documentation, compliance, and clearance to ensure smooth cargo movement.",
+                img: "/services/Customs_Brokerage.png",
+                icon: FileCheck,
+                link: "/services#customs-clearance"
+              },
+              {
+                id: "05",
+                title: "Project Cargo Handling",
+                desc: "Specialized solutions for heavy-lift, oversized, and complex project cargo with precision and care.",
+                img: "/services/DC_Project_Cargo_Handling.png",
+                icon: Cpu,
+                link: "/services#project-cargo"
+              },
+              {
+                id: "06",
+                title: "Container Trading",
+                desc: "Sales, purchase, leasing & rental of all types of containers to meet your business needs.",
+                img: "/services/Container_Trading.png",
+                icon: Box,
+                link: "/services#container-trading"
+              },
+              {
+                id: "07",
+                title: "Transportation Services",
+                desc: "Reliable trucking and haulage services ensuring safe and on-time delivery to any destination.",
+                img: "/services/Transportation_Services.png",
+                icon: Truck,
+                link: "/services#transportation"
+              },
+              {
+                id: "08",
+                title: "Liner Agency",
+                desc: "Representing principal carriers and managing shipping lines with robust local agency services.",
+                img: "/services/Liner Agency.png",
+                icon: Ship,
+                link: "/services#liner-agency"
+              }
+            ].map((svc) => (
+              <div key={svc.id} className="bg-white border border-gray-100 rounded-[24px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group relative">
+                <div className="h-[200px] w-full relative overflow-hidden bg-gray-50">
+                  <img 
+                    src={svc.img} 
+                    alt={svc.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 left-4 bg-secondary text-white border-2 border-white/20 rounded-full p-2.5 shadow-md z-10 flex items-center justify-center">
+                    <svc.icon className="w-4.5 h-4.5" />
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 flex items-end justify-between">
+                    <div className="flex flex-col items-start">
+                      <span className="text-white font-mono text-[14px] font-black tracking-widest">{svc.id}</span>
+                      <span className="w-6 h-0.5 bg-accent mt-0.5" />
+                    </div>
+                  </div>
                 </div>
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 flex items-end justify-between">
-                  <div className="flex flex-col items-start">
-                    <span className="text-white font-mono text-[14px] font-black tracking-widest">01</span>
-                    <span className="w-6 h-0.5 bg-accent mt-0.5" />
+                <div className="p-6 flex flex-col flex-grow justify-between text-left">
+                  <div>
+                    <h3 className="font-bold text-lg text-primary mb-2">{svc.title}</h3>
+                    <p className="text-gray-600 text-sm font-medium leading-relaxed mb-6">
+                      {svc.desc}
+                    </p>
+                  </div>
+                  <div className="flex justify-between items-center mt-auto w-full">
+                    <div />
+                    <Link href={svc.link} className="p-2 bg-accent hover:bg-accent-hover text-white rounded-full shadow-sm hover:scale-105 transition-transform">
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
                   </div>
                 </div>
               </div>
-              <div className="p-5 flex flex-col flex-grow justify-between text-left">
-                <div>
-                  <h3 className="font-bold text-sm text-primary mb-2">NVOCC Operations</h3>
-                  <p className="text-gray-500 text-[11px] font-semibold leading-relaxed mb-6">
-                    Operating our own fleet and global network to provide reliable and cost-effective shipping solutions.
-                  </p>
-                </div>
-                <div className="flex justify-between items-center mt-auto w-full">
-                  <div />
-                  <Link href="/services#nvocc" className="p-2 bg-accent hover:bg-accent-hover text-white rounded-full shadow-sm hover:scale-105 transition-transform">
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 2: Freight Forwarding */}
-            <div className="bg-white border border-gray-100 rounded-[24px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group relative">
-              <div className="h-[170px] w-full relative overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=500&q=80" 
-                  alt="Freight Forwarding" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-4 left-4 bg-secondary text-white border-2 border-white/20 rounded-full p-2.5 shadow-md z-10 flex items-center justify-center">
-                  <Globe className="w-4.5 h-4.5" />
-                </div>
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 flex items-end justify-between">
-                  <div className="flex flex-col items-start">
-                    <span className="text-white font-mono text-[14px] font-black tracking-widest">02</span>
-                    <span className="w-6 h-0.5 bg-accent mt-0.5" />
-                  </div>
-                </div>
-              </div>
-              <div className="p-5 flex flex-col flex-grow justify-between text-left">
-                <div>
-                  <h3 className="font-bold text-sm text-primary mb-2">Freight Forwarding</h3>
-                  <p className="text-gray-500 text-[11px] font-semibold leading-relaxed mb-6">
-                    Comprehensive door-to-door freight solutions across sea, air, rail, and land with global reach.
-                  </p>
-                </div>
-                <div className="flex justify-between items-center mt-auto w-full">
-                  <div />
-                  <Link href="/services#freight-forwarding" className="p-2 bg-accent hover:bg-accent-hover text-white rounded-full shadow-sm hover:scale-105 transition-transform">
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 3: Air Freight */}
-            <div className="bg-white border border-gray-100 rounded-[24px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group relative">
-              <div className="h-[170px] w-full relative overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=500&q=80" 
-                  alt="Air Freight Logistics" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-4 left-4 bg-secondary text-white border-2 border-white/20 rounded-full p-2.5 shadow-md z-10 flex items-center justify-center">
-                  <Plane className="w-4.5 h-4.5" />
-                </div>
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 flex items-end justify-between">
-                  <div className="flex flex-col items-start">
-                    <span className="text-white font-mono text-[14px] font-black tracking-widest">03</span>
-                    <span className="w-6 h-0.5 bg-accent mt-0.5" />
-                  </div>
-                </div>
-              </div>
-              <div className="p-5 flex flex-col flex-grow justify-between text-left">
-                <div>
-                  <h3 className="font-bold text-sm text-primary mb-2">Air Freight Logistics</h3>
-                  <p className="text-gray-500 text-[11px] font-semibold leading-relaxed mb-6">
-                    Fast, secure and reliable air freight services for time-sensitive cargo across the world.
-                  </p>
-                </div>
-                <div className="flex justify-between items-center mt-auto w-full">
-                  <div />
-                  <Link href="/services#air-freight" className="p-2 bg-accent hover:bg-accent-hover text-white rounded-full shadow-sm hover:scale-105 transition-transform">
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 4: Customs Clearance */}
-            <div className="bg-white border border-gray-100 rounded-[24px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group relative">
-              <div className="h-[170px] w-full relative overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=500&q=80" 
-                  alt="Customs Clearance" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-4 left-4 bg-secondary text-white border-2 border-white/20 rounded-full p-2.5 shadow-md z-10 flex items-center justify-center">
-                  <FileCheck className="w-4.5 h-4.5" />
-                </div>
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 flex items-end justify-between">
-                  <div className="flex flex-col items-start">
-                    <span className="text-white font-mono text-[14px] font-black tracking-widest">04</span>
-                    <span className="w-6 h-0.5 bg-accent mt-0.5" />
-                  </div>
-                </div>
-              </div>
-              <div className="p-5 flex flex-col flex-grow justify-between text-left">
-                <div>
-                  <h3 className="font-bold text-sm text-primary mb-2">Customs Clearance</h3>
-                  <p className="text-gray-500 text-[11px] font-semibold leading-relaxed mb-6">
-                    Expert handling of documentation, compliance, and clearance to ensure smooth cargo movement.
-                  </p>
-                </div>
-                <div className="flex justify-between items-center mt-auto w-full">
-                  <div />
-                  <Link href="/services#customs-clearance" className="p-2 bg-accent hover:bg-accent-hover text-white rounded-full shadow-sm hover:scale-105 transition-transform">
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Row 2: 3 Cards (Centered on large screens) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {/* Card 5: Project Cargo */}
-            <div className="bg-white border border-gray-100 rounded-[24px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group relative">
-              <div className="h-[170px] w-full relative overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=500&q=80" 
-                  alt="Project Cargo" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-4 left-4 bg-secondary text-white border-2 border-white/20 rounded-full p-2.5 shadow-md z-10 flex items-center justify-center">
-                  <Cpu className="w-4.5 h-4.5" />
-                </div>
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 flex items-end justify-between">
-                  <div className="flex flex-col items-start">
-                    <span className="text-white font-mono text-[14px] font-black tracking-widest">05</span>
-                    <span className="w-6 h-0.5 bg-accent mt-0.5" />
-                  </div>
-                </div>
-              </div>
-              <div className="p-5 flex flex-col flex-grow justify-between text-left">
-                <div>
-                  <h3 className="font-bold text-sm text-primary mb-2">Project Cargo</h3>
-                  <p className="text-gray-500 text-[11px] font-semibold leading-relaxed mb-6">
-                    Specialized solutions for heavy-lift, oversized, and complex project cargo with precision and care.
-                  </p>
-                </div>
-                <div className="flex justify-between items-center mt-auto w-full">
-                  <div />
-                  <Link href="/services#project-cargo" className="p-2 bg-accent hover:bg-accent-hover text-white rounded-full shadow-sm hover:scale-105 transition-transform">
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 6: Container Trading */}
-            <div className="bg-white border border-gray-100 rounded-[24px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group relative">
-              <div className="h-[170px] w-full relative overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=500&q=80" 
-                  alt="Container Trading" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-4 left-4 bg-secondary text-white border-2 border-white/20 rounded-full p-2.5 shadow-md z-10 flex items-center justify-center">
-                  <Box className="w-4.5 h-4.5" />
-                </div>
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 flex items-end justify-between">
-                  <div className="flex flex-col items-start">
-                    <span className="text-white font-mono text-[14px] font-black tracking-widest">06</span>
-                    <span className="w-6 h-0.5 bg-accent mt-0.5" />
-                  </div>
-                </div>
-              </div>
-              <div className="p-5 flex flex-col flex-grow justify-between text-left">
-                <div>
-                  <h3 className="font-bold text-sm text-primary mb-2">Container Trading</h3>
-                  <p className="text-gray-500 text-[11px] font-semibold leading-relaxed mb-6">
-                    Sales, purchase, leasing & rental of all types of containers to meet your business needs.
-                  </p>
-                </div>
-                <div className="flex justify-between items-center mt-auto w-full">
-                  <div />
-                  <Link href="/services#container-trading" className="p-2 bg-accent hover:bg-accent-hover text-white rounded-full shadow-sm hover:scale-105 transition-transform">
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 7: Land Transportation */}
-            <div className="bg-white border border-gray-100 rounded-[24px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group relative">
-              <div className="h-[170px] w-full relative overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=500&q=80" 
-                  alt="Land Transportation" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-4 left-4 bg-secondary text-white border-2 border-white/20 rounded-full p-2.5 shadow-md z-10 flex items-center justify-center">
-                  <Truck className="w-4.5 h-4.5" />
-                </div>
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 flex items-end justify-between">
-                  <div className="flex flex-col items-start">
-                    <span className="text-white font-mono text-[14px] font-black tracking-widest">07</span>
-                    <span className="w-6 h-0.5 bg-accent mt-0.5" />
-                  </div>
-                </div>
-              </div>
-              <div className="p-5 flex flex-col flex-grow justify-between text-left">
-                <div>
-                  <h3 className="font-bold text-sm text-primary mb-2">Land Transportation</h3>
-                  <p className="text-gray-500 text-[11px] font-semibold leading-relaxed mb-6">
-                    Reliable trucking and haulage services ensuring safe and on-time delivery to any destination.
-                  </p>
-                </div>
-                <div className="flex justify-between items-center mt-auto w-full">
-                  <div />
-                  <Link href="/services#transportation" className="p-2 bg-accent hover:bg-accent-hover text-white rounded-full shadow-sm hover:scale-105 transition-transform">
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -703,7 +585,7 @@ export default function Home() {
       <section className="py-20 bg-zinc-50 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="text-accent text-xs font-bold uppercase tracking-widest">
+            <span className="text-accent text-sm md:text-base font-bold uppercase tracking-widest">
               Asset Options
             </span>
             <h2 className="text-3xl font-extrabold text-primary mt-2">
@@ -716,96 +598,49 @@ export default function Home() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Buttons list */}
+            {/* Left Pane: Options */}
             <div className="lg:col-span-4 flex flex-col gap-3">
-              {[
-                { id: "dry", label: "Dry Container (20' / 40')", desc: "Standard general cargo storage." },
-                { id: "reefer", label: "Reefer Container", desc: "Climate and temperature controlled." },
-                { id: "opentop", label: "Open Top Container", desc: "Easy overhead loading for high cargo." },
-                { id: "flatrack", label: "Flat Rack", desc: "Heavy machinery and wide structures." },
-                { id: "tank", label: "Tank Container", desc: "Certified liquid chemicals and foodstuff." },
-              ].map((type) => (
+              {CONTAINER_OPTIONS.map((type) => (
                 <button
                   key={type.id}
                   onClick={() => setSelectedContainer(type.id)}
-                  className={`text-left p-4 rounded-2xl border transition-all duration-300 ${
+                  className={`text-left p-4 rounded-2xl border transition-all duration-300 flex items-center justify-between group ${
                     selectedContainer === type.id
                       ? "bg-primary text-white border-primary shadow-lg"
                       : "bg-white text-primary hover:bg-blue-50/20 border-gray-200"
                   }`}
                 >
-                  <div className="font-bold text-sm">{type.label}</div>
-                  <div className={`text-[11px] font-medium mt-1 ${selectedContainer === type.id ? 'text-gray-300' : 'text-gray-500'}`}>{type.desc}</div>
+                  <div className="font-bold text-sm">{type.title.split(' - ')[0].split(' (')[0]}</div>
+                  <ChevronRight className={`w-4 h-4 transition-transform ${selectedContainer === type.id ? 'translate-x-1 text-white' : 'text-gray-400 group-hover:translate-x-1 group-hover:text-primary'}`} />
                 </button>
               ))}
             </div>
 
-            {/* 3D Visual Box Renderer */}
-            <div className="lg:col-span-8 flex flex-col items-center justify-center bg-white border border-gray-200/80 p-8 rounded-3xl h-[360px] relative overflow-hidden group shadow-sm">
-              
-              {/* CSS 3D Box model */}
-              <div 
-                className="w-48 h-28 relative transition-transform duration-700 select-none cursor-grab active:cursor-grabbing"
-                style={{
-                  transformStyle: "preserve-3d",
-                  perspective: "800px",
-                  transform: "rotateX(-18deg) rotateY(45deg)",
-                }}
-              >
-                {/* Front Face */}
-                <div 
-                  className={`absolute inset-0 border-2 flex items-center justify-center font-bold text-white text-xs select-none transition-colors duration-500 ${
-                    selectedContainer === "dry" ? "bg-primary border-primary-hover" :
-                    selectedContainer === "reefer" ? "bg-blue-500 border-blue-600" :
-                    selectedContainer === "opentop" ? "bg-orange-600 border-orange-700" :
-                    selectedContainer === "flatrack" ? "bg-zinc-600 border-zinc-700" : "bg-emerald-600 border-emerald-700"
-                  }`}
-                  style={{ transform: "translateZ(30px)", backfaceVisibility: "hidden" }}
-                >
-                  <div className="flex flex-col items-center">
-                    <span className="font-mono text-[9px] opacity-70">SEATOWN</span>
-                    <span className="text-[10px]">CONTAINER</span>
-                  </div>
-                </div>
-
-                {/* Back Face */}
-                <div 
-                  className="absolute inset-0 bg-primary/80 border-2 border-primary-hover flex items-center justify-center font-bold text-white text-xs"
-                  style={{ transform: "rotateY(180deg) translateZ(30px)", backfaceVisibility: "hidden" }}
-                >
-                  LOCK
-                </div>
-
-                {/* Left Face */}
-                <div 
-                  className="absolute top-0 bottom-0 left-0 w-[60px] bg-primary/90 border-2 border-primary-hover"
-                  style={{ transform: "rotateY(-90deg) translateZ(30px)", backfaceVisibility: "hidden" }}
-                />
-
-                {/* Right Face */}
-                <div 
-                  className="absolute top-0 bottom-0 right-0 w-[60px] bg-primary/95 border-2 border-primary-hover"
-                  style={{ transform: "rotateY(90deg) translateZ(30px)", backfaceVisibility: "hidden" }}
-                />
-
-                {/* Top Face */}
-                <div 
-                  className={`absolute left-0 right-0 top-0 h-[60px] border-2 ${
-                    selectedContainer === "opentop" ? "bg-transparent border-dashed border-primary" : "bg-primary/90 border-primary"
-                  }`}
-                  style={{ transform: "rotateX(90deg) translateZ(30px)", backfaceVisibility: "hidden" }}
-                />
-
-                {/* Bottom Face */}
-                <div 
-                  className="absolute left-0 right-0 bottom-0 h-[60px] bg-primary/85 border-2 border-primary"
-                  style={{ transform: "rotateX(-90deg) translateZ(30px)", backfaceVisibility: "hidden" }}
-                />
-              </div>
-
-              {/* Hover rotation info */}
-              <div className="absolute bottom-4 text-[10px] text-gray-400 font-bold uppercase tracking-widest flex items-center gap-1.5">
-                <Box className="w-3.5 h-3.5 animate-spin" /> 3D Rendering (CSS 3D Engine)
-              </div>
+            {/* Right Pane: Display */}
+            <div className="lg:col-span-8 flex flex-col bg-white border border-gray-200/80 p-8 md:p-12 rounded-3xl min-h-[460px] md:min-h-[480px] relative overflow-hidden shadow-sm">
+              {(() => {
+                const active = CONTAINER_OPTIONS.find(c => c.id === selectedContainer) || CONTAINER_OPTIONS[0];
+                return (
+                  <AnimatePresence mode="wait">
+                    <motion.div 
+                      key={active.id} 
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                      className="flex flex-col h-full"
+                    >
+                      <div className="flex-1 flex items-center justify-center mb-8 relative w-full min-h-[240px]">
+                        <img src={active.img} alt={active.title} className="max-w-full max-h-[300px] object-contain drop-shadow-xl" />
+                      </div>
+                      <div className="mt-auto border-t border-gray-100 pt-8">
+                        <h3 className="text-2xl md:text-3xl font-black text-primary mb-4">{active.title}</h3>
+                        <p className="text-gray-700 text-base md:text-lg leading-loose font-medium">{active.desc}</p>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                );
+              })()}
             </div>
           </div>
         </div>
@@ -814,7 +649,7 @@ export default function Home() {
       {/* SECTION 6 - WHY CHOOSE US */}
       <section className="py-20 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-secondary text-xs font-bold uppercase tracking-widest">
+          <span className="text-secondary text-sm md:text-base font-bold uppercase tracking-widest">
             Corporate Trust
           </span>
           <h2 className="text-3xl font-extrabold text-primary mt-2 mb-12 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 leading-tight">
@@ -850,24 +685,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 7 - GLOBAL NETWORK */}
-      <section className="py-20 bg-zinc-50 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="text-accent text-xs font-bold uppercase tracking-widest">
-              Live Network
-            </span>
-            <h2 className="text-3xl font-extrabold text-primary mt-2">
-              Seatown Global Service Map
-            </h2>
-            <p className="text-gray-500 text-xs font-semibold mt-1">
-              Hover over or select port hubs to trace active container corridors.
-            </p>
-          </div>
 
-          <InteractiveWorldMap />
-        </div>
-      </section>
 
       {/* SECTION — COUNTRIES WE ARE SERVING */}
       <section className="py-20 bg-[#040e1f] relative overflow-hidden">
@@ -883,10 +701,10 @@ export default function Home() {
 
         {/* Header */}
         <div className="text-center mb-12 relative z-10 px-4">
-          <span className="inline-flex items-center gap-2 text-accent text-[10px] font-black uppercase tracking-[0.25em] mb-4">
-            <span className="w-6 h-[1.5px] bg-accent" />
+          <span className="inline-flex items-center gap-2 text-accent text-sm md:text-base font-black uppercase tracking-[0.25em] mb-4">
+            <span className="w-8 h-[2px] bg-accent" />
             Global Presence
-            <span className="w-6 h-[1.5px] bg-accent" />
+            <span className="w-8 h-[2px] bg-accent" />
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3 leading-tight">
             Countries We Are <span className="text-secondary">Serving</span>
@@ -983,55 +801,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 8 - TESTIMONIALS */}
-      <section className="py-20 bg-white relative overflow-hidden">
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <span className="text-secondary text-xs font-bold uppercase tracking-widest">
-            Client Success
-          </span>
-          <h2 className="text-3xl font-extrabold text-primary mt-2 mb-12">
-            Testimonials From Global Shippers
-          </h2>
-
-          <div className="bg-gradient-to-br from-blue-50/50 to-sky-50/30 border border-blue-200/20 p-8 md:p-12 rounded-3xl shadow-sm relative">
-            {/* Quote icon mark */}
-            <div className="absolute -top-6 left-10 text-accent text-6xl font-serif select-none pointer-events-none opacity-40">
-              “
-            </div>
-
-            {/* Testimonial slider */}
-            <p className="text-primary/95 text-base md:text-lg italic font-semibold leading-relaxed mb-6">
-              {testimonials[currentTestimonial].text}
-            </p>
-
-            <div className="flex items-center justify-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center text-xs font-extrabold font-mono shadow-sm">
-                {testimonials[currentTestimonial].avatar}
-              </div>
-              <div className="text-left">
-                <div className="font-extrabold text-sm text-primary">{testimonials[currentTestimonial].name}</div>
-                <div className="text-[11px] font-semibold text-gray-500">{testimonials[currentTestimonial].role}</div>
-              </div>
-            </div>
-
-            {/* Controls */}
-            <div className="flex justify-center items-center gap-4 mt-8">
-              <button 
-                onClick={() => setCurrentTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
-                className="p-2 bg-white hover:bg-secondary hover:text-white border border-gray-200 rounded-xl transition-all shadow-sm"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button 
-                onClick={() => setCurrentTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))}
-                className="p-2 bg-white hover:bg-secondary hover:text-white border border-gray-200 rounded-xl transition-all shadow-sm"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TestimonialSection />
 
 
     </div>
