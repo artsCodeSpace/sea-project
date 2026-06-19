@@ -35,12 +35,15 @@ const testimonials = [
   }
 ];
 
-const partners = [
-  "TechCorp Asia",
-  "Global Marine Ltd",
-  "Ocean Freight Group",
-  "TransWorld Logistics",
-  "Cargo Bridge International"
+const servicesList = [
+  "Ocean Freight Forwarding",
+  "Air Freight Logistics",
+  "Customs Brokerage",
+  "NVOCC Operations",
+  "Project Cargo Handling",
+  "Warehousing & Distribution",
+  "Supply Chain Management",
+  "Door-to-Door Delivery"
 ];
 
 export default function TestimonialSection() {
@@ -146,7 +149,7 @@ export default function TestimonialSection() {
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary mb-6 leading-tight max-w-3xl">
-            Trusted By Global <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-blue-600">Shipping Partners</span>
+            Trusted By Global <span className="text-accent">Shipping Partners</span>
           </h2>
           <p className="text-gray-500 text-lg md:text-xl max-w-2xl font-semibold">
             Real experiences from importers, exporters, freight partners, and industrial clients worldwide.
@@ -222,7 +225,7 @@ export default function TestimonialSection() {
                   <motion.div 
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -top-6 -right-6 lg:-right-8 lg:-top-8 w-20 h-20 rounded-2xl bg-gradient-to-br from-secondary to-blue-600 flex items-center justify-center shadow-xl rotate-12 group-hover:rotate-6 transition-transform duration-500"
+                    className="absolute -top-6 -right-6 lg:-right-8 lg:-top-8 w-20 h-20 rounded-2xl bg-accent flex items-center justify-center shadow-xl rotate-12 group-hover:rotate-6 transition-transform duration-500"
                   >
                     <Quote className="text-white" size={32} fill="currentColor" />
                   </motion.div>
@@ -292,18 +295,18 @@ export default function TestimonialSection() {
           >
             <div className="animate-marquee flex min-w-max">
               <div className="flex gap-16 md:gap-24 items-center pr-16 md:pr-24">
-                {partners.map((partner, index) => (
-                  <div key={index} className="text-gray-400 font-bold text-xl md:text-2xl whitespace-nowrap opacity-60 hover:opacity-100 hover:text-primary transition-all duration-300 flex items-center gap-2">
-                    <Anchor size={20} className="text-gray-300" />
-                    {partner}
+                {servicesList.map((service, index) => (
+                  <div key={index} className="text-black font-extrabold text-xl md:text-2xl whitespace-nowrap opacity-80 hover:opacity-100 hover:text-accent transition-all duration-300 flex items-center gap-3">
+                    <Anchor size={24} className="text-black" />
+                    {service}
                   </div>
                 ))}
               </div>
               <div className="flex gap-16 md:gap-24 items-center pr-16 md:pr-24" aria-hidden="true">
-                {partners.map((partner, index) => (
-                  <div key={`dup-${index}`} className="text-gray-400 font-bold text-xl md:text-2xl whitespace-nowrap opacity-60 hover:opacity-100 hover:text-primary transition-all duration-300 flex items-center gap-2">
-                    <Anchor size={20} className="text-gray-300" />
-                    {partner}
+                {servicesList.map((service, index) => (
+                  <div key={`dup-${index}`} className="text-black font-extrabold text-xl md:text-2xl whitespace-nowrap opacity-80 hover:opacity-100 hover:text-accent transition-all duration-300 flex items-center gap-3">
+                    <Anchor size={24} className="text-black" />
+                    {service}
                   </div>
                 ))}
               </div>

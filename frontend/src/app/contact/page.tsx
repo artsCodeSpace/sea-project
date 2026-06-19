@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle, Ship, MessageSquare } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle, Ship, MessageSquare, Smartphone } from "lucide-react";
 
 export default function Contact() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -34,23 +34,25 @@ export default function Contact() {
 
   return (
     <div className="w-full flex flex-col bg-white">
-      {/* HERO: Animated vector map representation */}
-      <section className="relative h-[45vh] flex items-center justify-center bg-gradient-to-b from-blue-900/10 via-sky-50/20 to-white overflow-hidden text-center select-none">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-             style={{ 
-               backgroundImage: "radial-gradient(#0B1F3A 1.5px, transparent 1.5px)", 
-               backgroundSize: "30px 30px" 
-             }} 
-        />
-        
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-          <span className="text-secondary text-xs font-bold uppercase tracking-widest bg-secondary/10 px-4 py-1.5 rounded-full mb-4 inline-block">
+      {/* HERO: Image Banner */}
+      <section 
+        className="w-full relative h-[45vh] md:h-[55vh] mt-20 flex items-center justify-center bg-white"
+        style={{
+          backgroundImage: "url('/banners/contact.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat"
+        }}
+      >
+        {/* Text Overlay directly on the un-tinted image */}
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <span className="text-secondary text-xs font-bold uppercase tracking-widest bg-white/80 backdrop-blur-sm px-4 py-1.5 rounded-full mb-4 inline-block shadow-sm border border-secondary/10">
             Connect
           </span>
-          <h1 className="text-4xl md:text-5xl font-black text-primary mb-4 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-black text-primary mb-4 leading-tight drop-shadow-md">
             Contact Seatown Ports
           </h1>
-          <p className="text-gray-600 font-medium text-sm md:text-base max-w-xl mx-auto">
+          <p className="text-primary font-bold text-sm md:text-base max-w-xl mx-auto drop-shadow-md">
             Get instant assistance for cargo booking slots, container sales, or custom clearance tracking.
           </p>
         </div>
@@ -81,18 +83,25 @@ export default function Contact() {
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">Registered Address</p>
                     <p className="text-gray-600 text-sm font-semibold leading-relaxed">
-                      New No. 345 (Old No. 139), Second Floor,<br/>Paper Mills Road, Peravallur,<br/>Chennai 600 082.
+                      <strong>SEATOWN CONTAINER LINE PVT LTD</strong><br/>
+                      New No.89 (Old No.45), Marine Tower,<br/>
+                      4th Floor Room No-8, Thambu Chetty Street,<br/>
+                      Chennai – 600 001
                     </p>
                   </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-2">
                     <div>
-                      <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">Direct Line</p>
-                      <p className="text-sm font-bold text-gray-700">+91 44 35103752</p>
+                      <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">Contact Numbers</p>
+                      <div className="flex flex-col gap-1.5">
+                        <a href="tel:+919384622560" className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-colors"><Smartphone size={14} className="text-accent" /> +91 93846 22560</a>
+                        <a href="tel:+919840456693" className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-colors"><Smartphone size={14} className="text-accent" /> +91 98404 56693</a>
+                        <a href="tel:04446463747" className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-colors"><Phone size={14} className="text-accent" /> 044- 4646 3747</a>
+                      </div>
                     </div>
                     <div>
                       <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">Email Desk</p>
-                      <p className="text-sm font-bold text-gray-700">info@seatown.in</p>
+                      <a href="mailto:James@seatown.in" className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-colors break-all"><Mail size={14} className="text-accent" /> James@seatown.in</a>
                     </div>
                   </div>
                 </div>
@@ -204,7 +213,7 @@ export default function Contact() {
           
           <div className="relative w-full h-[400px] md:h-[500px] bg-gray-200 rounded-3xl overflow-hidden flex items-center justify-center shadow-lg border border-gray-200/80">
             <iframe
-              src="https://maps.google.com/maps?q=New+No.+345,+Old+No.+139,+Paper+Mills+Road,+Peravallur,+Chennai+600082&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=New+No.89,+Marine+Tower,+Thambu+Chetty+Street,+Chennai+600001&t=&z=16&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -217,25 +226,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* QUICK CONTACT FLOATING TRIGGERS */}
-      <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3.5 select-none pointer-events-auto">
-        <a 
-          href="https://wa.me/914435103752" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="p-3 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg transition-transform hover:scale-105 flex items-center justify-center"
-          title="WhatsApp Operations"
-        >
-          <MessageSquare className="w-5.5 h-5.5" />
-        </a>
-        <a 
-          href="mailto:info@seatown.in" 
-          className="p-3 bg-secondary hover:bg-secondary-hover text-white rounded-full shadow-lg transition-transform hover:scale-105 flex items-center justify-center"
-          title="Email Operations"
-        >
-          <Mail className="w-5.5 h-5.5" />
-        </a>
-      </div>
     </div>
   );
 }

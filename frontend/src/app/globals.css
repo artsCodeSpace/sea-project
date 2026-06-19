@@ -3,10 +3,10 @@
 :root {
   --primary: #0B1F3A;
   --primary-hover: #071426;
-  --secondary: #0066CC;
-  --secondary-hover: #0052a3;
-  --accent: #FF7A00;
-  --accent-hover: #e06c00;
+  --secondary: #C1933F;
+  --secondary-hover: #A87E30;
+  --accent: #C1933F;
+  --accent-hover: #A87E30;
   --background: #ffffff;
   --foreground: #0B1F3A;
   --card-bg: rgba(255, 255, 255, 0.7);

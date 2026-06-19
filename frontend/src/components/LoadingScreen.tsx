@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import SeatownLogo from "./SeatownLogo";
+import Image from "next/image";
 
 export default function LoadingScreen() {
   const [loading, setLoading] = useState(true);
@@ -32,7 +32,14 @@ export default function LoadingScreen() {
     >
       <div className="flex flex-col items-center text-center px-4 max-w-md">
         {/* Styled Official Logo */}
-        <SeatownLogo height={52} className="mb-8" />
+        <Image 
+          src="/Logo.png" 
+          alt="Seatown Logo" 
+          width={400} 
+          height={160} 
+          className="h-20 md:h-28 w-auto object-contain mb-8" 
+          priority 
+        />
 
         {/* Animated subtle loader dots */}
         <div className="flex space-x-1.5 items-center justify-center text-gray-400 text-xs font-semibold uppercase tracking-widest mt-4">

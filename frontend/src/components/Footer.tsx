@@ -1,21 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, Phone, MapPin, ArrowUp } from "lucide-react";
-import SeatownLogo from "./SeatownLogo";
+import Image from "next/image";
+import { Mail, Phone, MapPin, Smartphone } from "lucide-react";
 
 export default function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   return (
-    <footer className="bg-primary text-white pt-16 pb-8 relative overflow-hidden border-t-4 border-accent select-none">
+    <footer className="bg-white text-primary pt-16 pb-8 relative overflow-hidden border-t-4 border-accent select-none">
       {/* Decorative background grid pattern */}
       <div 
-        className="absolute inset-0 opacity-[0.02]" 
+        className="absolute inset-0 opacity-[0.03]" 
         style={{ 
-          backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", 
+          backgroundImage: "radial-gradient(#000000 1px, transparent 1px)", 
           backgroundSize: "20px 20px" 
         }} 
       />
@@ -24,27 +21,33 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Company Brief */}
           <div>
-            <div className="flex items-center mb-6 bg-white px-4 py-3 rounded-2xl max-w-[260px] shadow-sm">
-              <SeatownLogo height={30} />
+            <div className="flex items-center mb-6 w-full max-w-[320px]">
+              <Image 
+                src="/Logo.png" 
+                alt="Seatown Container Line Logo" 
+                width={300} 
+                height={100} 
+                className="h-16 md:h-20 w-auto object-contain" 
+              />
             </div>
-            <p className="text-gray-400 text-sm font-semibold leading-relaxed mb-6">
+            <p className="text-gray-600 text-sm font-semibold leading-relaxed mb-6">
               Empowering global trade routes since 2012. Providing premium maritime logistics, NVOCC cargo shipping, and end-to-end container tracking solutions.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="p-2 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-accent rounded-full transition-all" aria-label="LinkedIn">
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
+            <div className="flex flex-wrap gap-3">
+              <a href="#" className="p-2.5 bg-accent/10 hover:bg-accent text-accent hover:text-white rounded-full transition-all" aria-label="Instagram">
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
               </a>
-              <a href="#" className="p-2 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-accent rounded-full transition-all" aria-label="Twitter">
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                </svg>
+              <a href="#" className="p-2.5 bg-accent/10 hover:bg-accent text-accent hover:text-white rounded-full transition-all" aria-label="Facebook">
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
               </a>
-              <a href="#" className="p-2 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-accent rounded-full transition-all" aria-label="Facebook">
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
-                </svg>
+              <a href="#" className="p-2.5 bg-accent/10 hover:bg-accent text-accent hover:text-white rounded-full transition-all" aria-label="X (Twitter)">
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+              </a>
+              <a href="#" className="p-2.5 bg-accent/10 hover:bg-accent text-accent hover:text-white rounded-full transition-all" aria-label="YouTube">
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+              <a href="#" className="p-2.5 bg-accent/10 hover:bg-accent text-accent hover:text-white rounded-full transition-all" aria-label="Telegram">
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.892-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
               </a>
             </div>
           </div>
@@ -56,27 +59,27 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm font-semibold">
               <li>
-                <Link href="/" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/" className="text-gray-600 hover:text-primary transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/about" className="text-gray-600 hover:text-primary transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/services" className="text-gray-600 hover:text-primary transition-colors">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/blog" className="text-gray-600 hover:text-primary transition-colors">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/contact" className="text-gray-600 hover:text-primary transition-colors">
                   Contact
                 </Link>
               </li>
@@ -88,22 +91,24 @@ export default function Footer() {
             <h4 className="text-sm font-bold uppercase tracking-wider text-accent mb-4">
               Primary Office
             </h4>
-            <ul className="space-y-3.5 text-sm font-semibold text-gray-400">
+            <ul className="space-y-3.5 text-sm font-semibold text-gray-600">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4.5 h-4.5 text-secondary shrink-0 mt-0.5" />
-                <span>
-                  New No. 345 (Old No. 139), Second Floor,<br />
-                  Paper Mills Road, Peravallur,<br />
-                  Chennai 600 082.
+                <span className="leading-relaxed">
+                  <strong className="text-primary">SEATOWN CONTAINER LINE PVT LTD</strong><br />
+                  New No.89 (Old No.45), Marine Tower,<br />
+                  4th Floor Room No-8, Thambu Chetty Street,<br />
+                  Chennai – 600 001
                 </span>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-secondary" />
-                <a href="tel:+914435103752" className="hover:text-white transition-colors">+91 44 35103752</a>
+              <li className="flex flex-col gap-2.5">
+                <a href="tel:+919384622560" className="flex items-center gap-3 hover:text-primary transition-colors"><Smartphone className="w-4.5 h-4.5 text-accent shrink-0" /> +91 93846 22560</a>
+                <a href="tel:+919840456693" className="flex items-center gap-3 hover:text-primary transition-colors"><Smartphone className="w-4.5 h-4.5 text-accent shrink-0" /> +91 98404 56693</a>
+                <a href="tel:04446463747" className="flex items-center gap-3 hover:text-primary transition-colors"><Phone className="w-4 h-4 text-accent shrink-0 ml-0.5" /> 044- 4646 3747</a>
               </li>
-              <li className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-secondary" />
-                <a href="mailto:info@seatown.in" className="hover:text-white transition-colors">info@seatown.in</a>
+              <li className="flex items-center gap-3 pt-1">
+                <Mail className="w-4.5 h-4.5 text-accent shrink-0" />
+                <a href="mailto:James@seatown.in" className="hover:text-primary transition-colors">James@seatown.in</a>
               </li>
             </ul>
           </div>
@@ -113,16 +118,16 @@ export default function Footer() {
             <h4 className="text-sm font-bold uppercase tracking-wider text-accent mb-4">
               Cargo Advisory
             </h4>
-            <p className="text-gray-400 text-sm font-semibold leading-relaxed mb-4">
+            <p className="text-gray-600 text-sm font-semibold leading-relaxed mb-4">
               Subscribe to recieve global port congestion advisories, schedules, and custom clearance updates.
             </p>
             <div className="flex gap-2">
               <input
                 type="email"
                 placeholder="Enter email address"
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-secondary transition-colors"
+                className="w-full bg-gray-50 border border-gray-200 shadow-inner rounded-xl px-4 py-2.5 text-sm text-primary placeholder-gray-400 focus:outline-none focus:border-secondary transition-colors"
               />
-              <button className="bg-secondary hover:bg-secondary-hover px-4 rounded-xl text-sm font-bold transition-all uppercase tracking-wider">
+              <button className="bg-secondary hover:bg-secondary-hover px-4 text-white rounded-xl text-sm font-bold transition-all uppercase tracking-wider shadow-md">
                 Join
               </button>
             </div>
@@ -130,29 +135,18 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+        <div className="border-t border-gray-200 pt-8 flex justify-center items-center text-center">
           <p className="text-sm font-semibold text-gray-500">
             &copy; 2026 All rights reserved | by{" "}
             <a
               href="https://devspectra.in/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent hover:text-white transition-colors font-bold"
+              className="text-accent hover:text-primary transition-colors font-bold"
             >
               DevSpectra
             </a>
           </p>
-          <div className="flex gap-6 text-[11px] font-semibold text-gray-500">
-            <a href="#" className="hover:text-gray-400">Privacy Policy</a>
-            <a href="#" className="hover:text-gray-400">Terms of Service</a>
-          </div>
-          <button
-            onClick={scrollToTop}
-            className="p-2.5 bg-white/5 hover:bg-white/10 hover:text-accent rounded-xl transition-all shadow-md group"
-            title="Back to Top"
-          >
-            <ArrowUp className="w-4 h-4 text-gray-300 group-hover:-translate-y-0.5 transition-transform" />
-          </button>
         </div>
       </div>
     </footer>
