@@ -33,7 +33,7 @@ export default function LoadingScreen() {
       <div className="flex flex-col items-center text-center px-4 max-w-md">
         {/* Styled Official Logo */}
         <Image 
-          src="/Logo.png" 
+          src="/logo.png" 
           alt="Seatown Logo" 
           width={400} 
           height={160} 

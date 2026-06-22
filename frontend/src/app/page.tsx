@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Ship,
   Globe,
@@ -438,7 +439,7 @@ export default function Home() {
             ].map((svc) => (
               <div key={svc.id} className="bg-white border border-gray-100 rounded-[24px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group relative">
                 <div className="h-[200px] w-full relative overflow-hidden bg-gray-50">
-                  <img 
+                  <Image
                     src={svc.img} 
                     alt={svc.title} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -525,7 +526,7 @@ export default function Home() {
                       className="flex flex-col h-full"
                     >
                       <div className="flex-1 flex items-center justify-center mb-6 relative w-full h-[180px]">
-                        <img src={active.img} alt={active.title} className="max-w-full h-full object-contain drop-shadow-xl" />
+                        <Image src={active.img} alt={active.title} className="max-w-full h-full object-contain drop-shadow-xl" />
                       </div>
                       <div className="mt-auto border-t border-gray-100 pt-6">
                         <h3 className="text-xl md:text-2xl font-black text-primary mb-2 md:mb-3 truncate">{active.title}</h3>
@@ -550,10 +551,11 @@ export default function Home() {
           </span>
           <h2 className="text-3xl font-extrabold text-primary mt-2 mb-12 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 leading-tight">
             Why Select
-            <img
+            <Image
               src="/logo.png"
               alt="Seatown"
               className="h-12 md:h-14 w-auto object-contain inline-block -mt-1"
+              priority
             />
             For Ocean Logistics
           </h2>
@@ -631,7 +633,7 @@ export default function Home() {
                     className="flex items-center gap-3 bg-accent/5 border border-accent/30 shadow-sm hover:border-accent hover:bg-accent/10 rounded-2xl px-5 py-3 shrink-0 transition-all duration-300 group cursor-default"
                   >
                     <div className="w-9 h-6 rounded-md overflow-hidden border border-gray-200 shadow-sm shrink-0">
-                      <img
+                      <Image
                         src={`https://flagcdn.com/w80/${c.code}.png`}
                         alt={c.name}
                         className="w-full h-full object-cover"
@@ -669,7 +671,7 @@ export default function Home() {
                     className="flex items-center gap-3 bg-accent/5 border border-accent/30 shadow-sm hover:border-accent hover:bg-accent/10 rounded-2xl px-5 py-3 shrink-0 transition-all duration-300 group cursor-default"
                   >
                     <div className="w-9 h-6 rounded-md overflow-hidden border border-gray-200 shadow-sm shrink-0">
-                      <img
+                      <Image
                         src={`https://flagcdn.com/w80/${c.code}.png`}
                         alt={c.name}
                         className="w-full h-full object-cover"
