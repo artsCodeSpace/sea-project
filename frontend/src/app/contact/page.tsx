@@ -159,6 +159,8 @@ export default function Contact() {
                           <option value="Customs">Customs Clearance</option>
                           <option value="Project">Project Cargo</option>
                           <option value="Trading">Container Trading</option>
+                          <option value="Transportation">Transportation</option>
+                          <option value="agency">Linear Agency</option>
                         </select>
                       </div>
                     </div>

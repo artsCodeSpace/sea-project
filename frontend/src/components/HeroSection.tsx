@@ -23,7 +23,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ title, subtitle, badge, bgIma
     >
       {/* Premium dark navy overlay to ensure text contrast and brand alignment */}
       <div className="absolute inset-0 bg-primary/45 backdrop-blur-[1px] pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/30 via-transparent to-primary/20 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-b from-primary/30 via-transparent to-primary/20 pointer-events-none" />
       
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         <motion.span 
