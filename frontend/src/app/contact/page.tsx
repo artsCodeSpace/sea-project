@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import HeroSection from "@/components/HeroSection";
 import { Mail, Phone, MapPin, Send, CheckCircle, Ship, MessageSquare, Smartphone } from "lucide-react";
 
 export default function Contact() {
@@ -35,28 +36,12 @@ export default function Contact() {
   return (
     <div className="w-full flex flex-col bg-white">
       {/* HERO: Image Banner */}
-      <section 
-        className="w-full relative h-[45vh] md:h-[55vh] mt-20 flex items-center justify-center bg-white"
-        style={{
-          backgroundImage: "url('/banners/contact.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat"
-        }}
-      >
-        {/* Text Overlay directly on the un-tinted image */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <span className="text-secondary text-xs font-bold uppercase tracking-widest bg-white/80 backdrop-blur-sm px-4 py-1.5 rounded-full mb-4 inline-block shadow-sm border border-secondary/10">
-            Connect
-          </span>
-          <h1 className="text-4xl md:text-5xl font-black text-primary mb-4 leading-tight drop-shadow-md">
-            Contact Seatown Ports
-          </h1>
-          <p className="text-primary font-bold text-sm md:text-base max-w-xl mx-auto drop-shadow-md">
-            Get instant assistance for cargo booking slots, container sales, or custom clearance tracking.
-          </p>
-        </div>
-      </section>
+      <HeroSection 
+        badge="Connect"
+        title="Contact Seatown Ports"
+        subtitle="Get instant assistance for cargo booking slots, container sales, or custom clearance tracking."
+        bgImage="/banners/contact.png"
+      />
 
       {/* CONTACT INFO CARDS & FORM */}
       <section className="py-20">

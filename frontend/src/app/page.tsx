@@ -438,11 +438,12 @@ export default function Home() {
               }
             ].map((svc) => (
               <div key={svc.id} className="bg-white border border-gray-100 rounded-[24px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group relative">
-                <div className="h-[200px] w-full relative overflow-hidden bg-gray-50">
+                <div className="h-50 w-full relative overflow-hidden bg-gray-50">
                   <Image
                     src={svc.img} 
                     alt={svc.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4 bg-accent text-white border-2 border-white/20 rounded-full p-2.5 shadow-md z-10 flex items-center justify-center">
                     <svc.icon className="w-4.5 h-4.5" />
@@ -526,7 +527,7 @@ export default function Home() {
                       className="flex flex-col h-full"
                     >
                       <div className="flex-1 flex items-center justify-center mb-6 relative w-full h-[180px]">
-                        <Image src={active.img} alt={active.title} className="max-w-full h-full object-contain drop-shadow-xl" />
+                        <Image src={active.img} alt={active.title} fill className="object-contain drop-shadow-xl" />
                       </div>
                       <div className="mt-auto border-t border-gray-100 pt-6">
                         <h3 className="text-xl md:text-2xl font-black text-primary mb-2 md:mb-3 truncate">{active.title}</h3>
@@ -554,6 +555,8 @@ export default function Home() {
             <Image
               src="/logo.png"
               alt="Seatown"
+              width={3012}
+              height={1220}
               className="h-12 md:h-14 w-auto object-contain inline-block -mt-1"
               priority
             />
@@ -636,6 +639,8 @@ export default function Home() {
                       <Image
                         src={`https://flagcdn.com/w80/${c.code}.png`}
                         alt={c.name}
+                        width={36}
+                        height={24}
                         className="w-full h-full object-cover"
                         loading="lazy"
                       />
@@ -674,6 +679,8 @@ export default function Home() {
                       <Image
                         src={`https://flagcdn.com/w80/${c.code}.png`}
                         alt={c.name}
+                        width={36}
+                        height={24}
                         className="w-full h-full object-cover"
                         loading="lazy"
                       />
