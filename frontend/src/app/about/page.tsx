@@ -58,6 +58,7 @@ function AnimatedCounter({ end, suffix, className }: { end: number; suffix: stri
   );
 }
 import Link from "next/link";
+import HeroSection from "@/components/HeroSection";
 import {
   Globe,
   Shield,
@@ -112,28 +113,12 @@ export default function AboutUs() {
       {/* ═══════════════════════════════════════════════════
           HERO — FULL VIEW BANNER
       ═══════════════════════════════════════════════════ */}
-      <section 
-        className="w-full relative h-[45vh] md:h-[55vh] mt-20 flex items-center justify-center bg-white"
-        style={{
-          backgroundImage: "url('/banners/aboutus.jpeg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat"
-        }}
-      >
-        {/* Text Overlay directly on the un-tinted image */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <span className="text-secondary text-xs font-bold uppercase tracking-widest bg-white/80 backdrop-blur-sm px-4 py-1.5 rounded-full mb-4 inline-block shadow-sm border border-secondary/10">
-            Who We Are
-          </span>
-          <h1 className="text-4xl md:text-5xl font-black text-primary mb-4 leading-tight drop-shadow-md">
-            About Seatown Container Line
-          </h1>
-          <p className="text-primary font-bold text-sm md:text-base max-w-xl mx-auto drop-shadow-md">
-            Charting Safe Ocean Shipping Routes Worldwide
-          </p>
-        </div>
-      </section>
+      <HeroSection 
+        badge="Who We Are"
+        title="About Seatown Container Line"
+        subtitle="Charting Safe Ocean Shipping Routes Worldwide"
+        bgImage="/banners/aboutus.jpeg"
+      />
 
       {/* ═══════════════════════════════════════════════════
           ABOUT CONTENT & STATS

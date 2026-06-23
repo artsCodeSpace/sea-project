@@ -23,7 +23,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center mb-6 w-full max-w-[320px]">
               <Image 
-                src="/Logo.png" 
+                src="/logo.png" 
                 alt="Seatown Container Line Logo" 
                 width={300} 
                 height={100} 

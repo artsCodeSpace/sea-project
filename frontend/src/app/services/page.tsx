@@ -2,7 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Anchor, Globe, Plane, FileCheck, Cpu, Box, Truck, Compass, BookOpen, Clock, Shield } from "lucide-react";
+import HeroSection from '@/components/HeroSection';
 
 export default function Services() {
   const [activeStep, setActiveStep] = useState(0);
@@ -23,43 +25,14 @@ export default function Services() {
   ];
 
   return (
-    <div className="w-full flex flex-col bg-white">
+    <>
       {/* HERO: Cargo Vessel Animation */}
-      <section className="relative h-[55vh] flex items-center justify-center bg-gradient-to-b from-blue-900/10 via-sky-50/20 to-white overflow-hidden text-center">
-        {/* Sky Parallax clouds */}
-        <div className="absolute inset-x-0 top-12 h-20 opacity-20 pointer-events-none">
-          <div className="absolute top-4 left-[20%] w-32 h-8 bg-white rounded-full blur-md animate-pulse" />
-          <div className="absolute top-8 left-[65%] w-48 h-12 bg-white rounded-full blur-lg animate-pulse" />
-        </div>
-
-        {/* Large Vessel sailing */}
-        <div className="absolute inset-x-0 bottom-0 h-48 opacity-30 select-none pointer-events-none">
-          <svg viewBox="0 0 1000 200" className="w-full h-full fill-primary">
-            {/* Sea wave paths */}
-            <path d="M 0,160 Q 250,140 500,160 T 1000,160 L 1000,200 L 0,200 Z" fill="#0066CC" opacity="0.3" />
-            <path d="M 0,175 Q 250,160 500,175 T 1000,175 L 1000,200 L 0,200 Z" fill="#0B1F3A" opacity="0.5" />
-            
-            {/* Cargo Vessel */}
-            <g className="animate-pulse" style={{ animationDuration: '7s' }}>
-              <path d="M 150,165 L 850,165 L 820,185 L 180,185 Z" fill="#0B1F3A" />
-              <rect x="250" y="140" width="450" height="25" fill="#FF7A00" rx="2" />
-              <rect x="700" y="130" width="30" height="35" fill="#E2E8F0" />
-            </g>
-          </svg>
-        </div>
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-          <span className="text-secondary text-xs font-bold uppercase tracking-widest bg-secondary/10 px-4 py-1.5 rounded-full mb-4 inline-block">
-            Our Solutions
-          </span>
-          <h1 className="text-4xl md:text-5xl font-black text-primary mb-4 leading-tight">
-            Integrated Ocean & Air Transport
-          </h1>
-          <p className="text-gray-600 font-medium text-sm md:text-base max-w-xl mx-auto">
-            Providing custom logistics operations from Chennai, Dubai, and Singapore hubs.
-          </p>
-        </div>
-      </section>
+      <HeroSection 
+        badge="Schedules & Operations"
+        title="Our Services"
+        subtitle="End-to-end logistics solutions designed to move your business forward."
+        bgImage="/services/heropage.jpeg"
+      />
 
       {/* SERVICE DETAILS BLOCKS */}
 
@@ -86,16 +59,14 @@ export default function Services() {
               </ul>
             </div>
             
-            <div className="lg:col-span-6 bg-zinc-50 border border-gray-200/80 p-8 rounded-3xl h-[280px] flex items-center justify-center overflow-hidden relative">
-              {/* Vessel animated silhouette */}
-              <div className="w-[80%] h-24 relative select-none pointer-events-none">
-                <svg viewBox="0 0 200 80" className="w-full h-full fill-primary">
-                  <path d="M 20,60 L 180,60 L 170,70 L 30,70 Z" />
-                  <rect x="50" y="45" width="80" height="15" fill="#0066CC" />
-                  {/* Floating waves */}
-                  <path d="M0,68 C30,64 60,72 90,68 C120,64 150,72 180,68" fill="none" stroke="#FF7A00" strokeWidth="1" className="animate-pulse" />
-                </svg>
-              </div>
+            <div className="lg:col-span-6 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
+              <Image
+                src="/services/container-ship-sailing.png"
+                alt="Container Ship Sailing"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
@@ -124,16 +95,14 @@ export default function Services() {
               </ul>
             </div>
             
-            <div className="lg:col-span-6 lg:order-1 bg-white border border-gray-200/80 p-8 rounded-3xl h-[280px] flex items-center justify-center overflow-hidden">
-              {/* Dynamic route dots */}
-              <svg className="w-[80%] h-full max-h-[160px]" viewBox="0 0 100 50">
-                <line x1="10" y1="25" x2="90" y2="25" stroke="#ccc" strokeWidth="0.5" strokeDasharray="1 2" />
-                <circle cx="10" cy="25" r="4" fill="#0B1F3A" />
-                <circle cx="50" cy="25" r="4" fill="#0066CC" />
-                <circle cx="90" cy="25" r="4" fill="#FF7A00" />
-                {/* Flow indicator */}
-                <circle cx="10" cy="25" r="1.5" fill="white" className="animate-ping" style={{ transformOrigin: "10px 25px" }} />
-              </svg>
+            <div className="lg:col-span-6 lg:order-1 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
+              <Image
+                src="/services/oceanfreight.avif"
+                alt="Ocean Freight Forwarding"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
@@ -162,12 +131,14 @@ export default function Services() {
               </ul>
             </div>
             
-            <div className="lg:col-span-6 bg-zinc-50 border border-gray-200/80 p-8 rounded-3xl h-[280px] flex items-center justify-center overflow-hidden relative group">
-              {/* Aircraft crossing visual with cloud parallax */}
-              <div className="absolute inset-0 bg-sky-100/35 pointer-events-none" />
-              <div className="absolute top-12 left-10 text-sky-950/20 group-hover:translate-x-12 transition-transform duration-[4000ms]">
-                <Plane className="w-16 h-16" />
-              </div>
+            <div className="lg:col-span-6 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
+              <Image
+                src="/services/airfreight.avif"
+                alt="Air Freight"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
@@ -185,14 +156,14 @@ export default function Services() {
               </p>
             </div>
             
-            <div className="lg:col-span-6 lg:order-1 bg-white border border-gray-200/80 p-8 rounded-3xl h-[280px] flex items-center justify-center overflow-hidden relative">
-              <div className="border border-secondary/20 p-6 rounded-2xl bg-slate-50/50 max-w-xs text-center flex flex-col items-center">
-                <FileCheck className="w-8 h-8 text-secondary mb-3" />
-                <div className="text-[10px] text-gray-500 uppercase font-black tracking-widest mb-2">Documentation check</div>
-                <div className="bg-emerald-600 text-white font-bold text-xs py-1 px-4 rounded transform rotate-[-12deg] shadow-sm animate-stamp">
-                  APPROVED
-                </div>
-              </div>
+            <div className="lg:col-span-6 lg:order-1 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
+              <Image
+                src="/services/custombrokerage.jpeg"
+                alt="Customs Brokerage"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
@@ -210,15 +181,14 @@ export default function Services() {
               </p>
             </div>
             
-            <div className="lg:col-span-6 bg-zinc-50 border border-gray-200/80 p-8 rounded-3xl h-[280px] flex items-center justify-center overflow-hidden">
-              {/* Heavy crane hoist representation */}
-              <svg className="w-32 h-32 fill-primary">
-                {/* Simple crane body */}
-                <line x1="20" y1="120" x2="80" y2="20" stroke="#0B1F3A" strokeWidth="4" />
-                <line x1="80" y1="20" x2="110" y2="20" stroke="#0066CC" strokeWidth="3" />
-                {/* Cargo */}
-                <rect x="80" y="45" width="24" height="16" fill="#FF7A00" className="animate-bounce" style={{ animationDuration: '4s' }} rx="1" />
-              </svg>
+            <div className="lg:col-span-6 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
+              <Image
+                src="/services/projectcargo.avif"
+                alt="Project Cargo Logistics"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
@@ -236,12 +206,14 @@ export default function Services() {
               </p>
             </div>
             
-            <div className="lg:col-span-6 lg:order-1 bg-white border border-gray-200/80 p-8 rounded-3xl h-[280px] flex items-center justify-center overflow-hidden relative">
-              <div className="grid grid-cols-3 gap-3">
-                <div className="w-14 h-8 bg-secondary rounded border border-secondary/20 shadow-sm" />
-                <div className="w-14 h-8 bg-primary rounded border border-primary/20 shadow-sm animate-bounce" style={{ animationDuration: '3s' }} />
-                <div className="w-14 h-8 bg-accent rounded border border-accent/20 shadow-sm" />
-              </div>
+            <div className="lg:col-span-6 lg:order-1 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
+              <Image
+                src="/services/containertrading.jpeg"
+                alt="Container Trading & Sales"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
@@ -259,10 +231,14 @@ export default function Services() {
               </p>
             </div>
             
-            <div className="lg:col-span-6 bg-zinc-50 border border-gray-200/80 p-8 rounded-3xl h-[280px] flex items-center justify-center overflow-hidden relative group">
-              <div className="text-secondary/20 group-hover:text-secondary group-hover:translate-x-28 transition-transform duration-[3500ms]">
-                <Truck className="w-20 h-20" />
-              </div>
+            <div className="lg:col-span-6 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
+              <Image
+                src="/services/landtransportation.avif"
+                alt="Land Transportation"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
@@ -317,6 +293,6 @@ export default function Services() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }
