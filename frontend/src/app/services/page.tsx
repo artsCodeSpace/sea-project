@@ -234,7 +234,7 @@ export default function Services() {
             
             <div id="ani-img" className="lg:col-span-6 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
               <Image
-                src="/services/landtransport.avif"
+                src="/services/land-transport.avif"
                 alt="Land Transportation"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"

@@ -33,8 +33,32 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Manrope', sans-serif;
   overflow-x: hidden;
+}
+
+/* Hero Heading */
+.hero-heading {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+}
+
+/* Section Heading */
+.section-heading {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+/* Body Text */
+.body-text {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  font-weight: 400;
+  color: rgb(71 85 105);
 }
 
 /* Glassmorphism styles */
@@ -95,5 +119,5 @@ body {
 }
 
 #blog_bg{
-  background-image: url(/services/blogbg.png);
+  background-image: url(/blogbg.png);
 }

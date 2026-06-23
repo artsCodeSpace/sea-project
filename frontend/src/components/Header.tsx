@@ -14,6 +14,7 @@ const services = [
   { name: "Project Cargo", path: "/services#project-cargo" },
   { name: "Container Trading", path: "/services#container-trading" },
   { name: "Transportation", path: "/services#transportation" },
+  { name: "Linear Agency", path: "/services#linear-agency" },
 ];
 
 export default function Header() {
@@ -110,7 +111,7 @@ export default function Header() {
 
               {/* Dropdown Menu */}
               <div
-                className={`absolute left-0 mt-3 w-60 bg-white rounded-2xl shadow-xl border border-gray-100 py-3 transition-all duration-300 origin-top-left ${
+                className={`absolute left-0 top-full w-60 bg-white rounded-2xl shadow-xl border border-gray-100 py-3 transition-all duration-300 origin-top-left ${
                   servicesDropdownOpen
                     ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
                     : "opacity-0 scale-95 -translate-y-2 pointer-events-none"

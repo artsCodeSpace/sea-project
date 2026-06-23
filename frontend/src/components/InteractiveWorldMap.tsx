@@ -64,7 +64,7 @@ export default function InteractiveWorldMap() {
       </div>
 
       {/* Map Area */}
-      <div className="relative w-full aspect-[16/9] bg-gradient-to-b from-slate-50 to-blue-50/50 border border-gray-200/60 rounded-2xl overflow-hidden">
+      <div className="relative w-full aspect-video bg-linear-to-b from-slate-50 to-blue-50/50 border border-gray-200/60 rounded-2xl overflow-hidden">
         {/* High-tech grid background */}
         <div className="absolute inset-0 opacity-[0.08]" 
              style={{ 
