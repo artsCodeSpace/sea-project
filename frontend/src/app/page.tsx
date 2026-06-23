@@ -269,7 +269,7 @@ export default function Home() {
           {/* Global Network Video */}
           <div className="relative z-10 flex-grow flex items-center justify-center my-6 rounded-2xl overflow-hidden shadow-xl border border-gray-100/50">
             <video 
-              src="/v1.mp4" 
+              src="/v1.mov" 
               autoPlay 
               loop 
               muted 

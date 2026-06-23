@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Anchor, Globe, Plane, FileCheck, Cpu, Box, Truck, Compass, BookOpen, Clock, Shield } from "lucide-react";
+import GsapAnimation from "@/components/GsapAnimation";
 import HeroSection from '@/components/HeroSection';
 
 export default function Services() {
@@ -33,6 +33,7 @@ export default function Services() {
         subtitle="End-to-end logistics solutions designed to move your business forward."
         bgImage="/services/heropage.jpeg"
       />
+      <GsapAnimation targetId="ani-img" />
 
       {/* SERVICE DETAILS BLOCKS */}
 
@@ -59,7 +60,7 @@ export default function Services() {
               </ul>
             </div>
             
-            <div className="lg:col-span-6 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
+            <div id="ani-img" className="lg:col-span-6 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
               <Image
                 src="/services/container-ship-sailing.png"
                 alt="Container Ship Sailing"
@@ -95,7 +96,7 @@ export default function Services() {
               </ul>
             </div>
             
-            <div className="lg:col-span-6 lg:order-1 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
+            <div id="ani-img" className="lg:col-span-6 lg:order-1 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
               <Image
                 src="/services/oceanfreight.avif"
                 alt="Ocean Freight Forwarding"
@@ -131,7 +132,7 @@ export default function Services() {
               </ul>
             </div>
             
-            <div className="lg:col-span-6 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
+            <div id="ani-img" className="lg:col-span-6 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
               <Image
                 src="/services/airfreight.avif"
                 alt="Air Freight"
@@ -156,7 +157,7 @@ export default function Services() {
               </p>
             </div>
             
-            <div className="lg:col-span-6 lg:order-1 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
+            <div id="ani-img" className="lg:col-span-6 lg:order-1 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
               <Image
                 src="/services/custombrokerage.jpeg"
                 alt="Customs Brokerage"
@@ -181,7 +182,7 @@ export default function Services() {
               </p>
             </div>
             
-            <div className="lg:col-span-6 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
+            <div id="ani-img" className="lg:col-span-6 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
               <Image
                 src="/services/projectcargo.avif"
                 alt="Project Cargo Logistics"
@@ -206,7 +207,7 @@ export default function Services() {
               </p>
             </div>
             
-            <div className="lg:col-span-6 lg:order-1 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
+            <div id="ani-img" className="lg:col-span-6 lg:order-1 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
               <Image
                 src="/services/containertrading.jpeg"
                 alt="Container Trading & Sales"
@@ -231,10 +232,34 @@ export default function Services() {
               </p>
             </div>
             
-            <div className="lg:col-span-6 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
+            <div id="ani-img" className="lg:col-span-6 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
               <Image
-                src="/services/landtransportation.avif"
+                src="/services/landtransport.avif"
                 alt="Land Transportation"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. Linear Agency */}
+      <section id="linear-agency" className="py-20 border-b border-gray-100 bg-zinc-50/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-6 lg:order-2 text-left">
+              <span className="text-accent text-xs font-extrabold uppercase tracking-widest">08 / Strategic Agency Network</span>
+              <h2 className="text-2xl md:text-3xl font-black text-primary mt-2 mb-6">Linear Agency</h2>
+              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                Acting as a trusted representative for principals, we coordinate with local authorities, terminal operators, and logistics partners to streamline operations and deliver exceptional stakeholder satisfaction.</p>
+            </div>
+            
+            <div id="ani-img" className="lg:col-span-6 lg:order-1 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
+              <Image
+                src="/services/linearagency.png"
+                alt="Container Trading & Sales"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
