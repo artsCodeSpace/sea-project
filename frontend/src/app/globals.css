@@ -93,3 +93,7 @@ body {
   width: max-content;
   animation: marquee-reverse 30s linear infinite;
 }
+
+#blog_bg{
+  background-image: url(/services/blogbg.png);
+}
