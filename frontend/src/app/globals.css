@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --primary: #0B1F3A;
+  --primary: #2165ae;
   --primary-hover: #071426;
   --secondary: #C1933F;
   --secondary-hover: #A87E30;
@@ -33,7 +33,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Manrope', sans-serif;
+  font-family: 'SN_Pro', sans-serif;
   overflow-x: hidden;
 }
 
@@ -43,6 +43,7 @@ body {
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.05em;
+  color: #2165ae;
 }
 
 /* Section Heading */
@@ -51,11 +52,12 @@ body {
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.03em;
+  color: #C1933F;
 }
 
 /* Body Text */
 .body-text {
-  font-size: 1.125rem;
+  font-size: 3rem;
   line-height: 1.8;
   font-weight: 400;
   color: rgb(71 85 105);
