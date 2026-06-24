@@ -93,7 +93,7 @@ export default function Blog() {
         badge="Publications"
         title="Seatown Industry Insights & Logistics Blog"
         subtitle="Stay updated with global trade trends, customs brokerage guidelines, and maritime route analyses."
-        bgImage="/banners/blog.png"
+        bgImage="/blog.png"
       />
 
       {/* BLOG CONTENT SECTION */}
