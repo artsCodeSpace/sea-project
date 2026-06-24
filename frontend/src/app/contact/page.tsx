@@ -66,8 +66,8 @@ export default function Contact() {
                 
                 <div className="w-full flex flex-col gap-5">
                   <div>
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">Registered Address</p>
-                    <p className="text-gray-600 text-sm font-semibold leading-relaxed">
+                    <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5">Registered Address</p>
+                    <p className="text-gray-600 text-base font-semibold leading-relaxed">
                       <strong>SEATOWN CONTAINER LINE PVT LTD</strong><br/>
                       New No.89 (Old No.45), Marine Tower,<br/>
                       4th Floor Room No-8, Thambu Chetty Street,<br/>
@@ -77,16 +77,16 @@ export default function Contact() {
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-2">
                     <div>
-                      <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">Contact Numbers</p>
+                      <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5">Contact Numbers</p>
                       <div className="flex flex-col gap-1.5">
-                        <a href="tel:+919384622560" className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-colors"><Smartphone size={14} className="text-accent" /> +91 93846 22560</a>
-                        <a href="tel:+919840456693" className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-colors"><Smartphone size={14} className="text-accent" /> +91 98404 56693</a>
-                        <a href="tel:04446463747" className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-colors"><Phone size={14} className="text-accent" /> 044- 4646 3747</a>
+                        <a href="tel:+919384622560" className="flex items-center gap-2 text-base font-bold text-gray-700 hover:text-primary transition-colors"><Smartphone size={14} className="text-accent" /> +91 93846 22560</a>
+                        <a href="tel:+919840456693" className="flex items-center gap-2 text-base font-bold text-gray-700 hover:text-primary transition-colors"><Smartphone size={14} className="text-accent" /> +91 98404 56693</a>
+                        <a href="tel:04446463747" className="flex items-center gap-2 text-base font-bold text-gray-700 hover:text-primary transition-colors"><Phone size={14} className="text-accent" /> 044- 4646 3747</a>
                       </div>
                     </div>
                     <div>
-                      <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">Email Desk</p>
-                      <a href="mailto:James@seatown.in" className="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-primary transition-colors break-all"><Mail size={14} className="text-accent" /> James@seatown.in</a>
+                      <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5">Email Desk</p>
+                      <a href="mailto:James@seatown.in" className="flex items-center gap-2 text-base font-bold text-gray-700 hover:text-primary transition-colors break-all"><Mail size={14} className="text-accent" /> James@seatown.in</a>
                     </div>
                   </div>
                 </div>
@@ -97,7 +97,7 @@ export default function Contact() {
             <div className="lg:col-span-7">
               <div className="glass-panel p-8 rounded-3xl border border-gray-200/80 shadow-lg text-left">
                 <h2 className="text-2xl font-black text-primary mb-2">Inquiry Form</h2>
-                <p className="text-gray-500 text-xs font-semibold mb-6">
+                <p className="text-gray-500 text-sm font-semibold mb-6">
                   Submit cargo requirements to receive immediate scheduling solutions.
                 </p>
 
@@ -105,7 +105,7 @@ export default function Contact() {
                   <div className="bg-green-50 border border-green-200 rounded-2xl p-6 text-center flex flex-col items-center justify-center py-12">
                     <CheckCircle className="w-12 h-12 text-green-600 mb-3 animate-bounce" />
                     <h3 className="text-base font-extrabold text-green-800">Message Transmitted</h3>
-                    <p className="text-green-700 text-xs font-semibold mt-1">Our dispatch team will connect with booking confirmations shortly.</p>
+                    <p className="text-green-700 text-sm font-semibold mt-1">Our dispatch team will connect with booking confirmations shortly.</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
