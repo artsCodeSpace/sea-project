@@ -117,7 +117,7 @@ export default function AboutUs() {
         badge="Who We Are"
         title="About Seatown Container Line"
         subtitle="Charting Safe Ocean Shipping Routes Worldwide"
-        bgImage="/banners/aboutus.png"
+        bgImage="/aboutus.png"
       />
 
       {/* ═══════════════════════════════════════════════════

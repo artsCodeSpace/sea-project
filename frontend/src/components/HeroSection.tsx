@@ -45,19 +45,19 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Mobile scrim: dark bottom → transparent top, keeps text legible on any image */}
       <div
         className="absolute inset-0 md:hidden pointer-events-none -z-10
-                   bg-gradient-to-t from-secondary/35 via-secondary/20"
+                   bg-gradient-to-t from-secondary/20 via-secondary/10"
       />
 
       {/* Desktop scrim: dark left → transparent right */}
       <div
         className="absolute inset-0 hidden md:block pointer-events-none -z-10
-                   bg-gradient-to-r from-secondary/35 via-secondary/20"
+                   bg-gradient-to-r from-secondary/20 via-secondary/10"
       />
 
       {/* Subtle top/bottom vignette for premium framing */}
       <div
         className="absolute inset-0 pointer-events-none -z-10
-                   bg-gradient-to-b from-secondary/35 via-secondary/20"
+                   bg-gradient-to-b from-secondary/20 via-secondary/10"
       />
 
       <div
@@ -70,9 +70,21 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-5 inline-flex items-center rounded-full
-                     border border-accent/40 bg-accent/15 backdrop-blur-sm
-                     px-4 py-1.5 text-[11px] sm:text-xs font-black uppercase
-                     tracking-[0.18em] text-accent shadow-sm"
+           border border-accent
+           bg-accent
+           px-4 py-1.5
+           text-[11px] sm:text-xs font-black uppercase
+           tracking-[0.18em]
+           text-white
+           shadow-lg shadow-accent/40"
+          /* className="mb-5 inline-flex items-center rounded-full
+           border border-accent/60
+           bg-black/30 backdrop-blur-md
+           px-4 py-1.5
+           text-[11px] sm:text-xs font-black uppercase
+           tracking-[0.18em]
+           text-white
+           shadow-lg shadow-black/20" */
         >
           {badge}
         </motion.span>

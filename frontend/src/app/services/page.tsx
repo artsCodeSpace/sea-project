@@ -31,7 +31,7 @@ export default function Services() {
         badge="Schedules & Operations"
         title="Our Services"
         subtitle="End-to-end logistics solutions designed to move your business forward."
-        bgImage="/banners/service.png"
+        bgImage="/services.png"
       />
       <GsapAnimation targetId="ani-img" />
 
