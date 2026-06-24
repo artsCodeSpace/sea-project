@@ -18,7 +18,7 @@ export default function Footer() {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Company Brief */}
           <div>
             <div className="flex items-center mb-6 w-full max-w-[320px]">
@@ -30,7 +30,7 @@ export default function Footer() {
                 className="h-16 md:h-20 w-auto object-contain" 
               />
             </div>
-            <p className="text-gray-600 text-sm font-semibold leading-relaxed mb-6">
+            <p className="text-gray-600 text-base font-semibold leading-relaxed mb-6">
               Empowering global trade routes since 2012. Providing premium maritime logistics, NVOCC cargo shipping, and end-to-end container tracking solutions.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -53,37 +53,39 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-accent mb-4">
-              Explore Links
-            </h4>
-            <ul className="space-y-2.5 text-sm font-semibold">
-              <li>
-                <Link href="/" className="text-gray-600 hover:text-primary transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-gray-600 hover:text-primary transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="text-gray-600 hover:text-primary transition-colors">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="text-gray-600 hover:text-primary transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-gray-600 hover:text-primary transition-colors">
-                  Contact
-                </Link>
-              </li>
-            </ul>
+          <div className="flex flex-col md:items-center">
+            <div className="w-fit text-left md:text-center">
+              <h4 className="text-sm font-bold uppercase tracking-wider text-accent mb-4">
+                Explore Links
+              </h4>
+              <ul className="space-y-2.5 text-base font-semibold">
+                <li>
+                  <Link href="/" className="text-gray-600 hover:text-primary transition-colors">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="text-gray-600 hover:text-primary transition-colors">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services" className="text-gray-600 hover:text-primary transition-colors">
+                    Services
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className="text-gray-600 hover:text-primary transition-colors">
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="text-gray-600 hover:text-primary transition-colors">
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Contact Details */}
@@ -91,11 +93,11 @@ export default function Footer() {
             <h4 className="text-sm font-bold uppercase tracking-wider text-accent mb-4">
               Primary Office
             </h4>
-            <ul className="space-y-3.5 text-sm font-semibold text-gray-600">
+            <ul className="space-y-3.5 text-base font-semibold text-gray-600">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4.5 h-4.5 text-secondary shrink-0 mt-0.5" />
                 <span className="leading-relaxed">
-                  <strong className="text-primary">SEATOWN CONTAINER LINE PVT LTD</strong><br />
+                  <strong className="text-primary">SEATOWN CONTAINER LINE PVT LTD </strong><br />
                   New No.89 (Old No.45), Marine Tower,<br />
                   4th Floor Room No-8, Thambu Chetty Street,<br />
                   Chennai – 600 001
@@ -113,30 +115,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter / Tracking */}
-          <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-accent mb-4">
-              Cargo Advisory
-            </h4>
-            <p className="text-gray-600 text-sm font-semibold leading-relaxed mb-4">
-              Subscribe to recieve global port congestion advisories, schedules, and custom clearance updates.
-            </p>
-            <div className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Enter email address"
-                className="w-full bg-gray-50 border border-gray-200 shadow-inner rounded-xl px-4 py-2.5 text-sm text-primary placeholder-gray-400 focus:outline-none focus:border-secondary transition-colors"
-              />
-              <button className="bg-secondary hover:bg-secondary-hover px-4 text-white rounded-xl text-sm font-bold transition-all uppercase tracking-wider shadow-md">
-                Join
-              </button>
-            </div>
-          </div>
+          
         </div>
 
         {/* Divider */}
         <div className="border-t border-gray-200 pt-8 flex justify-center items-center text-center">
-          <p className="text-sm font-semibold text-gray-500">
+          <p className="text-base font-semibold text-gray-500">
             &copy; 2026 All rights reserved | by{" "}
             <a
               href="https://devspectra.in/"
