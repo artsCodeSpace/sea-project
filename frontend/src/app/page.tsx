@@ -531,9 +531,10 @@ export default function Home() {
           </p>
 
           {/* INTERACTIVE SERVICES SHOWCASE */}
-          <div className="hidden lg:grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-left">
-            {/* Left Column: Vertical Tabs list (visible on desktop, horizontal scroll on mobile) */}
-            <div className="lg:col-span-5 flex lg:flex-col gap-3 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 w-full scrollbar-none snap-x snap-mandatory">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start text-left">
+
+            {/* Tabs: horizontal scroll on mobile, vertical list on desktop */}
+            <div className="lg:col-span-5 flex lg:flex-col gap-3 overflow-x-auto lg:overflow-x-visible -mx-4 px-4 lg:mx-0 lg:px-0 pb-2 lg:pb-0 w-auto lg:w-full scrollbar-none snap-x snap-mandatory">
               {SERVICES.map((svc) => {
                 const IconComponent = svc.icon;
                 const isActive = selectedService === svc.id;
@@ -541,28 +542,27 @@ export default function Home() {
                   <button
                     key={svc.id}
                     onClick={() => setSelectedService(svc.id)}
-                    className={`flex items-center gap-4 p-4 lg:p-5 rounded-2xl border text-left transition-all duration-300 w-80 lg:w-full shrink-0 snap-center cursor-pointer ${
+                    aria-pressed={isActive}
+                    className={`flex items-center gap-3 lg:gap-4 p-3 lg:p-5 rounded-2xl border text-left transition-all duration-300 w-[78%] sm:w-72 lg:w-full shrink-0 snap-center cursor-pointer ${
                       isActive
                         ? "bg-white border-accent shadow-md lg:translate-x-1 border-l-4 border-l-accent"
                         : "bg-gray-50/50 border-gray-100 hover:bg-gray-50 hover:border-gray-200"
                     }`}
                   >
-                    <div className={`p-3 rounded-xl transition-colors ${
+                    <div className={`p-2.5 lg:p-3 rounded-xl shrink-0 transition-colors ${
                       isActive ? "bg-accent/10 text-accent" : "bg-gray-200/50 text-gray-500"
                     }`}>
                       <IconComponent className="w-5 h-5" />
                     </div>
-                    <div className="flex-grow">
-                      <div className="flex justify-between items-center">
-                        <span className={`text-[11px] font-mono font-bold tracking-wider ${isActive ? "text-accent" : "text-gray-400"}`}>
-                          SERVICE {svc.id}
-                        </span>
-                      </div>
-                      <h3 className={`font-black text-sm lg:text-base leading-tight mt-0.5 ${isActive ? "text-primary" : "text-gray-700"}`}>
+                    <div className="flex-grow min-w-0">
+                      <span className={`block text-[11px] font-mono font-bold tracking-wider ${isActive ? "text-accent" : "text-gray-400"}`}>
+                        SERVICE {svc.id}
+                      </span>
+                      <h3 className={`font-black text-sm lg:text-base leading-tight mt-0.5 truncate ${isActive ? "text-primary" : "text-gray-700"}`}>
                         {svc.title}
                       </h3>
                     </div>
-                    <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${
+                    <ArrowRight className={`w-4 h-4 shrink-0 transition-transform duration-300 ${
                       isActive ? "text-accent translate-x-1" : "text-gray-300"
                     }`} />
                   </button>
@@ -570,7 +570,7 @@ export default function Home() {
               })}
             </div>
 
-            {/* Right Column: Active Service Details Showcase Card */}
+            {/* Active Service Detail Card */}
             <div className="lg:col-span-7 w-full h-full">
               <AnimatePresence mode="wait">
                 {SERVICES.filter((svc) => svc.id === selectedService).map((svc) => {
@@ -584,8 +584,8 @@ export default function Home() {
                       transition={{ duration: 0.35, ease: "easeOut" }}
                       className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-md flex flex-col h-full"
                     >
-                      {/* Image Area */}
-                      <div className="h-64 sm:h-72 w-full relative overflow-hidden bg-gray-50 group">
+                      {/* Image */}
+                      <div className="h-56 sm:h-64 lg:h-72 w-full relative overflow-hidden bg-gray-50 group">
                         <Image
                           src={svc.img}
                           alt={svc.title}
@@ -593,19 +593,19 @@ export default function Home() {
                           className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                           priority
                         />
-                        <div className="absolute top-6 left-6 bg-accent text-white border-2 border-white/20 rounded-2xl p-3.5 shadow-lg z-10 flex items-center justify-center">
-                          <IconComponent className="w-6 h-6" />
+                        <div className="absolute top-4 left-4 sm:top-6 sm:left-6 bg-accent text-white border-2 border-white/20 rounded-2xl p-3 sm:p-3.5 shadow-lg z-10 flex items-center justify-center">
+                          <IconComponent className="w-5 h-5 sm:w-6 sm:h-6" />
                         </div>
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-85" />
-                        <div className="absolute bottom-6 right-6 bg-white/10 backdrop-blur-md border border-white/15 px-4 py-1.5 rounded-full">
-                          <span className="text-white font-mono text-xs font-black tracking-widest">
+                        <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 bg-white/10 backdrop-blur-md border border-white/15 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full">
+                          <span className="text-white font-mono text-[10px] sm:text-xs font-black tracking-widest">
                             SEATOWN LOGISTICS
                           </span>
                         </div>
                       </div>
 
-                      {/* Content Area */}
-                      <div className="p-8 flex flex-col flex-grow justify-between">
+                      {/* Content */}
+                      <div className="p-5 sm:p-8 flex flex-col flex-grow justify-between">
                         <div>
                           <div className="flex items-center gap-2 mb-3">
                             <span className="text-accent font-mono text-xs font-black tracking-widest">
@@ -616,15 +616,14 @@ export default function Home() {
                               Tailored Solutions
                             </span>
                           </div>
-                          <h3 className="font-black text-2xl lg:text-3xl text-primary mb-4">
+                          <h3 className="font-black text-xl sm:text-2xl lg:text-3xl text-primary mb-3 sm:mb-4">
                             {svc.title}
                           </h3>
-                          <p className="text-gray-600 text-base leading-relaxed mb-6 font-medium">
+                          <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 font-medium">
                             {svc.desc}
                           </p>
 
-                          {/* Features checklist */}
-                          <div className="border-t border-gray-100 pt-6 mb-8">
+                          <div className="border-t border-gray-100 pt-5 sm:pt-6 mb-6 sm:mb-8">
                             <h4 className="text-primary font-bold text-xs uppercase tracking-wider mb-4">
                               Key Capabilities
                             </h4>
@@ -641,11 +640,10 @@ export default function Home() {
                           </div>
                         </div>
 
-                        {/* CTA button */}
                         <div className="flex justify-end pt-2 border-t border-gray-50 mt-auto">
                           <Link
                             href={svc.link}
-                            className="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-full font-bold uppercase tracking-wider text-[11px] transition-all shadow-md group"
+                            className="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-5 sm:px-6 py-3 rounded-full font-bold uppercase tracking-wider text-[11px] transition-all shadow-md group"
                           >
                             Explore Detailed Specifications
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -659,43 +657,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* MOBILE/TABLET VIEW (grid of cards, visible below lg) */}
-          <div className="grid lg:hidden grid-cols-1 sm:grid-cols-2 gap-6 text-left">
-            {SERVICES.map((svc) => {
-              const IconComponent = svc.icon;
-              return (
-                <div key={svc.id} className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col group">
-                  <div className="h-52 w-full relative overflow-hidden bg-gray-50">
-                    <Image
-                      src={svc.img} 
-                      alt={svc.title} 
-                      fill
-                      className="object-cover group-hover:scale-103 transition-transform duration-500"
-                    />
-                    <div className="absolute top-4 left-4 bg-accent text-white border-2 border-white/20 rounded-2xl p-2.5 shadow-md z-10 flex items-center justify-center">
-                      <IconComponent className="w-5 h-5" />
-                    </div>
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-transparent to-transparent p-4 flex items-end justify-between">
-                      <span className="text-white font-mono text-xs font-black tracking-widest">SERVICE {svc.id}</span>
-                    </div>
-                  </div>
-                  <div className="p-6 flex flex-col flex-grow justify-between">
-                    <div>
-                      <h3 className="font-bold text-lg text-primary mb-2">{svc.title}</h3>
-                      <p className="text-gray-600 text-sm leading-relaxed mb-6 font-semibold">
-                        {svc.desc}
-                      </p>
-                    </div>
-                    <div className="flex justify-end mt-auto w-full pt-4 border-t border-gray-50">
-                      <Link href={svc.link} className="flex items-center gap-1.5 text-accent hover:text-accent-hover font-bold uppercase tracking-wider text-[11px] transition-colors group/link">
-                        Learn More <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
         </div>
       </section>
 
