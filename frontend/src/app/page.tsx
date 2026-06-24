@@ -22,6 +22,7 @@ import {
   TrendingUp,
   MapPin,
   ExternalLink,
+  Check,
 } from "lucide-react";
 import OceanWaveDivider from "@/components/OceanWaveDivider";
 import { motion, AnimatePresence } from "framer-motion";
@@ -116,6 +117,163 @@ const CONTAINER_OPTIONS = [
   }
 ];
 
+const SERVICES = [
+  {
+    id: "01",
+    title: "NVOCC Operations",
+    desc: "Operating our own fleet and global network to provide reliable and cost-effective shipping solutions.",
+    img: "/services/NVOCCO.png",
+    icon: Anchor,
+    link: "/services#nvocc",
+    features: [
+      "Fleet of standard & specialized containers",
+      "Global port network coverage",
+      "Reliable carrier partnerships"
+    ]
+  },
+  {
+    id: "02",
+    title: "Freight Forwarding",
+    desc: "Comprehensive door-to-door freight solutions across sea, air, rail, and land with global reach.",
+    img: "/services/Freight_Forwarding.png",
+    icon: Globe,
+    link: "/services#freight-forwarding",
+    features: [
+      "End-to-end door-to-door delivery",
+      "Multi-modal transportation routes",
+      "Real-time consignment updates"
+    ]
+  },
+  {
+    id: "03",
+    title: "Air Freight Logistics",
+    desc: "Fast, secure and reliable air freight services for time-sensitive cargo across the world.",
+    img: "/services/Air_Freight_Forwarding.png",
+    icon: Plane,
+    link: "/services#air-freight",
+    features: [
+      "Time-sensitive cargo prioritizing",
+      "Priority booking with major airlines",
+      "Global airport network clearance"
+    ]
+  },
+  {
+    id: "04",
+    title: "Customs Brokerage",
+    desc: "Expert handling of documentation, compliance, and clearance to ensure smooth cargo movement.",
+    img: "/services/Customs_Brokerage.png",
+    icon: FileCheck,
+    link: "/services#customs-clearance",
+    features: [
+      "Authorized customs filing & compliance",
+      "Rapid document processing",
+      "Duty tariff consulting & guidance"
+    ]
+  },
+  {
+    id: "05",
+    title: "Project Cargo Handling",
+    desc: "Specialized solutions for heavy-lift, oversized, and complex project cargo with precision and care.",
+    img: "/services/DC_Project_Cargo_Handling.png",
+    icon: Cpu,
+    link: "/services#project-cargo",
+    features: [
+      "Specialized heavy-lift container transport",
+      "Route feasibility surveys",
+      "Dedicated on-site loading supervision"
+    ]
+  },
+  {
+    id: "06",
+    title: "Container Trading",
+    desc: "Sales, purchase, leasing & rental of all types of containers to meet your business needs.",
+    img: "/services/Container_Trading.png",
+    icon: Box,
+    link: "/services#container-trading",
+    features: [
+      "Standard dry & specialized container sales",
+      "Lease and rental options",
+      "Certified cargo-worthy containers"
+    ]
+  },
+  {
+    id: "07",
+    title: "Transportation Services",
+    desc: "Reliable trucking and haulage services ensuring safe and on-time delivery to any destination.",
+    img: "/services/Transportation_Services.png",
+    icon: Truck,
+    link: "/services#transportation",
+    features: [
+      "Dedicated truck fleet & trailers",
+      "Safe domestic cargo haulage",
+      "GPS-tracked transport status"
+    ]
+  },
+  {
+    id: "08",
+    title: "Liner Agency",
+    desc: "Representing principal carriers and managing shipping lines with robust local agency services.",
+    img: "/services/Liner Agency.png",
+    icon: Ship,
+    link: "/services#liner-agency",
+    features: [
+      "Professional principal carrier representation",
+      "Local marketing and slot sales",
+      "Vessel husbandry and operations support"
+    ]
+  }
+];
+
+function TechParticlesBackground() {
+  const [particles, setParticles] = React.useState<{ id: number; x: number; y: number; size: number; color: string; duration: number }[]>([]);
+
+  React.useEffect(() => {
+    const colors = ["bg-primary/10", "bg-accent/15", "bg-blue-400/10", "bg-amber-400/10"];
+    const generated = Array.from({ length: 25 }).map((_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 8 + 4, // 4px to 12px
+      color: colors[Math.floor(Math.random() * colors.length)],
+      duration: Math.random() * 20 + 20, // 20s to 40s
+    }));
+    setParticles(generated);
+  }, []);
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      {/* Soft Ambient Orbs */}
+      <div className="absolute -top-40 -left-40 w-96 h-96 bg-primary/5 rounded-full blur-[100px]" />
+      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-accent/5 rounded-full blur-[100px]" />
+      <div className="absolute top-1/2 left-1/3 w-80 h-80 bg-blue-300/5 rounded-full blur-[80px]" />
+
+      {/* Floating Particles */}
+      {particles.map((p) => (
+        <motion.div
+          key={p.id}
+          className={`absolute rounded-full ${p.color}`}
+          style={{
+            left: `${p.x}%`,
+            top: `${p.y}%`,
+            width: p.size,
+            height: p.size,
+          }}
+          animate={{
+            y: [0, -40, 40, 0],
+            x: [0, 30, -30, 0],
+            opacity: [0.2, 0.7, 0.4, 0.2],
+          }}
+          transition={{
+            duration: p.duration,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function Home() {
   // Hero Stats Counter — auto-increments on page load
   const [heroStats, setHeroStats] = useState({ countries: 0, shipments: 0, partners: 0 });
@@ -152,6 +310,9 @@ export default function Home() {
 
   // Selected Interactive 3D Container Model
   const [selectedContainer, setSelectedContainer] = useState("dry");
+
+  // Selected Interactive Service
+  const [selectedService, setSelectedService] = useState("01");
 
   // Auto-change container type
   useEffect(() => {
@@ -207,7 +368,7 @@ export default function Home() {
                 <span className="text-[#C1933F]">Oceans & Borders</span>
               </h1>
 
-              <p className="text-gray-600 font-semibold text-xs sm:text-sm mb-8 leading-relaxed max-w-lg">
+              <p className="text-gray-600 font-semibold text-sm sm:text-base mb-8 leading-relaxed max-w-lg">
                 Seatown Container Line links major global markets with certified container shipping services, custom clearance networks, and premium cargo care.
               </p>
 
@@ -256,7 +417,7 @@ export default function Home() {
               Strong Routes.<br />
               Stronger <span className="text-accent">Partnerships.</span>
             </h2>
-            <p className="text-gray-600 text-xs font-semibold leading-relaxed max-w-xs">
+            <p className="text-gray-600 text-sm font-semibold leading-relaxed max-w-xs">
               Connecting Chennai to key global ports with speed, reliability &amp; trust.
             </p>
           </div>
@@ -312,10 +473,10 @@ export default function Home() {
 
           <div className="w-10 h-[3px] bg-accent rounded-full mb-6" />
 
-          <p className="text-gray-600 text-sm leading-relaxed mb-3">
+          <p className="text-gray-600 text-base leading-relaxed mb-3">
             Seatown Container Line Pvt Ltd is a leading NVOCC and integrated logistics provider, delivering tailored shipping solutions that connect businesses to global markets.
           </p>
-          <p className="text-gray-600 text-sm leading-relaxed mb-8">
+          <p className="text-gray-600 text-base leading-relaxed mb-8">
             With a commitment to reliability, transparency, and operational excellence, we ensure your cargo reaches every destination—safely and on time.
           </p>
 
@@ -332,13 +493,13 @@ export default function Home() {
                   <feat.icon className="w-5 h-5 text-accent" />
                 </div>
                 <div className="font-black text-sm md:text-base text-primary leading-tight">{feat.title}</div>
-                <p className="text-gray-600 text-xs md:text-sm font-semibold leading-relaxed">{feat.desc}</p>
+                <p className="text-gray-600 text-sm md:text-base font-semibold leading-relaxed">{feat.desc}</p>
               </div>
             ))}
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/about"
               className="flex items-center gap-2 w-fit bg-accent hover:brightness-110 text-white pl-8 pr-6 py-3.5 rounded-full font-bold uppercase tracking-widest text-[11px] shadow-lg transition-all group"
@@ -364,113 +525,176 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-black text-primary mt-1 mb-3">
             Integrated Global <span className="text-accent">Logistics Solutions</span>
           </h2>
-          <p className="text-gray-500 text-xs font-semibold max-w-xl mx-auto mb-16 leading-relaxed">
+          <p className="text-gray-500 text-sm font-semibold max-w-xl mx-auto mb-16 leading-relaxed">
             End-to-end logistics solutions designed to move your business forward. <br />
             Reliable. Efficient. Global.
           </p>
 
-          {/* SERVICES GRID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-            {[
-              {
-                id: "01",
-                title: "NVOCC Operations",
-                desc: "Operating our own fleet and global network to provide reliable and cost-effective shipping solutions.",
-                img: "/services/NVOCCO.png",
-                icon: Anchor,
-                link: "/services#nvocc"
-              },
-              {
-                id: "02",
-                title: "Freight Forwarding",
-                desc: "Comprehensive door-to-door freight solutions across sea, air, rail, and land with global reach.",
-                img: "/services/Freight_Forwarding.png",
-                icon: Globe,
-                link: "/services#freight-forwarding"
-              },
-              {
-                id: "03",
-                title: "Air Freight Logistics",
-                desc: "Fast, secure and reliable air freight services for time-sensitive cargo across the world.",
-                img: "/services/Air_Freight_Forwarding.png",
-                icon: Plane,
-                link: "/services#air-freight"
-              },
-              {
-                id: "04",
-                title: "Customs Brokerage",
-                desc: "Expert handling of documentation, compliance, and clearance to ensure smooth cargo movement.",
-                img: "/services/Customs_Brokerage.png",
-                icon: FileCheck,
-                link: "/services#customs-clearance"
-              },
-              {
-                id: "05",
-                title: "Project Cargo Handling",
-                desc: "Specialized solutions for heavy-lift, oversized, and complex project cargo with precision and care.",
-                img: "/services/DC_Project_Cargo_Handling.png",
-                icon: Cpu,
-                link: "/services#project-cargo"
-              },
-              {
-                id: "06",
-                title: "Container Trading",
-                desc: "Sales, purchase, leasing & rental of all types of containers to meet your business needs.",
-                img: "/services/Container_Trading.png",
-                icon: Box,
-                link: "/services#container-trading"
-              },
-              {
-                id: "07",
-                title: "Transportation Services",
-                desc: "Reliable trucking and haulage services ensuring safe and on-time delivery to any destination.",
-                img: "/services/Transportation_Services.png",
-                icon: Truck,
-                link: "/services#transportation"
-              },
-              {
-                id: "08",
-                title: "Liner Agency",
-                desc: "Representing principal carriers and managing shipping lines with robust local agency services.",
-                img: "/services/Liner Agency.png",
-                icon: Ship,
-                link: "/services#liner-agency"
-              }
-            ].map((svc) => (
-              <div key={svc.id} className="bg-white border border-gray-100 rounded-[24px] overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group relative">
-                <div className="h-50 w-full relative overflow-hidden bg-gray-50">
-                  <Image
-                    src={svc.img} 
-                    alt={svc.title} 
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4 bg-accent text-white border-2 border-white/20 rounded-full p-2.5 shadow-md z-10 flex items-center justify-center">
-                    <svc.icon className="w-4.5 h-4.5" />
+          {/* INTERACTIVE SERVICES SHOWCASE */}
+          <div className="hidden lg:grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-left">
+            {/* Left Column: Vertical Tabs list (visible on desktop, horizontal scroll on mobile) */}
+            <div className="lg:col-span-5 flex lg:flex-col gap-3 overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 w-full scrollbar-none snap-x snap-mandatory">
+              {SERVICES.map((svc) => {
+                const IconComponent = svc.icon;
+                const isActive = selectedService === svc.id;
+                return (
+                  <button
+                    key={svc.id}
+                    onClick={() => setSelectedService(svc.id)}
+                    className={`flex items-center gap-4 p-4 lg:p-5 rounded-2xl border text-left transition-all duration-300 w-80 lg:w-full shrink-0 snap-center cursor-pointer ${
+                      isActive
+                        ? "bg-white border-accent shadow-md lg:translate-x-1 border-l-4 border-l-accent"
+                        : "bg-gray-50/50 border-gray-100 hover:bg-gray-50 hover:border-gray-200"
+                    }`}
+                  >
+                    <div className={`p-3 rounded-xl transition-colors ${
+                      isActive ? "bg-accent/10 text-accent" : "bg-gray-200/50 text-gray-500"
+                    }`}>
+                      <IconComponent className="w-5 h-5" />
+                    </div>
+                    <div className="flex-grow">
+                      <div className="flex justify-between items-center">
+                        <span className={`text-[11px] font-mono font-bold tracking-wider ${isActive ? "text-accent" : "text-gray-400"}`}>
+                          SERVICE {svc.id}
+                        </span>
+                      </div>
+                      <h3 className={`font-black text-sm lg:text-base leading-tight mt-0.5 ${isActive ? "text-primary" : "text-gray-700"}`}>
+                        {svc.title}
+                      </h3>
+                    </div>
+                    <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${
+                      isActive ? "text-accent translate-x-1" : "text-gray-300"
+                    }`} />
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Right Column: Active Service Details Showcase Card */}
+            <div className="lg:col-span-7 w-full h-full">
+              <AnimatePresence mode="wait">
+                {SERVICES.filter((svc) => svc.id === selectedService).map((svc) => {
+                  const IconComponent = svc.icon;
+                  return (
+                    <motion.div
+                      key={svc.id}
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -15 }}
+                      transition={{ duration: 0.35, ease: "easeOut" }}
+                      className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-md flex flex-col h-full"
+                    >
+                      {/* Image Area */}
+                      <div className="h-64 sm:h-72 w-full relative overflow-hidden bg-gray-50 group">
+                        <Image
+                          src={svc.img}
+                          alt={svc.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                          priority
+                        />
+                        <div className="absolute top-6 left-6 bg-accent text-white border-2 border-white/20 rounded-2xl p-3.5 shadow-lg z-10 flex items-center justify-center">
+                          <IconComponent className="w-6 h-6" />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-85" />
+                        <div className="absolute bottom-6 right-6 bg-white/10 backdrop-blur-md border border-white/15 px-4 py-1.5 rounded-full">
+                          <span className="text-white font-mono text-xs font-black tracking-widest">
+                            SEATOWN LOGISTICS
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Content Area */}
+                      <div className="p-8 flex flex-col flex-grow justify-between">
+                        <div>
+                          <div className="flex items-center gap-2 mb-3">
+                            <span className="text-accent font-mono text-xs font-black tracking-widest">
+                              SERVICE {svc.id}
+                            </span>
+                            <span className="w-1.5 h-1.5 bg-accent rounded-full" />
+                            <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
+                              Tailored Solutions
+                            </span>
+                          </div>
+                          <h3 className="font-black text-2xl lg:text-3xl text-primary mb-4">
+                            {svc.title}
+                          </h3>
+                          <p className="text-gray-600 text-base leading-relaxed mb-6 font-medium">
+                            {svc.desc}
+                          </p>
+
+                          {/* Features checklist */}
+                          <div className="border-t border-gray-100 pt-6 mb-8">
+                            <h4 className="text-primary font-bold text-xs uppercase tracking-wider mb-4">
+                              Key Capabilities
+                            </h4>
+                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                              {svc.features.map((feat, idx) => (
+                                <li key={idx} className="flex items-start gap-2.5 text-sm font-semibold text-gray-600">
+                                  <div className="p-0.5 bg-accent/15 rounded-md mt-0.5 shrink-0">
+                                    <Check className="w-3.5 h-3.5 text-accent stroke-[3px]" />
+                                  </div>
+                                  <span>{feat}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+
+                        {/* CTA button */}
+                        <div className="flex justify-end pt-2 border-t border-gray-50 mt-auto">
+                          <Link
+                            href={svc.link}
+                            className="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-full font-bold uppercase tracking-wider text-[11px] transition-all shadow-md group"
+                          >
+                            Explore Detailed Specifications
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          </Link>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* MOBILE/TABLET VIEW (grid of cards, visible below lg) */}
+          <div className="grid lg:hidden grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+            {SERVICES.map((svc) => {
+              const IconComponent = svc.icon;
+              return (
+                <div key={svc.id} className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col group">
+                  <div className="h-52 w-full relative overflow-hidden bg-gray-50">
+                    <Image
+                      src={svc.img} 
+                      alt={svc.title} 
+                      fill
+                      className="object-cover group-hover:scale-103 transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 left-4 bg-accent text-white border-2 border-white/20 rounded-2xl p-2.5 shadow-md z-10 flex items-center justify-center">
+                      <IconComponent className="w-5 h-5" />
+                    </div>
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-transparent to-transparent p-4 flex items-end justify-between">
+                      <span className="text-white font-mono text-xs font-black tracking-widest">SERVICE {svc.id}</span>
+                    </div>
                   </div>
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 flex items-end justify-between">
-                    <div className="flex flex-col items-start">
-                      <span className="text-white font-mono text-[14px] font-black tracking-widest">{svc.id}</span>
-                      <span className="w-6 h-0.5 bg-accent mt-0.5" />
+                  <div className="p-6 flex flex-col flex-grow justify-between">
+                    <div>
+                      <h3 className="font-bold text-lg text-primary mb-2">{svc.title}</h3>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-6 font-semibold">
+                        {svc.desc}
+                      </p>
+                    </div>
+                    <div className="flex justify-end mt-auto w-full pt-4 border-t border-gray-50">
+                      <Link href={svc.link} className="flex items-center gap-1.5 text-accent hover:text-accent-hover font-bold uppercase tracking-wider text-[11px] transition-colors group/link">
+                        Learn More <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
+                      </Link>
                     </div>
                   </div>
                 </div>
-                <div className="p-6 flex flex-col flex-grow justify-between text-left">
-                  <div>
-                    <h3 className="font-bold text-lg text-primary mb-2">{svc.title}</h3>
-                    <p className="text-gray-600 text-sm font-medium leading-relaxed mb-6">
-                      {svc.desc}
-                    </p>
-                  </div>
-                  <div className="flex justify-between items-center mt-auto w-full">
-                    <div />
-                    <Link href={svc.link} className="p-2 bg-accent hover:bg-accent-hover text-white rounded-full shadow-sm hover:scale-105 transition-transform">
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -487,7 +711,7 @@ export default function Home() {
             <h2 className="text-3xl font-extrabold text-primary mt-2">
               Interactive Container Fleet Specifications
             </h2>
-            <p className="text-gray-500 text-xs font-semibold mt-1">
+            <p className="text-gray-500 text-sm font-semibold mt-1">
               Hover or tap on a container model to preview its structural characteristics.
             </p>
           </div>
@@ -531,7 +755,7 @@ export default function Home() {
                       </div>
                       <div className="mt-auto border-t border-gray-100 pt-6">
                         <h3 className="text-xl md:text-2xl font-black text-primary mb-2 md:mb-3 truncate">{active.title}</h3>
-                        <p className="text-gray-600 text-sm md:text-[15px] leading-relaxed font-medium line-clamp-4">{active.desc}</p>
+                        <p className="text-gray-600 text-base leading-relaxed font-medium line-clamp-4">{active.desc}</p>
                       </div>
                     </motion.div>
                   </AnimatePresence>
@@ -543,8 +767,9 @@ export default function Home() {
       </section>
 
       {/* SECTION 6 - WHY CHOOSE US */}
-      <section className="py-20 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-20 bg-white border-t border-gray-100 relative overflow-hidden">
+        <TechParticlesBackground />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <span className="inline-flex items-center justify-center gap-2 text-accent text-sm md:text-base font-black uppercase tracking-[0.25em]">
             <span className="w-8 h-[2px] bg-accent" />
             Corporate Trust
@@ -578,15 +803,13 @@ export default function Home() {
                 </div>
                 <div>
                   <h3 className="text-lg font-extrabold text-primary mb-2">{feature.title}</h3>
-                  <p className="text-gray-600 text-sm font-semibold leading-relaxed">{feature.desc}</p>
+                  <p className="text-gray-600 text-base font-semibold leading-relaxed">{feature.desc}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-
-
 
       {/* SECTION — COUNTRIES WE ARE SERVING */}
       <section className="py-20 bg-white relative overflow-hidden border-t border-gray-100">
@@ -608,9 +831,9 @@ export default function Home() {
             <span className="w-8 h-[2px] bg-accent" />
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-primary mb-3 leading-tight">
-            Countries We Are <span className="text-accent">Serving</span>
+            Serving <span className="text-accent">50+ Countries</span> Worldwide
           </h2>
-          <p className="text-gray-500 text-sm font-semibold max-w-xl mx-auto">
+          <p className="text-gray-500 text-base font-semibold max-w-xl mx-auto">
             Connecting The World with Reliable Logistics Solutions
           </p>
         </div>
@@ -625,6 +848,17 @@ export default function Home() {
             { code: "th", name: "Thailand" },
             { code: "ru", name: "Russia" },
             { code: "us", name: "United States" },
+            { code: "sa", name: "Saudi Arabia" },
+            { code: "om", name: "Oman" },
+            { code: "qa", name: "Qatar" },
+            { code: "bh", name: "Bahrain" },
+            { code: "kw", name: "Kuwait" },
+            { code: "de", name: "Germany" },
+            { code: "fr", name: "France" },
+            { code: "nl", name: "Netherlands" },
+            { code: "it", name: "Italy" },
+            { code: "es", name: "Spain" },
+            { code: "tr", name: "Turkey" },
           ];
           const items = [...row1, ...row1, ...row1, ...row1];
           return (
@@ -665,6 +899,17 @@ export default function Home() {
             { code: "id", name: "Indonesia" },
             { code: "hk", name: "Hong Kong" },
             { code: "cn", name: "China" },
+            { code: "jp", name: "Japan" },
+            { code: "kr", name: "South Korea" },
+            { code: "za", name: "South Africa" },
+            { code: "eg", name: "Egypt" },
+            { code: "ke", name: "Kenya" },
+            { code: "tz", name: "Tanzania" },
+            { code: "ng", name: "Nigeria" },
+            { code: "gh", name: "Ghana" },
+            { code: "br", name: "Brazil" },
+            { code: "mx", name: "Mexico" },
+            { code: "ca", name: "Canada" },
           ];
           const items = [...row2, ...row2, ...row2, ...row2];
           return (
@@ -699,7 +944,7 @@ export default function Home() {
         <div className="text-center mt-10 relative z-10">
           <span className="inline-flex items-center gap-2 text-gray-500 text-[11px] font-bold uppercase tracking-widest">
             <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-            Active operations across 14+ nations
+            Active operations across 50+ nations
             <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
           </span>
         </div>

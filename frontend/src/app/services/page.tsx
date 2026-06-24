@@ -31,7 +31,7 @@ export default function Services() {
         badge="Schedules & Operations"
         title="Our Services"
         subtitle="End-to-end logistics solutions designed to move your business forward."
-        bgImage="/services/heropage.jpeg"
+        bgImage="/banners/service.png"
       />
       <GsapAnimation targetId="ani-img" />
 
@@ -44,10 +44,10 @@ export default function Services() {
             <div className="lg:col-span-6 text-left">
               <span className="text-accent text-xs font-extrabold uppercase tracking-widest">01 / Carrier Operations</span>
               <h2 className="text-2xl md:text-3xl font-black text-primary mt-2 mb-6">NVOCC Services</h2>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              <p className="text-gray-600 text-base leading-relaxed mb-6">
                 Seatown Container Line acts as a certified Non-Vessel Operating Common Carrier (NVOCC). We maintain slot charter contracts with major shipping lines while operating our own fleet of dry van and special ISO container equipment, guaranteeing priority bookings on busy regional lanes.
               </p>
-              <ul className="space-y-3.5 text-xs font-semibold text-gray-500">
+              <ul className="space-y-3.5 text-sm font-semibold text-gray-500">
                 <li className="flex items-center gap-2.5">
                   <span className="w-1.5 h-1.5 bg-accent rounded-full" /> Slot charter options on mainline carriers
                 </li>
@@ -80,10 +80,10 @@ export default function Services() {
             <div className="lg:col-span-6 lg:order-2 text-left">
               <span className="text-accent text-xs font-extrabold uppercase tracking-widest">02 / Route Consolidation</span>
               <h2 className="text-2xl md:text-3xl font-black text-primary mt-2 mb-6">Ocean Freight Forwarding</h2>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              <p className="text-gray-600 text-base leading-relaxed mb-6">
                 Through our trusted network of global logistics partners, we organize multi-modal transport lines spanning water barge, feeder routes, and transshipment terminals to deliver cargo directly from manufacturers to end warehouses.
               </p>
-              <ul className="space-y-3.5 text-xs font-semibold text-gray-500">
+              <ul className="space-y-3.5 text-sm font-semibold text-gray-500">
                 <li className="flex items-center gap-2.5">
                   <span className="w-1.5 h-1.5 bg-accent rounded-full" /> LCL consolidation routes for small consignments
                 </li>
@@ -116,10 +116,10 @@ export default function Services() {
             <div className="lg:col-span-6 text-left">
               <span className="text-accent text-xs font-extrabold uppercase tracking-widest">03 / Rapid Transit</span>
               <h2 className="text-2xl md:text-3xl font-black text-primary mt-2 mb-6">Air Freight</h2>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              <p className="text-gray-600 text-base leading-relaxed mb-6">
                 When shipping latency is the critical parameter, our air freight division schedules immediate space allocations on primary international cargo airlines. We organize fast handling for electronics, parts, pharmaceutical, and high-value trade shipments.
               </p>
-              <ul className="space-y-3.5 text-xs font-semibold text-gray-500">
+              <ul className="space-y-3.5 text-sm font-semibold text-gray-500">
                 <li className="flex items-center gap-2.5">
                   <span className="w-1.5 h-1.5 bg-accent rounded-full" /> Express customs arrival dispatch
                 </li>
@@ -152,7 +152,7 @@ export default function Services() {
             <div className="lg:col-span-6 lg:order-2 text-left">
               <span className="text-accent text-xs font-extrabold uppercase tracking-widest">04 / Cargo Compliance</span>
               <h2 className="text-2xl md:text-3xl font-black text-primary mt-2 mb-6">Customs Clearance & Brokerage</h2>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              <p className="text-gray-600 text-base leading-relaxed mb-6">
                 Our in-house customs agents manage paperwork filing, HS code classifications, cargo physical inspections, duty validations, and release coordination, preventing detention penalties at high-volume port terminals.
               </p>
             </div>
@@ -177,7 +177,7 @@ export default function Services() {
             <div className="lg:col-span-6 text-left">
               <span className="text-accent text-xs font-extrabold uppercase tracking-widest">05 / Heavy Lift Logistics</span>
               <h2 className="text-2xl md:text-3xl font-black text-primary mt-2 mb-6">Project Cargo</h2>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              <p className="text-gray-600 text-base leading-relaxed mb-6">
                 Over-dimensional, heavy, and complex machinery moves require precision design engineering. Seatown coordinates crane rentals, site inspections, and specialized vessel charters for infrastructure turbines, rigs, and industrial equipment.
               </p>
             </div>
@@ -202,7 +202,7 @@ export default function Services() {
             <div className="lg:col-span-6 lg:order-2 text-left">
               <span className="text-accent text-xs font-extrabold uppercase tracking-widest">06 / Asset Management</span>
               <h2 className="text-2xl md:text-3xl font-black text-primary mt-2 mb-6">Container Trading & Sales</h2>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              <p className="text-gray-600 text-base leading-relaxed mb-6">
                 We supply new and used cargo-worthy ISO containers (20', 40' Dry, Reefers, Open Tops) for global trading, storage, or custom structural builds, with direct delivery to site yards.
               </p>
             </div>
@@ -227,7 +227,7 @@ export default function Services() {
             <div className="lg:col-span-6 text-left">
               <span className="text-accent text-xs font-extrabold uppercase tracking-widest">07 / Multi-Modal Link</span>
               <h2 className="text-2xl md:text-3xl font-black text-primary mt-2 mb-6">Land Transportation & Haulage</h2>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              <p className="text-gray-600 text-base leading-relaxed mb-6">
                 Providing seamless container trucking hookups directly from port vessel discharges to inland logistics depots and customer store fronts.
               </p>
             </div>
@@ -252,7 +252,7 @@ export default function Services() {
             <div className="lg:col-span-6 lg:order-2 text-left">
               <span className="text-accent text-xs font-extrabold uppercase tracking-widest">08 / Strategic Agency Network</span>
               <h2 className="text-2xl md:text-3xl font-black text-primary mt-2 mb-6">Linear Agency</h2>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              <p className="text-gray-600 text-base leading-relaxed mb-6">
                 Acting as a trusted representative for principals, we coordinate with local authorities, terminal operators, and logistics partners to streamline operations and deliver exceptional stakeholder satisfaction.</p>
             </div>
             
@@ -309,7 +309,7 @@ export default function Services() {
                   <h3 className="font-extrabold text-primary text-xs mt-4 group-hover:text-accent transition-colors">
                     {step.title}
                   </h3>
-                  <p className="text-gray-500 text-[10px] font-semibold mt-2 leading-relaxed">
+                  <p className="text-gray-500 text-xs font-semibold mt-2 leading-relaxed">
                     {step.desc}
                   </p>
                 </div>
