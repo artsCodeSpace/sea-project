@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SN_Pro } from "next/font/google";
+import { Tirra } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,10 +7,10 @@ import LoadingScreen from "@/components/LoadingScreen";
 import ScrollProgress from "@/components/ScrollProgress";
 import TimezoneTicker from "@/components/TimezoneTicker";
 
-const outfit = SN_Pro({
+const montserrat = Tirra({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-Outfit",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-Tirra",
 });
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} h-full antialiased`}>
+    <html lang="en" className={`${montserrat.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white text-primary font-sans antialiased overflow-x-hidden pt-[30px]">
         {/* Global Premium Effects */}
         <TimezoneTicker />

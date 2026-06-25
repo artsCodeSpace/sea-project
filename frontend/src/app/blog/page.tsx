@@ -97,11 +97,32 @@ export default function Blog() {
       />
 
       {/* BLOG CONTENT SECTION */}
-      <section className="py-20 bg-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white relative overflow-hidden">
+        {/* Globe & Trade Route Watermark */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <svg viewBox="0 0 1000 800" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75%] max-w-3xl opacity-[0.025] mix-blend-multiply" xmlns="https://upload.wikimedia.org/wikipedia/commons/8/81/Ship.svg" fill="none" stroke="#0B1F3A" strokeWidth="12">
+            {/* Globe outer circle */}
+            <circle cx="500" cy="400" r="330"/>
+            {/* Latitude lines */}
+            <ellipse cx="500" cy="400" rx="330" ry="110"/>
+            <ellipse cx="500" cy="400" rx="280" ry="90"/>
+            <ellipse cx="500" cy="400" rx="165" ry="55"/>
+            <ellipse cx="500" cy="250" rx="230" ry="75"/>
+            <ellipse cx="500" cy="550" rx="230" ry="75"/>
+            {/* Longitude lines */}
+            <line x1="500" y1="70" x2="500" y2="730"/>
+            <ellipse cx="500" cy="400" rx="165" ry="330"/>
+            <ellipse cx="500" cy="400" rx="90" ry="330"/>
+            {/* Trade route arc */}
+            <path d="M200 320 Q400 180 680 280 Q820 320 870 400" strokeWidth="18" strokeLinecap="round" fill="none"/>
+            <circle cx="200" cy="320" r="20" fill="#0B1F3A" stroke="none"/>
+            <circle cx="870" cy="400" r="20" fill="#0B1F3A" stroke="none"/>
+          </svg>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-0">
           
           {/* Category Filter Bar */}
-          <div className="flex flex-wrap items-center justify-center gap-2.5 mb-14">
+          <div className="flex flex-wrap items-center justify-center gap-2.5 mb-14 relative z-0">
             {categories.map((cat) => (
               <button
                 key={cat}

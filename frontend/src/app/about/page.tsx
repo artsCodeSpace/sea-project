@@ -123,7 +123,42 @@ export default function AboutUs() {
       {/* ═══════════════════════════════════════════════════
           ABOUT CONTENT & STATS
       ═══════════════════════════════════════════════════ */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white relative overflow-hidden">
+        {/* Crane & Container Stack Watermark */}
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+          <svg viewBox="0 0 1000 600" className="absolute w-full h-full opacity-[0.03] mix-blend-multiply" xmlns="http://www.w3.org/2000/svg" fill="#0B1F3A">
+            {/* Crane Tower */}
+            <rect x="480" y="50" width="40" height="400" rx="8"/>
+            {/* Crane Boom horizontal */}
+            <rect x="200" y="50" width="600" height="28" rx="8"/>
+            {/* Counter-jib */}
+            <rect x="480" y="50" width="180" height="20" rx="6"/>
+            {/* Crane trolley */}
+            <rect x="340" y="74" width="40" height="25" rx="5"/>
+            {/* Crane cable */}
+            <rect x="355" y="98" width="8" height="120" rx="2"/>
+            {/* Crane hook box */}
+            <rect x="335" y="215" width="48" height="35" rx="5"/>
+            {/* Container being lifted */}
+            <rect x="295" y="248" width="130" height="70" rx="6"/>
+            <rect x="295" y="248" width="130" height="5"/>
+            <rect x="358" y="248" width="5" height="70"/>
+            {/* Ground containers stack */}
+            <rect x="60" y="430" width="160" height="80" rx="5"/>
+            <rect x="60" y="350" width="160" height="80" rx="5"/>
+            <rect x="60" y="270" width="160" height="80" rx="5"/>
+            <rect x="228" y="430" width="160" height="80" rx="5"/>
+            <rect x="228" y="350" width="160" height="80" rx="5"/>
+            <rect x="700" y="430" width="160" height="80" rx="5"/>
+            <rect x="700" y="350" width="160" height="80" rx="5"/>
+            <rect x="868" y="430" width="130" height="80" rx="5"/>
+            {/* Ground line */}
+            <rect x="0" y="508" width="1000" height="18" rx="4"/>
+            {/* Crane legs */}
+            <rect x="460" y="440" width="20" height="68" rx="4"/>
+            <rect x="520" y="440" width="20" height="68" rx="4"/>
+          </svg>
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
@@ -183,7 +218,37 @@ export default function AboutUs() {
       {/* ═══════════════════════════════════════════════════
           MISSION / VISION / VALUES / PROMISE — 4 CARDS
       ═══════════════════════════════════════════════════ */}
-      <section className="py-14 bg-gray-50 border-t border-gray-100">
+      <section className="py-14 bg-gray-50 border-t border-gray-100 relative overflow-hidden">
+        {/* Cargo Truck Watermark */}
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+          <svg viewBox="0 0 1200 350" className="absolute w-full h-full opacity-[0.025] mix-blend-multiply" xmlns="http://www.w3.org/2000/svg" fill="#0B1F3A">
+            {/* Truck cabin */}
+            <rect x="80" y="160" width="180" height="120" rx="14"/>
+            <rect x="95" y="175" width="120" height="60" rx="8" fill="white"/>
+            {/* Cab window */}
+            <rect x="100" y="180" width="110" height="50" rx="6" fill="white" opacity="0.3"/>
+            {/* Trailer */}
+            <rect x="258" y="130" width="850" height="150" rx="10"/>
+            {/* Trailer door details */}
+            <rect x="870" y="140" width="8" height="130" rx="3" fill="white" opacity="0.15"/>
+            <rect x="880" y="155" width="210" height="100" rx="6" fill="white" opacity="0.08"/>
+            {/* Undercarriage */}
+            <rect x="80" y="278" width="1028" height="18" rx="4"/>
+            {/* Wheels */}
+            <circle cx="175" cy="295" r="42" fill="#0B1F3A"/>
+            <circle cx="175" cy="295" r="22" fill="white" opacity="0.15"/>
+            <circle cx="430" cy="295" r="42"/>
+            <circle cx="430" cy="295" r="22" fill="white" opacity="0.15"/>
+            <circle cx="560" cy="295" r="42"/>
+            <circle cx="560" cy="295" r="22" fill="white" opacity="0.15"/>
+            <circle cx="900" cy="295" r="42"/>
+            <circle cx="900" cy="295" r="22" fill="white" opacity="0.15"/>
+            <circle cx="1020" cy="295" r="42"/>
+            <circle cx="1020" cy="295" r="22" fill="white" opacity="0.15"/>
+            {/* Road */}
+            <rect x="0" y="335" width="1200" height="15" rx="4" opacity="0.4"/>
+          </svg>
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
 

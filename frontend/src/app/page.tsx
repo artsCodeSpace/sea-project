@@ -401,6 +401,8 @@ export default function Home() {
 
         {/* ── LEFT PANEL: White Map Area ── */}
         <div className="lg:w-1/2 relative bg-white flex flex-col justify-between overflow-hidden p-8 md:p-10 min-h-[520px]">
+          {/* Container Ship Watermark */}
+          <div className="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg')] bg-no-repeat bg-center bg-cover opacity-[0.03] mix-blend-multiply pointer-events-none z-0"></div>
 
           {/* Deep gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50/90 to-gray-100/70 pointer-events-none" />
@@ -459,13 +461,16 @@ export default function Home() {
         </div>
 
         {/* ── RIGHT PANEL: White About Content ── */}
+        
         <div className="lg:w-1/2 bg-white flex flex-col justify-center px-8 md:px-12 lg:px-14 py-12">
-
+            <div className="absolute inset-0 pointer-events-none z-0">
+    <div className="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg')] bg-no-repeat bg-center bg-cover opacity-[0.03] mix-blend-multiply" />
+  </div>
           <span className="text-accent text-sm md:text-base font-black uppercase tracking-[0.22em] mb-4 flex items-center gap-2">
             <span className="w-8 h-[2px] bg-accent" />
             About Seatown Preview
           </span>
-
+          
           <h2 className="text-3xl md:text-4xl font-black text-primary leading-tight mb-4">
             Your Trusted Logistics Partner<br />
             Across <span className="text-accent">The Globe</span>
@@ -512,8 +517,10 @@ export default function Home() {
       </section>
 
       {/* SECTION 4 - SERVICES SHOWCASE */}
-      <section className="py-24 bg-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-24 bg-white relative overflow-hidden">
+        {/* Cargo Plane Watermark */}
+        <div className="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/e/e0/Airplane_silhouette.svg')] bg-no-repeat bg-center bg-[length:55%] opacity-[0.025] mix-blend-multiply pointer-events-none z-0"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           {/* Mockup Styled Header */}
           <div className="flex justify-center items-center gap-2 mb-2">
             <span className="w-6 h-[1.5px] bg-accent" />
@@ -730,6 +737,131 @@ export default function Home() {
       {/* SECTION 6 - WHY CHOOSE US */}
       <section className="py-20 bg-white border-t border-gray-100 relative overflow-hidden">
         <TechParticlesBackground />
+        {/* ── Detailed Port Scene Watermark ── */}
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+          {/* Faint dot-grid texture layer */}
+          <div className="absolute inset-0 opacity-[0.04]"
+               style={{ backgroundImage: "radial-gradient(#0B1F3A 1px, transparent 1px)", backgroundSize: "36px 36px" }} />
+          <svg viewBox="0 0 1400 520" className="absolute w-full h-full opacity-[0.055] mix-blend-multiply" xmlns="http://www.w3.org/2000/svg" fill="#0B1F3A">
+
+            {/* ═══ OCEAN / WATER ═══ */}
+            <path d="M0 370 Q120 350 240 370 T480 362 T720 370 T960 362 T1200 370 T1400 362 L1400 400 L0 400 Z" opacity="0.45"/>
+            <path d="M0 392 Q175 374 350 392 T700 384 T1050 392 T1400 384 L1400 420 L0 420 Z" opacity="0.25"/>
+            <line x1="0" y1="438" x2="1400" y2="438" stroke="#0B1F3A" strokeWidth="3" strokeDasharray="30 18" opacity="0.3"/>
+
+            {/* ═══ MAIN CONTAINER SHIP HULL ═══ */}
+            <path d="M120 345 L145 292 L985 292 L1015 315 L1025 345 Z"/>
+            <rect x="120" y="332" width="905" height="16" rx="3" opacity="0.5"/>
+            <rect x="158" y="257" width="824" height="38" rx="6"/>
+
+            {/* Bridge / Superstructure */}
+            <rect x="682" y="178" width="182" height="82" rx="7"/>
+            <rect x="698" y="190" width="22" height="14" rx="3" fill="white" opacity="0.18"/>
+            <rect x="729" y="190" width="22" height="14" rx="3" fill="white" opacity="0.18"/>
+            <rect x="760" y="190" width="22" height="14" rx="3" fill="white" opacity="0.18"/>
+            <rect x="791" y="190" width="22" height="14" rx="3" fill="white" opacity="0.18"/>
+            <rect x="822" y="190" width="22" height="14" rx="3" fill="white" opacity="0.18"/>
+            {/* Funnel */}
+            <rect x="824" y="148" width="32" height="34" rx="4"/>
+            <rect x="818" y="137" width="44" height="14" rx="3"/>
+            {/* Smoke puffs */}
+            <circle cx="840" cy="122" r="13" opacity="0.18"/>
+            <circle cx="857" cy="108" r="9" opacity="0.12"/>
+            <circle cx="870" cy="97" r="7" opacity="0.08"/>
+            {/* Mast + cross-arm */}
+            <rect x="752" y="132" width="8" height="50" rx="2"/>
+            <rect x="720" y="142" width="72" height="6" rx="2"/>
+            <circle cx="722" cy="142" r="5"/>
+            <circle cx="790" cy="142" r="5"/>
+
+            {/* ── Container rows (3 rows) ── */}
+            <rect x="172" y="222" width="50" height="36" rx="3"/>
+            <rect x="226" y="222" width="50" height="36" rx="3" opacity="0.7"/>
+            <rect x="280" y="222" width="50" height="36" rx="3"/>
+            <rect x="334" y="222" width="50" height="36" rx="3" opacity="0.7"/>
+            <rect x="388" y="222" width="50" height="36" rx="3"/>
+            <rect x="442" y="222" width="50" height="36" rx="3" opacity="0.7"/>
+            <rect x="496" y="222" width="50" height="36" rx="3"/>
+            <rect x="550" y="222" width="50" height="36" rx="3" opacity="0.7"/>
+            <rect x="604" y="222" width="50" height="36" rx="3"/>
+            <rect x="658" y="222" width="50" height="36" rx="3" opacity="0.7"/>
+            <rect x="172" y="184" width="50" height="36" rx="3" opacity="0.85"/>
+            <rect x="226" y="184" width="50" height="36" rx="3" opacity="0.6"/>
+            <rect x="280" y="184" width="50" height="36" rx="3" opacity="0.85"/>
+            <rect x="334" y="184" width="50" height="36" rx="3" opacity="0.6"/>
+            <rect x="388" y="184" width="50" height="36" rx="3" opacity="0.85"/>
+            <rect x="442" y="184" width="50" height="36" rx="3" opacity="0.6"/>
+            <rect x="496" y="184" width="50" height="36" rx="3" opacity="0.85"/>
+            <rect x="550" y="184" width="50" height="36" rx="3" opacity="0.6"/>
+            <rect x="604" y="184" width="50" height="36" rx="3" opacity="0.85"/>
+            <rect x="172" y="147" width="50" height="36" rx="3" opacity="0.7"/>
+            <rect x="226" y="147" width="50" height="36" rx="3" opacity="0.5"/>
+            <rect x="280" y="147" width="50" height="36" rx="3" opacity="0.7"/>
+            <rect x="334" y="147" width="50" height="36" rx="3" opacity="0.5"/>
+            <rect x="388" y="147" width="50" height="36" rx="3" opacity="0.7"/>
+            <rect x="442" y="147" width="50" height="36" rx="3" opacity="0.5"/>
+            <rect x="496" y="147" width="50" height="36" rx="3" opacity="0.7"/>
+            {/* Container divider lines */}
+            <line x1="222" y1="147" x2="222" y2="258" stroke="white" strokeWidth="1.5" opacity="0.12"/>
+            <line x1="276" y1="147" x2="276" y2="258" stroke="white" strokeWidth="1.5" opacity="0.12"/>
+            <line x1="330" y1="147" x2="330" y2="258" stroke="white" strokeWidth="1.5" opacity="0.12"/>
+            <line x1="384" y1="147" x2="384" y2="258" stroke="white" strokeWidth="1.5" opacity="0.12"/>
+            <line x1="438" y1="147" x2="438" y2="258" stroke="white" strokeWidth="1.5" opacity="0.12"/>
+            <line x1="492" y1="147" x2="492" y2="258" stroke="white" strokeWidth="1.5" opacity="0.12"/>
+            <line x1="546" y1="184" x2="546" y2="258" stroke="white" strokeWidth="1.5" opacity="0.12"/>
+            <line x1="600" y1="184" x2="600" y2="258" stroke="white" strokeWidth="1.5" opacity="0.12"/>
+            <line x1="654" y1="222" x2="654" y2="258" stroke="white" strokeWidth="1.5" opacity="0.12"/>
+            <line x1="172" y1="220" x2="712" y2="220" stroke="white" strokeWidth="1.5" opacity="0.1"/>
+            <line x1="172" y1="184" x2="658" y2="184" stroke="white" strokeWidth="1.5" opacity="0.1"/>
+
+            {/* ═══ PORT GANTRY CRANE ═══ */}
+            <rect x="1082" y="298" width="20" height="122" rx="4"/>
+            <rect x="1162" y="298" width="20" height="122" rx="4"/>
+            <rect x="1062" y="292" width="140" height="16" rx="5"/>
+            <rect x="1114" y="102" width="36" height="196" rx="6"/>
+            <rect x="982" y="102" width="282" height="22" rx="6"/>
+            <rect x="1150" y="102" width="114" height="16" rx="5" opacity="0.7"/>
+            <rect x="1242" y="88" width="44" height="36" rx="5"/>
+            <rect x="1046" y="120" width="38" height="20" rx="4"/>
+            <line x1="1065" y1="138" x2="1065" y2="210" stroke="#0B1F3A" strokeWidth="5"/>
+            <rect x="1030" y="208" width="72" height="12" rx="4"/>
+            <rect x="1022" y="218" width="88" height="52" rx="5"/>
+            <line x1="1066" y1="218" x2="1066" y2="270" stroke="white" strokeWidth="1.5" opacity="0.15"/>
+
+            {/* ═══ TUGBOAT ═══ */}
+            <path d="M38 358 L52 322 L212 322 L220 342 L222 358 Z"/>
+            <rect x="66" y="297" width="92" height="28" rx="5"/>
+            <rect x="112" y="277" width="28" height="22" rx="3"/>
+            <circle cx="42" cy="347" r="10" opacity="0.6"/>
+            <circle cx="220" cy="347" r="10" opacity="0.6"/>
+            <rect x="73" y="302" width="16" height="11" rx="2" fill="white" opacity="0.2"/>
+            <rect x="98" y="302" width="16" height="11" rx="2" fill="white" opacity="0.2"/>
+
+            {/* ═══ LIGHTHOUSE ═══ */}
+            <rect x="1318" y="202" width="40" height="178" rx="6"/>
+            <rect x="1308" y="190" width="60" height="18" rx="4"/>
+            <polygon points="1338,164 1364,190 1312,190"/>
+            <rect x="1318" y="242" width="40" height="22" fill="white" opacity="0.18"/>
+            <rect x="1318" y="292" width="40" height="22" fill="white" opacity="0.18"/>
+            <rect x="1318" y="342" width="40" height="22" fill="white" opacity="0.18"/>
+            <rect x="1298" y="378" width="80" height="16" rx="4"/>
+            <path d="M1338 188 L1240 262 L1240 280 L1338 196 Z" opacity="0.08"/>
+            <path d="M1338 188 L1400 258 L1400 276 L1338 200 Z" opacity="0.08"/>
+
+            {/* ═══ BOLLARDS ═══ */}
+            <rect x="102" y="362" width="14" height="20" rx="4"/>
+            <rect x="142" y="362" width="14" height="20" rx="4"/>
+            <rect x="962" y="362" width="14" height="20" rx="4"/>
+            <rect x="1002" y="362" width="14" height="20" rx="4"/>
+
+            {/* ═══ SEAGULLS ═══ */}
+            <path d="M302 82 Q313 74 324 82" stroke="#0B1F3A" strokeWidth="4" fill="none"/>
+            <path d="M334 68 Q346 60 358 68" stroke="#0B1F3A" strokeWidth="4" fill="none"/>
+            <path d="M504 56 Q518 47 532 56" stroke="#0B1F3A" strokeWidth="4" fill="none"/>
+            <path d="M560 44 Q572 36 584 44" stroke="#0B1F3A" strokeWidth="3.5" fill="none" opacity="0.7"/>
+
+          </svg>
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <span className="inline-flex items-center justify-center gap-2 text-accent text-sm md:text-base font-black uppercase tracking-[0.25em]">
             <span className="w-8 h-[2px] bg-accent" />
@@ -743,7 +875,7 @@ export default function Home() {
               alt="Seatown"
               width={3012}
               height={1220}
-              className="h-12 md:h-14 w-auto object-contain inline-block -mt-1"
+              className="h-16 md:h-18 w-auto object-contain inline-block -mt-1"
               priority
             />
             For Ocean Logistics
@@ -774,7 +906,20 @@ export default function Home() {
 
       {/* SECTION — COUNTRIES WE ARE SERVING */}
       <section className="py-20 bg-white relative overflow-hidden border-t border-gray-100">
-
+        {/* Anchor / Port Watermark */}
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+          <svg viewBox="0 0 800 800" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] max-w-3xl opacity-[0.03] mix-blend-multiply" xmlns="http://www.w3.org/2000/svg" fill="#0B1F3A">
+            {/* Anchor */}
+            <circle cx="400" cy="160" r="55" fill="none" stroke="#0B1F3A" strokeWidth="38"/>
+            <circle cx="400" cy="160" r="18"/>
+            <rect x="376" y="160" width="48" height="440" rx="18"/>
+            <path d="M400 600 Q260 580 200 500" stroke="#0B1F3A" strokeWidth="38" fill="none" strokeLinecap="round"/>
+            <path d="M400 600 Q540 580 600 500" stroke="#0B1F3A" strokeWidth="38" fill="none" strokeLinecap="round"/>
+            <circle cx="200" cy="500" r="28"/>
+            <circle cx="600" cy="500" r="28"/>
+            <rect x="310" y="105" width="180" height="38" rx="16"/>
+          </svg>
+        </div>
         {/* Subtle grid dots background */}
         <div
           className="absolute inset-0 pointer-events-none opacity-40"
