@@ -44,8 +44,28 @@ export default function Contact() {
       />
 
       {/* CONTACT INFO CARDS & FORM */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 relative overflow-hidden">
+        {/* Ship & Compass Watermark */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <svg viewBox="0 0 1000 700" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] max-w-4xl opacity-[0.025] mix-blend-multiply" xmlns="http://www.w3.org/2000/svg" fill="#0B1F3A">
+            {/* Compass circle */}
+            <circle cx="500" cy="350" r="280" fill="none" stroke="#0B1F3A" strokeWidth="18"/>
+            <circle cx="500" cy="350" r="240" fill="none" stroke="#0B1F3A" strokeWidth="6"/>
+            {/* Compass rose - N S E W points */}
+            <path d="M500 90 L520 310 L500 340 L480 310 Z"/>
+            <path d="M500 610 L520 390 L500 360 L480 390 Z"/>
+            <path d="M760 350 L540 330 L510 350 L540 370 Z"/>
+            <path d="M240 350 L460 330 L490 350 L460 370 Z"/>
+            {/* Compass diagonal points */}
+            <path d="M695 155 L530 330 L510 310 Z" opacity="0.5"/>
+            <path d="M695 545 L530 370 L510 390 Z" opacity="0.5"/>
+            <path d="M305 155 L470 330 L490 310 Z" opacity="0.5"/>
+            <path d="M305 545 L470 370 L490 390 Z" opacity="0.5"/>
+            {/* Center circle */}
+            <circle cx="500" cy="350" r="28"/>
+          </svg>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-0">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             
             {/* Left Column: Info Cards & Interactive Pins */}
@@ -54,7 +74,7 @@ export default function Contact() {
               
               {/* Card 1: India */}
               <div className="bg-white border border-gray-200/80 p-8 rounded-3xl flex flex-col items-start gap-6 hover:border-secondary hover:shadow-xl transition-all duration-300 group">
-                <div className="flex items-center gap-4 w-full border-b border-gray-100 pb-4">
+                <div className="flex items-center gap-4 w-full border-b border-gray-100 pb-4 relative z-0">
                   <div className="p-4 bg-secondary/10 text-secondary rounded-2xl group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
                     <MapPin className="w-6 h-6" />
                   </div>
@@ -64,7 +84,7 @@ export default function Contact() {
                   </div>
                 </div>
                 
-                <div className="w-full flex flex-col gap-5">
+                <div className="w-full flex flex-col gap-5 relative z-0">
                   <div>
                     <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5">Registered Address</p>
                     <p className="text-gray-600 text-base font-semibold leading-relaxed">
@@ -94,7 +114,7 @@ export default function Contact() {
             </div>
 
             {/* Right Column: Inquiry Form (Glassmorphism) */}
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7 relative z-0">
               <div className="glass-panel p-8 rounded-3xl border border-gray-200/80 shadow-lg text-left">
                 <h2 className="text-2xl font-black text-primary mb-2">Inquiry Form</h2>
                 <p className="text-gray-500 text-sm font-semibold mb-6">

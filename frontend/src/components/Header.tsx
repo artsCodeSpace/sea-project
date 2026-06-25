@@ -50,22 +50,23 @@ export default function Header() {
           : "py-5 shadow-sm border-b border-gray-50"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+      <div className="h-20 md:h-24 flex items-center">
+      <div className="w-full px-6 lg:px-12">
+        <div className="flex items-center justify-between w-full gap-9">
           {/* Logo */}
-          <Link href="/" className="flex items-center group">
+          <Link href="/" className="flex items-center group shrink-0">
             <Image 
               src="/logo.png" 
               alt="Seatown Logo" 
-              width={300} 
-              height={100} 
-              className="h-16 md:h-20 w-auto object-contain" 
+              width={420} 
+              height={160} 
+              className="h-24 md:h-28 w-auto object-contain" 
               priority 
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-9">
+          <nav className="hidden md:flex items-center gap-9 flex-1 justify-center">
             <Link
               href="/"
               className={`text-[17px] font-bold uppercase tracking-wider relative transition-colors ${
@@ -243,6 +244,7 @@ export default function Header() {
             </Link>
           </div>
         </div>
+      </div>
       </div>
     </header>
   );

@@ -7,7 +7,7 @@ import { Mail, Phone, MapPin, Smartphone } from "lucide-react";
 export default function Footer() {
 
   return (
-    <footer className="bg-white text-primary pt-16 pb-8 relative overflow-hidden border-t-4 border-accent select-none">
+    <footer className="bg-white text-primary pt-8 pb-8 relative overflow-hidden border-t-4 border-accent select-none">
       {/* Decorative background grid pattern */}
       <div 
         className="absolute inset-0 opacity-[0.03]" 
@@ -21,13 +21,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Company Brief */}
           <div>
-            <div className="flex items-center mb-6 w-full max-w-[320px]">
+            <div className="flex items-center w-full max-w-[320px]">
               <Image 
                 src="/logo.png" 
                 alt="Seatown Container Line Logo" 
-                width={300} 
-                height={100} 
-                className="h-16 md:h-20 w-auto object-contain" 
+                width={400} 
+                height={140} 
+                className="h-30 md:h-34 w-auto object-contain" 
               />
             </div>
             <p className="text-gray-600 text-base font-semibold leading-relaxed mb-6">
