@@ -441,23 +441,6 @@ export default function Home() {
             />
           </div>
 
-          {/* Stats Bar */}
-          <div className="relative z-10 grid grid-cols-4 gap-2 bg-white border border-gray-100 rounded-2xl px-3 py-4 shadow-sm mt-4">
-            {[
-              { icon: Globe, end: 50, suffix: '+', label: 'Countries Connected' },
-              { icon: Ship, end: 10000, suffix: '+', label: 'Shipments Handled' },
-              { icon: Users, end: 100, suffix: '+', label: 'Global Business Partners' },
-              { icon: Clock, end: 24, suffix: '/7', label: 'Customer Support' },
-            ].map((stat, i) => (
-              <div key={i} className="flex flex-col items-center text-center gap-1.5">
-                <div className="p-2 bg-accent/10 border border-accent/10 rounded-xl">
-                  <stat.icon className="w-4 h-4 text-accent" />
-                </div>
-                <AnimatedCounter end={stat.end} suffix={stat.suffix} />
-                <div className="text-gray-500 text-[8px] font-bold uppercase leading-tight">{stat.label}</div>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* ── RIGHT PANEL: White About Content ── */}
@@ -514,7 +497,25 @@ export default function Home() {
             </Link>
           </div>
         </div>
+        
       </section>
+      {/* Stats Bar */}
+          <div className="relative z-10 grid grid-cols-4 gap-2 bg-white border border-gray-100 rounded-2xl px-3 py-4 shadow-sm mt-4">
+            {[
+              { icon: Globe, end: 50, suffix: '+', label: 'Countries Connected' },
+              { icon: Ship, end: 10000, suffix: '+', label: 'Shipments Handled' },
+              { icon: Users, end: 100, suffix: '+', label: 'Global Business Partners' },
+              { icon: Clock, end: 24, suffix: '/7', label: 'Customer Support' },
+            ].map((stat, i) => (
+              <div key={i} className="flex flex-col items-center text-center gap-1.5">
+                <div className="p-2 bg-accent/10 border border-accent/10 rounded-xl">
+                  <stat.icon className="w-6 h-6 text-accent" />
+                </div>
+                <AnimatedCounter end={stat.end} suffix={stat.suffix} />
+                <div className="text-gray-500 text-[12px] font-bold uppercase leading-tight">{stat.label}</div>
+              </div>
+            ))}
+          </div>
 
       {/* SECTION 4 - SERVICES SHOWCASE */}
       <section className="py-24 bg-white relative overflow-hidden">
@@ -965,6 +966,16 @@ export default function Home() {
             { code: "it", name: "Italy" },
             { code: "es", name: "Spain" },
             { code: "tr", name: "Turkey" },
+            { code: "pl", name: "Poland" },
+            { code: "se", name: "Sweden" },
+            { code: "no", name: "Norway" },
+            { code: "dk", name: "Denmark" },
+            { code: "pt", name: "Portugal" },
+            { code: "gr", name: "Greece" },
+            { code: "jo", name: "Jordan" },
+            { code: "ma", name: "Morocco" },
+            { code: "ar", name: "Argentina" },
+            { code: "cl", name: "Chile" },
           ];
           const items = [...row1, ...row1, ...row1, ...row1];
           return (
@@ -975,7 +986,7 @@ export default function Home() {
                     key={i}
                     className="flex items-center gap-3 bg-accent/5 border border-accent/30 shadow-sm hover:border-accent hover:bg-accent/10 rounded-2xl px-5 py-3 shrink-0 transition-all duration-300 group cursor-default"
                   >
-                    <div className="w-9 h-6 rounded-md overflow-hidden border border-gray-200 shadow-sm shrink-0">
+                    <div className="w-11 h-8 rounded-md overflow-hidden border border-gray-200 shadow-sm shrink-0">
                       <Image
                         src={`https://flagcdn.com/w80/${c.code}.png`}
                         alt={c.name}
@@ -1016,6 +1027,16 @@ export default function Home() {
             { code: "br", name: "Brazil" },
             { code: "mx", name: "Mexico" },
             { code: "ca", name: "Canada" },
+            { code: "au", name: "Australia" },
+            { code: "nz", name: "New Zealand" },
+            { code: "ph", name: "Philippines" },
+            { code: "kh", name: "Cambodia" },
+            { code: "mm", name: "Myanmar" },
+            { code: "tw", name: "Taiwan" },
+            { code: "pk", name: "Pakistan" },
+            { code: "np", name: "Nepal" },
+            { code: "ch", name: "Switzerland" },
+            { code: "be", name: "Belgium" },
           ];
           const items = [...row2, ...row2, ...row2, ...row2];
           return (
@@ -1026,7 +1047,7 @@ export default function Home() {
                     key={i}
                     className="flex items-center gap-3 bg-accent/5 border border-accent/30 shadow-sm hover:border-accent hover:bg-accent/10 rounded-2xl px-5 py-3 shrink-0 transition-all duration-300 group cursor-default"
                   >
-                    <div className="w-9 h-6 rounded-md overflow-hidden border border-gray-200 shadow-sm shrink-0">
+                    <div className="w-11 h-8 rounded-md overflow-hidden border border-gray-200 shadow-sm shrink-0">
                       <Image
                         src={`https://flagcdn.com/w80/${c.code}.png`}
                         alt={c.name}

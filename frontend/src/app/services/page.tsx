@@ -7,22 +7,7 @@ import GsapAnimation from "@/components/GsapAnimation";
 import HeroSection from '@/components/HeroSection';
 
 export default function Services() {
-  const [activeStep, setActiveStep] = useState(0);
-
-  // Auto transition process timeline steps for effect
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % 4);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const steps = [
-    { title: "1. Digital Booking", desc: "Validate container availability and lock freight rates." },
-    { title: "2. Documentation", desc: "Submit bills of lading, packing lists, and export forms." },
-    { title: "3. Vessel Loading", desc: "Vessel container stuffing and customs clearances locked." },
-    { title: "4. Cargo Delivery", desc: "Safe transshipment and final local trucking delivery." },
-  ];
+  
 
   return (
     <>
@@ -44,8 +29,8 @@ export default function Services() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 text-left relative overflow-hidden">
               {/* Ship Watermark */}
-        <div className="absolute inset-0 pointer-events-none z-0">
-          <svg viewBox="0 0 1200 400" className="absolute right-0 bottom-0 w-3/4 h-3/4 opacity-[0.03] mix-blend-multiply" xmlns="http://www.w3.org/2000/svg" fill="#0B1F3A">
+        <div className="absolute inset-0 scale-200 pointer-events-none z-0">
+          <svg viewBox="0 0 1200 400" className="absolute right-0 bottom-0 w-3/4 h-3/4 opacity-[0.04] mix-blend-multiply" xmlns="http://www.w3.org/2000/svg" fill="#0B1F3A">
             <rect x="80" y="240" width="1040" height="30" rx="6"/>
             <rect x="120" y="185" width="880" height="60" rx="8"/>
             <rect x="200" y="140" width="600" height="50" rx="6"/>
@@ -67,6 +52,7 @@ export default function Services() {
               <h2 className="text-2xl md:text-3xl font-black text-primary mt-2 mb-6">NVOCC Services</h2>
               <p className="text-gray-600 text-base leading-relaxed mb-6">
                 Seatown Container Line acts as a certified Non-Vessel Operating Common Carrier (NVOCC). We maintain slot charter contracts with major shipping lines while operating our own fleet of dry van and special ISO container equipment, guaranteeing priority bookings on busy regional lanes.
+                SEATOWN CONTAINER LINE PVT LTD has expanded its operations into Non-Vessel Operating Common Carrier (NVOCC) services to meet the growing trade demands. We provide professional and cost-effective port-to-port and door-to-door deliveries. Our innovative approach ensures customers receive the best value for end-to-end logistics solutions. Our global connections and efficient services help us maintain a strong market presence.
               </p>
               <ul className="space-y-3.5 text-sm font-semibold text-gray-500">
                 <li className="flex items-center gap-2.5">
@@ -98,11 +84,12 @@ export default function Services() {
       <section id="freight-forwarding" className="py-20 border-b border-gray-100 bg-zinc-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 lg:order-2 text-left">
+            <div className="lg:col-span-6 lg:order-2 text-left relative overflow-hidden">
               <span className="text-accent text-xs font-extrabold uppercase tracking-widest">02 / Route Consolidation</span>
               <h2 className="text-2xl md:text-3xl font-black text-primary mt-2 mb-6">Ocean Freight Forwarding</h2>
               <p className="text-gray-600 text-base leading-relaxed mb-6">
                 Through our trusted network of global logistics partners, we organize multi-modal transport lines spanning water barge, feeder routes, and transshipment terminals to deliver cargo directly from manufacturers to end warehouses.
+                SEATOWN CONTAINER LINE PVT LTD offers secure and reliable ocean freight forwarding solutions. Our services cover all cargo types, ensuring cost-effective and customized logistics solutions. We analyze the best transportation routes considering factors such as perishability, hazards, cost, transit time, and security, while also offering real-time tracking for shipments.
               </p>
               <ul className="space-y-3.5 text-sm font-semibold text-gray-500">
                 <li className="flex items-center gap-2.5">
@@ -161,18 +148,21 @@ export default function Services() {
               <h2 className="text-2xl md:text-3xl font-black text-primary mt-2 mb-6">Air Freight</h2>
               <p className="text-gray-600 text-base leading-relaxed mb-6">
                 When shipping latency is the critical parameter, our air freight division schedules immediate space allocations on primary international cargo airlines. We organize fast handling for electronics, parts, pharmaceutical, and high-value trade shipments.
+                We provide flexible air freight solutions tailored to your business needs. Our service options include:
               </p>
               <ul className="space-y-3.5 text-sm font-semibold text-gray-500">
                 <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 bg-accent rounded-full" /> Express customs arrival dispatch
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full" /> Express: 1-2 days for urgent cargo
                 </li>
                 <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 bg-accent rounded-full" /> Part-charters for special large shipments
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full" /> Standard: 3-5 days for balanced speed and cost
                 </li>
                 <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 bg-accent rounded-full" /> Direct integrations at Chennai & Dubai airports
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full" /> DEconomy: 5-7 days for maximum cost efficiency
                 </li>
               </ul>
+              <br/>
+              <p className="text-gray-600 text-base leading-relaxed mb-6">Additionally, we offer charter services, air-sea combined solutions, and air-truck transport for inland deliveries.</p>
             </div>
             
             <div id="ani-img" className="lg:col-span-6 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
@@ -192,11 +182,11 @@ export default function Services() {
       <section id="customs-clearance" className="py-20 border-b border-gray-100 bg-zinc-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 lg:order-2 text-left">
+            <div className="lg:col-span-6 lg:order-2 text-left relative overflow-hidden">
               <span className="text-accent text-xs font-extrabold uppercase tracking-widest">04 / Cargo Compliance</span>
               <h2 className="text-2xl md:text-3xl font-black text-primary mt-2 mb-6">Customs Clearance & Brokerage</h2>
               <p className="text-gray-600 text-base leading-relaxed mb-6">
-                Our in-house customs agents manage paperwork filing, HS code classifications, cargo physical inspections, duty validations, and release coordination, preventing detention penalties at high-volume port terminals.
+                Our expert team provides customs clearance services at all major sea and airports in India. We handle import/export consignments, hazardous goods, perishables, and project cargo under various customs schemes. Our services include document filing, examination, stuffing/de-stuffing, warehousing, and final delivery.
               </p>
             </div>
             
@@ -241,8 +231,7 @@ export default function Services() {
               <span className="text-accent text-xs font-extrabold uppercase tracking-widest">05 / Heavy Lift Logistics</span>
               <h2 className="text-2xl md:text-3xl font-black text-primary mt-2 mb-6">Project Cargo</h2>
               <p className="text-gray-600 text-base leading-relaxed mb-6">
-                Over-dimensional, heavy, and complex machinery moves require precision design engineering. Seatown coordinates crane rentals, site inspections, and specialized vessel charters for infrastructure turbines, rigs, and industrial equipment.
-              </p>
+                We specialize in handling heavy lifts, out-of-gauge cargo, breakbulk, and high-value cargo. Our expertise extends to transporting mining equipment, generators, transformers, and construction equipment. With strong service contracts with major carriers and ship charterers, we offer DDU & DDP services for ODC and project shipments across India. Our long-standing partnerships in the trucking industry ensure competitive pricing for specialized transportation.</p>
             </div>
             
             <div id="ani-img" className="lg:col-span-6 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
@@ -262,12 +251,29 @@ export default function Services() {
       <section id="container-trading" className="py-20 border-b border-gray-100 bg-zinc-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 lg:order-2 text-left">
+            <div className="lg:col-span-6 lg:order-2 text-left relative overflow-hidden">
               <span className="text-accent text-xs font-extrabold uppercase tracking-widest">06 / Asset Management</span>
               <h2 className="text-2xl md:text-3xl font-black text-primary mt-2 mb-6">Container Trading & Sales</h2>
               <p className="text-gray-600 text-base leading-relaxed mb-6">
                 We supply new and used cargo-worthy ISO containers (20', 40' Dry, Reefers, Open Tops) for global trading, storage, or custom structural builds, with direct delivery to site yards.
               </p>
+              <ul className="space-y-3.5 text-sm font-semibold text-gray-500">
+                <li className="flex items-center gap-2.5">
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full" /> General Purpose Containers
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full" /> High Cube Containers
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full" /> Open Top Containers
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full" /> Refrigerated & Insulated Containers
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full" /> Flat Rack & Bed Containers
+                </li>
+              </ul>
             </div>
             
             <div id="ani-img" className="lg:col-span-6 lg:order-1 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
@@ -313,6 +319,26 @@ export default function Services() {
               <p className="text-gray-600 text-base leading-relaxed mb-6">
                 Providing seamless container trucking hookups directly from port vessel discharges to inland logistics depots and customer store fronts.
               </p>
+              <ul className="space-y-3.5 text-sm font-semibold text-gray-500">
+                <li className="flex items-center gap-2.5">
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full" /> Empty Container Transport – We specialize in moving empty containers at competitive rates across major ports and ICDs.
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full" /> Export & Import Containers – Handling 20ft, 40ft, and 45ft containers across all major Indian ports.
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full" /> Reefer & Tank Containers – Transporting loaded and empty refrigerated or tank containers, including hazardous cargo.
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full" /> Flat Rack & Platform Containers – Managing in-gauge and out-gauge shipments efficiently.
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full" /> Project & Bulk Cargo – Custom transportation solutions for large-scale consignments, including industrial goods, chemicals, and fertilizers.
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <span className="w-1.5 h-1.5 bg-accent rounded-full" /> LCL & Consolidation Services – Competitive rates for small package transportation.
+                </li>
+              </ul>
             </div>
             
             <div id="ani-img" className="lg:col-span-6 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
@@ -332,11 +358,11 @@ export default function Services() {
       <section id="linear-agency" className="py-20 border-b border-gray-100 bg-zinc-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 lg:order-2 text-left">
+            <div className="lg:col-span-6 lg:order-2 text-left relative overflow-hidden">
               <span className="text-accent text-xs font-extrabold uppercase tracking-widest">08 / Strategic Agency Network</span>
               <h2 className="text-2xl md:text-3xl font-black text-primary mt-2 mb-6">Linear Agency</h2>
               <p className="text-gray-600 text-base leading-relaxed mb-6">
-                Acting as a trusted representative for principals, we coordinate with local authorities, terminal operators, and logistics partners to streamline operations and deliver exceptional stakeholder satisfaction.</p>
+                We act as a strategic link between local manufacturers, traders, shippers, and consignees, particularly along India’s west coast (Chennai, Nhava Sheva, Mundra, Tuticorin). Our strong relationships with local authorities, CFS operators, transporters, and terminal services help minimize operational costs for our principals. Our team excels in administration, sales, inventory management, and operations, ensuring satisfaction for all stakeholders.</p>
             </div>
             
             <div id="ani-img" className="lg:col-span-6 lg:order-1 relative h-[320px] rounded-3xl overflow-hidden border border-gray-200/80 shadow-md group">
@@ -352,55 +378,7 @@ export default function Services() {
         </div>
       </section>
 
-      {/* PROCESS SECTION */}
-      <section className="py-20 bg-zinc-50 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-secondary text-xs font-bold uppercase tracking-widest">
-              Schedules
-            </span>
-            <h2 className="text-3xl font-extrabold text-primary mt-2">
-              Our Standard Booking Process
-            </h2>
-          </div>
-
-          <div className="relative">
-            {/* Timeline Progress Line */}
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200 -translate-y-1/2 hidden md:block" />
-            <div 
-              className="absolute top-1/2 left-0 h-0.5 bg-accent -translate-y-1/2 hidden md:block transition-all duration-500"
-              style={{ width: `${(activeStep / (steps.length - 1)) * 100}%` }}
-            />
-
-            {/* Steps Nodes */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
-              {steps.map((step, idx) => (
-                <div 
-                  key={step.title} 
-                  onClick={() => setActiveStep(idx)}
-                  className="cursor-pointer flex flex-col items-center text-center group bg-white border border-gray-100 p-6 rounded-2xl shadow-sm hover:border-secondary transition-all"
-                >
-                  <div 
-                    className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs border-2 transition-all duration-300 ${
-                      activeStep === idx
-                        ? "bg-accent text-white border-accent shadow-md scale-110"
-                        : "bg-white text-primary border-gray-300 hover:border-accent hover:text-accent"
-                    }`}
-                  >
-                    {idx + 1}
-                  </div>
-                  <h3 className="font-extrabold text-primary text-xs mt-4 group-hover:text-accent transition-colors">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-500 text-xs font-semibold mt-2 leading-relaxed">
-                    {step.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+     
     </>
   );
 }

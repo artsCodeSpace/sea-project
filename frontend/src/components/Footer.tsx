@@ -18,7 +18,7 @@ export default function Footer() {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 justify-between">
           {/* Company Brief */}
           <div>
             <div className="flex items-center w-full max-w-[320px]">
@@ -53,8 +53,8 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-col md:items-center">
-            <div className="w-fit text-left md:text-center">
+          <div className="flex flex-col md:text-left md:justify-self-center">
+            <div className="w-fit text-left md:text-left">
               <h4 className="text-sm font-bold uppercase tracking-wider text-accent mb-4">
                 Explore Links
               </h4>

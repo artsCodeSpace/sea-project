@@ -106,7 +106,7 @@ body {
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 35s linear infinite;
+  animation: marquee 100s linear infinite;
 }
 
 @keyframes marquee-reverse {
@@ -117,5 +117,5 @@ body {
 .animate-marquee-reverse {
   display: flex;
   width: max-content;
-  animation: marquee-reverse 30s linear infinite;
+  animation: marquee-reverse 100s linear infinite;
 }
