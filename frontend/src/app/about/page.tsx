@@ -198,7 +198,7 @@ export default function AboutUs() {
                 {stats.map((stat, i) => (
                   <div
                     key={i}
-                    className="flex flex-col items-center justify-center gap-4 bg-[#0B1F3A] text-white rounded-3xl p-8 md:p-10 shadow-xl border border-white/10 text-center hover:scale-[1.02] transition-transform duration-300"
+                    className="flex flex-col items-center justify-center gap-4 bg-[#2165ae] text-white rounded-3xl p-8 md:p-10 shadow-xl border border-white/10 text-center hover:scale-[1.02] transition-transform duration-300"
                   >
                     <div className="p-3 bg-secondary/20 border border-secondary/20 rounded-2xl">
                       <stat.icon className="w-8 h-8 text-secondary" />
