@@ -57,6 +57,15 @@ export default function TestimonialSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const [reviewForm, setReviewForm] = useState({
+    fullname: "",
+    role: "",
+    review: "",
+    photo: null as File | null,
+  });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -72,6 +81,25 @@ export default function TestimonialSection() {
   const handlePrev = () => {
     setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
   };
+  const handleReviewSubmit = (e) => {
+      e.preventDefault();
+
+      // Later this is where you'll upload to Supabase
+
+      setSubmitted(true);
+
+      setTimeout(() => {
+        setSubmitted(false);
+        setShowReviewForm(false);
+
+        setReviewForm({
+          fullname: "",
+          role: "",
+          review: "",
+          photo: null,
+        });
+      }, 1800);
+    };
 
   return (
     <section 
@@ -279,9 +307,23 @@ export default function TestimonialSection() {
                 <ChevronRight size={24} />
               </button>
             </div>
+
+            
+
           </div>
+          { /* write_a_review */}
+          <div className="absolute -bottom-20 left-1/2 -translate-x-1/2">
+            <button
+              onClick={() => setShowReviewForm(true)}
+              className="px-6 py-3 rounded-xl bg-accent text-white font-bold shadow-lg hover:scale-105 hover:bg-primary transition-all duration-300"
+            >
+              Write Review
+            </button>
+          </div>
+
         </div>
       </div>
+      
 
       {/* Bottom Logo Strip */}
       <div className="mt-20 border-t border-gray-200 pt-10 pb-10 relative z-10 bg-white/50 backdrop-blur-sm overflow-hidden">
@@ -314,6 +356,114 @@ export default function TestimonialSection() {
           </div>
         </div>
       </div>
+      <AnimatePresence>
+        {showReviewForm && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[100]"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-white rounded-3xl w-[95%] max-w-xl p-8 shadow-2xl relative"
+            >
+              <button
+                onClick={() => setShowReviewForm(false)}
+                className="absolute top-5 right-5 text-gray-500 hover:text-black text-xl"
+              >
+                ✕
+              </button>
+
+              <h3 className="text-3xl font-black text-primary mb-6">
+                Write a Review
+              </h3>
+
+              {submitted ? (
+                <div className="text-center py-12">
+                  <div className="text-green-600 text-2xl font-bold">
+                    Review submitted successfully!
+                  </div>
+                </div>
+              ) : (
+                <form
+                  onSubmit={handleReviewSubmit}
+                  className="space-y-5"
+                >
+                  <input
+                    type="text"
+                    placeholder="Full Name"
+                    required
+                    value={reviewForm.fullname}
+                    onChange={(e) =>
+                      setReviewForm({
+                        ...reviewForm,
+                        fullname: e.target.value,
+                      })
+                    }
+                    className="w-full border rounded-xl p-3 outline-none focus:border-accent"
+                  />
+
+                  <input
+                    type="text"
+                    placeholder="Role / Title"
+                    required
+                    value={reviewForm.role}
+                    onChange={(e) =>
+                      setReviewForm({
+                        ...reviewForm,
+                        role: e.target.value,
+                      })
+                    }
+                    className="w-full border rounded-xl p-3 outline-none focus:border-accent"
+                  />
+
+                  <textarea
+                    placeholder="Your Review"
+                    required
+                    rows={5}
+                    value={reviewForm.review}
+                    onChange={(e) =>
+                      setReviewForm({
+                        ...reviewForm,
+                        review: e.target.value,
+                      })
+                    }
+                    className="w-full border rounded-xl p-3 resize-none outline-none focus:border-accent"
+                  />
+
+                  <div>
+                    <label className="font-semibold block mb-2">
+                      Profile Photo
+                    </label>
+
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) =>
+                        setReviewForm({
+                          ...reviewForm,
+                          photo: e.target.files?.[0] || null,
+                        })
+                      }
+                      className="w-full"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full bg-accent text-white py-3 rounded-xl font-bold hover:bg-primary transition"
+                  >
+                    Submit Review
+                  </button>
+                </form>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

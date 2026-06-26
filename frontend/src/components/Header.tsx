@@ -58,9 +58,9 @@ export default function Header() {
             <Image 
               src="/logo.png" 
               alt="Seatown Logo" 
-              width={420} 
-              height={160} 
-              className="h-24 md:h-28 w-auto object-contain" 
+              width={400} 
+              height={120} 
+              className="h-16 md:h-20 w-auto object-contain" 
               priority 
             />
           </Link>
