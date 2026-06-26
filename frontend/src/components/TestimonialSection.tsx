@@ -81,10 +81,8 @@ export default function TestimonialSection() {
   const handlePrev = () => {
     setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
   };
-  const handleReviewSubmit = (e) => {
+  const handleReviewSubmit = (e: React.SyntheticEvent) => {
       e.preventDefault();
-
-      // Later this is where you'll upload to Supabase
 
       setSubmitted(true);
 

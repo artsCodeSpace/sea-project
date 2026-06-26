@@ -46,11 +46,11 @@ export default function Header() {
     <header
       className={`fixed top-[30px] inset-x-0 z-40 bg-white transition-all duration-300 ${
         scrolled
-          ? "py-3.5 shadow-md border-b border-gray-100"
-          : "py-5 shadow-sm border-b border-gray-50"
+          ? "py-2 shadow-md border-b border-gray-100"
+          : "py-3 shadow-sm border-b border-gray-50"
       }`}
     >
-      <div className="h-20 md:h-24 flex items-center">
+      <div className="h-16 md:h-20 flex items-center">
       <div className="w-full px-6 lg:px-12">
         <div className="flex items-center justify-between w-full gap-9">
           {/* Logo */}
@@ -60,7 +60,7 @@ export default function Header() {
               alt="Seatown Logo" 
               width={400} 
               height={120} 
-              className="h-16 md:h-20 w-auto object-contain" 
+              className="h-14 md:h-16 w-auto object-contain" 
               priority 
             />
           </Link>
@@ -179,7 +179,7 @@ export default function Header() {
 
       {/* Mobile Drawer */}
       <div
-        className={`fixed inset-0 top-[70px] z-30 bg-white border-t border-gray-100 md:hidden transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-x-0 top-[94px] bottom-0 z-30 bg-white border-t border-gray-100 md:hidden transition-transform duration-300 ease-in-out  ${
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
