@@ -81,10 +81,54 @@ export default function TestimonialSection() {
   const handlePrev = () => {
     setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
   };
-  const handleReviewSubmit = (e) => {
-      e.preventDefault();
+  const handleReviewSubmit = async (e: React.SyntheticEvent) => {
+  e.preventDefault();
 
-      // Later this is where you'll upload to Supabase
+  try {
+    const formData = new FormData();
+
+    formData.append("fullname", reviewForm.fullname);
+    formData.append("role", reviewForm.role);
+    formData.append("review", reviewForm.review);
+
+    if (reviewForm.photo) {
+      formData.append("photo", reviewForm.photo);
+    }
+
+    const response = await fetch("http://localhost:5000/api/review", {
+      method: "POST",
+      body: formData,
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      alert(result.message || "Failed to submit review.");
+      return;
+    }
+
+    // Success
+    setSubmitted(true);
+
+    setTimeout(() => {
+      setSubmitted(false);
+      setShowReviewForm(false);
+
+      setReviewForm({
+        fullname: "",
+        role: "",
+        review: "",
+        photo: null,
+      });
+    }, 1800);
+
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong. Please try again.");
+  }
+};
+  /*const handleReviewSubmit = (e: React.SyntheticEvent) => {
+      e.preventDefault();
 
       setSubmitted(true);
 
@@ -99,7 +143,7 @@ export default function TestimonialSection() {
           photo: null,
         });
       }, 1800);
-    };
+    }; */
 
   return (
     <section 
@@ -312,7 +356,7 @@ export default function TestimonialSection() {
 
           </div>
           { /* write_a_review */}
-          <div className="absolute -bottom-20 left-1/2 -translate-x-1/2">
+          <div className="absolute -bottom-16 left-1/2 -translate-x-1/2">
             <button
               onClick={() => setShowReviewForm(true)}
               className="px-6 py-3 rounded-xl bg-accent text-white font-bold shadow-lg hover:scale-105 hover:bg-primary transition-all duration-300"
