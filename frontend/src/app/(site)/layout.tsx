@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Tirra } from "next/font/google";
-import "./globals.css";
+import "../../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default function SiteLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

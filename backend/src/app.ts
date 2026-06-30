@@ -2,12 +2,30 @@ import express from "express";
 import cors from "cors";
 import { supabase } from "./config/supabase";
 import reviewRoutes from "./routes/review.routes";
+import authRoutes from "./routes/auth.routes";
+import userRoutes from "./routes/user.routes";
+import blogRoutes from "./routes/blog.routes";
+import contentRoutes from "./routes/content.routes";
+import mediaRoutes from "./routes/media.routes";
+import contactRoutes from "./routes/contact.routes";
+import analyticsRoutes from "./routes/analytics.routes";
+import publicRoutes from "./routes/public.routes";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/api/review", reviewRoutes);
+
+// Register API routes
+app.use("/api/review", reviewRoutes); // Keeps compatibility for public review submission
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/blogs", blogRoutes);
+app.use("/api/content", contentRoutes);
+app.use("/api/media", mediaRoutes);
+app.use("/api/contacts", contactRoutes);
+app.use("/api/analytics", analyticsRoutes);
+app.use("/api/public", publicRoutes);
 
 app.get("/", (_, res) => {
   res.send("Backend is running 🚀");

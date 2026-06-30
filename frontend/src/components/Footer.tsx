@@ -27,7 +27,7 @@ export default function Footer() {
                 alt="Seatown Container Line Logo" 
                 width={400} 
                 height={140} 
-                className="h-30 md:h-34 w-auto object-contain" 
+                className="h-16 md:h-20 w-auto object-contain" 
               />
             </div>
             <p className="text-gray-600 text-base font-semibold leading-relaxed mb-6">
