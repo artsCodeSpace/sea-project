@@ -2,10 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import HeroSection from "@/components/HeroSection";
-import { Mail, Phone, MapPin, Send, CheckCircle, Ship, MessageSquare, Smartphone } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle, Loader2, Smartphone } from "lucide-react";
 
 export default function Contact() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,13 +26,29 @@ export default function Contact() {
     }
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setFormData({ name: "", email: "", phone: "", service: "NVOCC", message: "" });
-    }, 4000);
+    setSubmitting(true);
+    setSubmitError("");
+    try {
+      const res = await fetch("/api/public/contacts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setFormSubmitted(true);
+        setFormData({ name: "", email: "", phone: "", service: "NVOCC", message: "" });
+        setTimeout(() => setFormSubmitted(false), 5000);
+      } else {
+        setSubmitError(data.message || "Submission failed. Please try again.");
+      }
+    } catch {
+      setSubmitError("Network error. Please check your connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -197,14 +215,31 @@ export default function Contact() {
                       />
                     </div>
 
+                    {submitError && (
+                      <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-xs text-red-700 font-semibold">
+                        {submitError}
+                      </div>
+                    )}
+
                     <button
                       type="submit"
-                      className="w-full bg-secondary hover:bg-secondary-hover text-white py-3 rounded-xl font-bold uppercase tracking-wider text-xs shadow-md transition-colors flex items-center justify-center gap-2"
+                      disabled={submitting}
+                      className="w-full bg-secondary hover:bg-secondary-hover disabled:opacity-70 text-white py-3 rounded-xl font-bold uppercase tracking-wider text-xs shadow-md transition-colors flex items-center justify-center gap-2"
                     >
-                      Transmit Message
-                      <Send className="w-4 h-4" />
+                      {submitting ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          Transmitting...
+                        </>
+                      ) : (
+                        <>
+                          Transmit Message
+                          <Send className="w-4 h-4" />
+                        </>
+                      )}
                     </button>
                   </form>
+
                 )}
               </div>
             </div>
