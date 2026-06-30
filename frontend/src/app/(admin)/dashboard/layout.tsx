@@ -127,24 +127,6 @@ export default function DashboardLayout({
       icon: Globe,
       roles: ["Super Admin", "Administrator"],
     },
-    {
-      name: "Media Library",
-      path: "/dashboard/media",
-      icon: ImageIcon,
-      roles: ["Super Admin", "Administrator"],
-    },
-    {
-      name: "Contact Inquiries",
-      path: "/dashboard/contacts",
-      icon: Mail,
-      roles: ["Super Admin", "Administrator", "Moderator"],
-    },
-    {
-      name: "System Settings",
-      path: "/dashboard/settings",
-      icon: Settings,
-      roles: ["Super Admin"],
-    },
   ];
 
   const allowedNavItems = navItems.filter((item) => hasRole(item.roles));
