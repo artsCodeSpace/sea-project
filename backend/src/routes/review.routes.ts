@@ -3,6 +3,7 @@ import { upload } from "../middleware/upload";
 import {
   createReview,
   getReviews,
+  getApprovedReviews,
   updateReview,
   deleteReview,
   bulkAction,
@@ -13,6 +14,7 @@ const router = express.Router();
 
 // Public route for submitting testimonials
 router.post("/", upload.single("photo"), createReview);
+router.get("/", getApprovedReviews);
 
 // Admin routes (require JWT and appropriate role)
 router.get(

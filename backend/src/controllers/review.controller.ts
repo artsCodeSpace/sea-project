@@ -127,6 +127,39 @@ export const getReviews = async (req: AuthenticatedRequest, res: Response) => {
   }
 };
 
+//fetch reviews from dashboard to homepage
+export const getApprovedReviews = async (
+  req: Request,
+  res: Response
+) => {
+  try{
+    const { data, error } = await supabase
+      .from("review")
+      .select("*")
+      .eq("status", "Approved")
+      .order("created_at", {ascending: false });
+
+    if (error) {
+      return res.status(500).json({
+        success: false,
+        message: "Failed to fetch reviews",
+      });
+    }
+
+    return res.json({
+      success: true,
+      reviews: data,
+    });
+  } catch (err) {
+    console.error(err);
+
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+};
+
 // Admin update review (requires JWT & moderation role)
 export const updateReview = async (req: AuthenticatedRequest, res: Response) => {
   try {

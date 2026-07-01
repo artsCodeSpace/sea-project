@@ -5,35 +5,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { Star, Quote, Anchor, Ship, Globe, Navigation, ChevronRight, ChevronLeft } from "lucide-react";
 import Image from "next/image";
 
-const testimonials = [
-  {
-    id: 1,
-    name: "Eleanor Vance",
-    company: "TechCorp Asia",
-    country: "Singapore",
-    rating: 5,
-    text: "Seatown Container Line completely transformed our supply chain efficiency. Their premium white-glove service ensured our sensitive electronics reached global markets with zero delays. The real-time tracking is unparalleled in the industry.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200&h=200",
-  },
-  {
-    id: 2,
-    name: "Marcus Thorne",
-    company: "Global Marine Ltd",
-    country: "United Kingdom",
-    rating: 5,
-    text: "When managing high-value automotive exports, precision is everything. Seatown's dedicated account managers provide a level of luxury and reliability that standard freight forwarders simply cannot match. A true partner in our global growth.",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200&h=200",
-  },
-  {
-    id: 3,
-    name: "Isabella Rossi",
-    company: "TransWorld Logistics",
-    country: "Italy",
-    rating: 5,
-    text: "From temperature-controlled pharmaceutical shipping to complex industrial cargo, Seatown handles it all with pristine professionalism. Their robust global network and proactive problem-solving make them the gold standard in maritime logistics.",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200&h=200",
-  }
-];
+
 
 const servicesList = [
   "Ocean Freight Forwarding",
@@ -59,7 +31,10 @@ export default function TestimonialSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-
+  const[testimonials, setTestimonials] = useState<any[]>([]);
+  const[loadingTestimonials, setLoadingTestimonials] = useState(true);
+  const active = testimonials[activeIndex];
+  
   const [reviewForm, setReviewForm] = useState({
     fullname: "",
     role: "",
@@ -68,10 +43,43 @@ export default function TestimonialSection() {
   });
 
   useEffect(() => {
+    if (testimonials.length === 0) return;
+
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % testimonials.length);
     }, 8000);
+
     return () => clearInterval(interval);
+  }, [testimonials.length]);
+
+  useEffect(() => {
+    const loadTestimonials = async () => {
+      try {
+        const res = await fetch("api/proxy/review?approved=true");
+
+        const data = await res.json();
+        
+
+        if (data.success) {
+          const formatted = data.reviews.map((item: any) => ({
+            id: item.id,
+            name: item.fullname,
+            company: item.role,
+            rating: 5,
+            text: item.review,
+            image: item.image_url,
+
+          }));
+          setTestimonials(formatted);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoadingTestimonials(false);
+      }
+    };
+
+    loadTestimonials();
   }, []);
 
   const handleNext = () => {
@@ -95,7 +103,7 @@ export default function TestimonialSection() {
       formData.append("photo", reviewForm.photo);
     }
 
-    const response = await fetch("http://localhost:5000/api/review", {
+    const response = await fetch("/api/proxy/review", {
       method: "POST",
       body: formData,
     });
@@ -127,23 +135,22 @@ export default function TestimonialSection() {
     alert("Something went wrong. Please try again.");
   }
 };
-  /*const handleReviewSubmit = (e: React.SyntheticEvent) => {
-      e.preventDefault();
 
-      setSubmitted(true);
+  // Early returns for loading / empty state
+  if (loadingTestimonials) {
+    return (
+      <section className="py-24 text-center">Loading Testimonials...</section>
+    );
+  }
 
-      setTimeout(() => {
-        setSubmitted(false);
-        setShowReviewForm(false);
+  if (!loadingTestimonials && testimonials.length === 0) {
+    return (
+      <section className="py-24 text-center">No testimonials yet.</section>
+    );
+  }
 
-        setReviewForm({
-          fullname: "",
-          role: "",
-          review: "",
-          photo: null,
-        });
-      }, 1800);
-    }; */
+  //guard active rendering
+  if (!active) return null;
 
   return (
     <section 
@@ -205,7 +212,7 @@ export default function TestimonialSection() {
       </div>
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        
+
         {/* Header Area */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -233,7 +240,7 @@ export default function TestimonialSection() {
           
           {/* Left Side: Stats Card */}
           <motion.div 
-            style={{ y }}
+            //style={{ y }}
             className="lg:col-span-5 relative"
           >
             {/* Glowing orb behind stats card */}
@@ -310,15 +317,15 @@ export default function TestimonialSection() {
                     </div>
                     
                     <p className="text-lg md:text-xl lg:text-2xl font-bold text-primary/90 leading-relaxed mb-6 italic line-clamp-4 sm:line-clamp-5">
-                      "{testimonials[activeIndex].text}"
+                      &ldquo;{active?.text}&rdquo;
                     </p>
                   </div>
 
                   <div className="flex items-center gap-6 mt-auto">
                     <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-gray-200 group-hover:border-secondary transition-colors duration-500">
                       <Image 
-                        src={testimonials[activeIndex].image}
-                        alt={testimonials[activeIndex].name}
+                        src={active?.image}
+                        alt={active?.name}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-700"
                       />
@@ -326,7 +333,7 @@ export default function TestimonialSection() {
                     <div>
                       <div className="text-primary font-black text-lg">{testimonials[activeIndex].name}</div>
                       <div className="text-gray-500 font-semibold flex items-center gap-2">
-                        {testimonials[activeIndex].company} <span className="w-1 h-1 rounded-full bg-gray-400"></span> {testimonials[activeIndex].country}
+                        {active?.company} <span className="w-1 h-1 rounded-full bg-gray-400"></span> {testimonials[activeIndex].country}
                       </div>
                     </div>
                   </div>

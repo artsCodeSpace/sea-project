@@ -129,7 +129,7 @@ export default function ContentManagement() {
       <div>
         <h1 className="text-2xl font-black text-[#0B1F3A]">Website CMS</h1>
         <p className="text-xs text-gray-500 font-semibold mt-1">
-          Customize content and layout copy displayed on the public landing page.
+          Customize content copy displayed on the public landing page.
         </p>
       </div>
 
@@ -138,8 +138,6 @@ export default function ContentManagement() {
         {/* Navigation Tabs (1 col) */}
         <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 space-y-1">
           {[
-            { id: "hero", label: "Home Hero Section", icon: Home },
-            { id: "about", label: "About Us Section", icon: Info },
             { id: "contact", label: "Contact Details", icon: Mail },
             { id: "footer", label: "Footer & Socials", icon: Share2 },
           ].map((tab) => {
@@ -172,234 +170,7 @@ export default function ContentManagement() {
             </div>
           ) : (
             <div className="space-y-6">
-              {/* TAB 1: HERO */}
-              {activeTab === "hero" && (
-                <div className="space-y-4">
-                  <div className="border-b border-gray-100 pb-4 mb-4">
-                    <h3 className="font-extrabold text-sm text-primary uppercase tracking-wide">
-                      Home Hero CMS
-                    </h3>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1.5">
-                        Badge Text
-                      </label>
-                      <input
-                        type="text"
-                        value={heroData.badge}
-                        onChange={(e) => setHeroData({ ...heroData, badge: e.target.value })}
-                        className="w-full h-11 px-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-accent outline-none text-xs font-semibold"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1.5">
-                        Background Image URL
-                      </label>
-                      <input
-                        type="text"
-                        value={heroData.bgImage}
-                        onChange={(e) => setHeroData({ ...heroData, bgImage: e.target.value })}
-                        className="w-full h-11 px-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-accent outline-none text-xs font-semibold font-mono"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1.5">
-                      Hero Headline
-                    </label>
-                    <input
-                      type="text"
-                      value={heroData.title}
-                      onChange={(e) => setHeroData({ ...heroData, title: e.target.value })}
-                      className="w-full h-11 px-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-accent outline-none text-xs font-semibold text-primary"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1.5">
-                      Sub-Headline Description
-                    </label>
-                    <textarea
-                      rows={3}
-                      value={heroData.subtitle}
-                      onChange={(e) => setHeroData({ ...heroData, subtitle: e.target.value })}
-                      className="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-accent outline-none text-xs font-semibold resize-none"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1.5">
-                        Primary Button Label
-                      </label>
-                      <input
-                        type="text"
-                        value={heroData.primaryBtnText}
-                        onChange={(e) => setHeroData({ ...heroData, primaryBtnText: e.target.value })}
-                        className="w-full h-11 px-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-accent outline-none text-xs font-semibold"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1.5">
-                        Primary Button Link
-                      </label>
-                      <input
-                        type="text"
-                        value={heroData.primaryBtnLink}
-                        onChange={(e) => setHeroData({ ...heroData, primaryBtnLink: e.target.value })}
-                        className="w-full h-11 px-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-accent outline-none text-xs font-semibold font-mono"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1.5">
-                        Secondary Button Label
-                      </label>
-                      <input
-                        type="text"
-                        value={heroData.secondaryBtnText}
-                        onChange={(e) => setHeroData({ ...heroData, secondaryBtnText: e.target.value })}
-                        className="w-full h-11 px-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-accent outline-none text-xs font-semibold"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1.5">
-                        Secondary Button Link
-                      </label>
-                      <input
-                        type="text"
-                        value={heroData.secondaryBtnLink}
-                        onChange={(e) => setHeroData({ ...heroData, secondaryBtnLink: e.target.value })}
-                        className="w-full h-11 px-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-accent outline-none text-xs font-semibold font-mono"
-                      />
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={() => handleSave("hero", heroData)}
-                    disabled={saving}
-                    className="h-11 px-5 bg-accent hover:brightness-110 text-white rounded-xl text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-lg shadow-accent/15 mt-6 cursor-pointer"
-                  >
-                    {saving ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
-                    Save Hero Content
-                  </button>
-                </div>
-              )}
-
-              {/* TAB 2: ABOUT */}
-              {activeTab === "about" && (
-                <div className="space-y-4">
-                  <div className="border-b border-gray-100 pb-4 mb-4">
-                    <h3 className="font-extrabold text-sm text-primary uppercase tracking-wide">
-                      About Us CMS
-                    </h3>
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1.5">
-                      Badge Text
-                    </label>
-                    <input
-                      type="text"
-                      value={aboutData.badge}
-                      onChange={(e) => setAboutData({ ...aboutData, badge: e.target.value })}
-                      className="w-full h-11 px-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-accent outline-none text-xs font-semibold"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1.5">
-                      Heading Title
-                    </label>
-                    <input
-                      type="text"
-                      value={aboutData.title}
-                      onChange={(e) => setAboutData({ ...aboutData, title: e.target.value })}
-                      className="w-full h-11 px-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-accent outline-none text-xs font-semibold text-primary"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-1.5">
-                      Biography Description Text
-                    </label>
-                    <textarea
-                      rows={4}
-                      value={aboutData.text}
-                      onChange={(e) => setAboutData({ ...aboutData, text: e.target.value })}
-                      className="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:border-accent outline-none text-xs font-semibold resize-none"
-                    />
-                  </div>
-
-                  {/* Animated Counters Stats */}
-                  <div className="space-y-3 mt-4">
-                    <label className="block text-[10px] font-black uppercase tracking-wider text-gray-400 border-b border-gray-100 pb-2">
-                      Interactive Statistics Counters
-                    </label>
-                    
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                      {aboutData.stats.map((stat) => (
-                        <div key={stat.id} className="p-4 bg-gray-50 border border-gray-150 rounded-xl space-y-3">
-                          <p className="text-[10px] font-black text-accent uppercase tracking-wider">
-                            Stat {stat.id}
-                          </p>
-                          <div>
-                            <label className="block text-[9px] text-gray-400 font-bold uppercase mb-1">
-                              Label Description
-                            </label>
-                            <input
-                              type="text"
-                              value={stat.label}
-                              onChange={(e) => handleStatChange(stat.id, "label", e.target.value)}
-                              className="w-full h-9 px-3 bg-white rounded-lg border border-gray-200 text-xs font-semibold"
-                            />
-                          </div>
-                          <div className="grid grid-cols-2 gap-2">
-                            <div>
-                              <label className="block text-[9px] text-gray-400 font-bold uppercase mb-1">
-                                Value
-                              </label>
-                              <input
-                                type="number"
-                                value={stat.value}
-                                onChange={(e) => handleStatChange(stat.id, "value", e.target.value)}
-                                className="w-full h-9 px-3 bg-white rounded-lg border border-gray-200 text-xs font-semibold"
-                              />
-                            </div>
-                            <div>
-                              <label className="block text-[9px] text-gray-400 font-bold uppercase mb-1">
-                                Suffix
-                              </label>
-                              <input
-                                type="text"
-                                value={stat.suffix}
-                                onChange={(e) => handleStatChange(stat.id, "suffix", e.target.value)}
-                                className="w-full h-9 px-3 bg-white rounded-lg border border-gray-200 text-xs font-semibold"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={() => handleSave("about", aboutData)}
-                    disabled={saving}
-                    className="h-11 px-5 bg-accent hover:brightness-110 text-white rounded-xl text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-lg shadow-accent/15 mt-6 cursor-pointer"
-                  >
-                    {saving ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
-                    Save About Content
-                  </button>
-                </div>
-              )}
-
-              {/* TAB 3: CONTACT */}
+              {/* TAB 1: CONTACT */}
               {activeTab === "contact" && (
                 <div className="space-y-4">
                   <div className="border-b border-gray-100 pb-4 mb-4">
@@ -520,7 +291,7 @@ export default function ContentManagement() {
                 </div>
               )}
 
-              {/* TAB 4: FOOTER & BRANDING */}
+              {/* TAB 2: FOOTER & BRANDING */}
               {activeTab === "footer" && (
                 <div className="space-y-4">
                   <div className="border-b border-gray-100 pb-4 mb-4">
