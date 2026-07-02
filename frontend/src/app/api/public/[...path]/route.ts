@@ -3,12 +3,12 @@ import { NextResponse } from "next/server";
 // Public (unauthenticated) proxy — forwards requests to /api/public/* on the Express backend.
 // No token required.
 
-export async function GET(req: Request, { params }: { params: { path: string[] } } ) {
-  return handlePublicProxy(req, await params, "GET");
+export async function GET(req: Request, context: { params: Promise<{ path: string[] }> } ) {
+  return handlePublicProxy(req, await context.params, "GET");
 }
 
-export async function POST(req: Request, { params }: { params: { path: string[] } }) {
-  return handlePublicProxy(req, await params, "POST");
+export async function POST(req: Request, context: { params: Promise<{ path: string[] }> }) {
+  return handlePublicProxy(req, await context.params, "POST");
 }
 
 async function handlePublicProxy(req: Request, params: { path: string[] }, method: string) {
