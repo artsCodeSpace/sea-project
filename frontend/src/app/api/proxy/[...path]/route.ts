@@ -33,9 +33,7 @@ async function handleProxy(req: Request, params: { path: string[] }, method: str
       .find((c) => c.trim().startsWith("token="))
       ?.split("=")[1];
 
-    const headers: Record<string, string> = {
-      "Content-Type": "application/json",
-    };
+    const headers: Record<string, string> = {};
 
     if (token) {
       headers["Authorization"] = `Bearer ${token}`;
@@ -52,13 +50,14 @@ async function handleProxy(req: Request, params: { path: string[] }, method: str
           method,
           headers: {
             ...headers,
-            "Content-Type": contentType,
+            //"Content-Type": contentType,
           },
           body: formData,
         });
-        const data = await response.json();
+        const data = await response.json().catch(() => ({}));
         return NextResponse.json(data, { status: response.status });
       } else {
+        headers["Content-Type"] = "application/json";
         body = JSON.stringify(await req.json().catch(() => ({})));
       }
     }
