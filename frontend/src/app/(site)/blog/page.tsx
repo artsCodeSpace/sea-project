@@ -17,7 +17,7 @@ interface Post {
   slug?: string;
 }
 
-const blogPosts: Post[] = [
+/*const blogPosts: Post[] = [
   {
     id: 1,
     title: "Navigating Ocean Route Congestion in 2026",
@@ -78,11 +78,11 @@ const blogPosts: Post[] = [
     excerpt: "A comprehensive guide to CFS stuffing, de-stuffing, and cargo consolidation procedures for import-export logistics.",
     avatar: "JC",
   }
-];
+]; */
 
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  const [allPosts, setAllPosts] = useState<Post[]>(blogPosts);
+  const [allPosts, setAllPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -122,6 +122,22 @@ export default function Blog() {
     };
     fetchBlogs();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Loader2 className="w-12 h-12 text-primary animate-spin" />
+      </div>
+    );
+  }
+
+  if (!loading && allPosts.length === 0) {
+    return (
+      <div className = "flex justify-center items-center h-screen">
+        <p className = "text-gray-400 text-lg">No blog posts available</p>
+      </div>
+    );
+  }
 
   // Build category list dynamically from loaded posts
   const categories = ["All", ...Array.from(new Set(allPosts.map((p) => p.category)))];
