@@ -33,7 +33,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Tirra', sans-serif;
+  font-family: var(--font-Playfair_Display), sans-serif;
   overflow-x: hidden;
 }
 

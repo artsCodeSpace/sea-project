@@ -189,7 +189,7 @@ export default function BlogForm({ initialData, onSubmit, loading }: BlogFormPro
   return (
     <form onSubmit={handleSubmit} className="space-y-8 text-left max-w-5xl">
       {/* Save Button Bar */}
-      <div className="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm flex flex-wrap items-center justify-between gap-4 sticky top-20 z-10">
+      <div className="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm flex flex-wrap items-center justify-between gap-4 top-20 z-10">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-primary/5 text-primary flex items-center justify-center">
             <FileText size={18} />

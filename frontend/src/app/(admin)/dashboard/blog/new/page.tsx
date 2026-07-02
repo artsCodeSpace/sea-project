@@ -5,12 +5,18 @@ import { useRouter } from "next/navigation";
 import { useToast } from "@/app/(admin)/dashboard/layout";
 import BlogForm from "@/components/admin/BlogForm";
 
+type BlogPostData = {
+  title: string;
+  content?: string;
+  [key: string]: unknown;
+};
+
 export default function NewBlogPost() {
   const router = useRouter();
   const { showToast } = useToast();
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (blogData: any) => {
+  const handleSubmit = async (blogData: BlogPostData) => {
     setLoading(true);
     try {
       const res = await fetch("/api/proxy/blogs", {
