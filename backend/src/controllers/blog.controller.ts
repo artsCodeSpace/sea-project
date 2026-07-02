@@ -388,3 +388,47 @@ export const deleteBlog = async (req: AuthenticatedRequest, res: Response) => {
     });
   }
 };
+
+   // Get all published blogs for public view
+export const getPublicBlogBySlug = async (
+  req: AuthenticatedRequest,
+  res: Response
+) => {
+  try {
+    const { slug } = req.params;
+
+    const { data: blog, error } = await supabase
+      .from("blog")
+      .select("*")
+      .eq("slug", slug)
+      .eq("status", "Published")
+      .maybeSingle();
+
+    if (error) {
+      return res.status(500).json({
+        success: false,
+        message: "Database error.",
+      });
+    }
+
+    if (!blog) {
+      return res.status(404).json({
+        success: false,
+        message: "Blog not found.",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      blog,
+    });
+
+  } catch (err) {
+    console.error(err);
+
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error.",
+    });
+  }
+};
