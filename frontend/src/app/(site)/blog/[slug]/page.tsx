@@ -8,7 +8,7 @@ interface PageProps {
 
 export default async function BlogPost({ params }: PageProps) {
   const res = await fetch(
-    `http://localhost:5000/api/public/blogs/${params.slug}`,
+    `${process.env.BACKEND_URL}/api/public/blogs/${params.slug}`,
     {
       cache: "no-store",
     }

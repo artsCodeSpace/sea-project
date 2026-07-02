@@ -22,7 +22,11 @@ async function handleProxy(req: Request, params: { path: string[] }, method: str
     
     // Extract query parameters
     const { search } = new URL(req.url);
-    const targetUrl = `http://localhost:5000/api/${pathJoined}${search}`;
+    //const targetUrl = `http://localhost:5000/api/${pathJoined}${search}`;
+    const base = process.env.BACKEND_URL;
+    if (!base) throw new Error("BACKEND_URL missing");
+
+    const targetUrl = `${base}/api/${pathJoined}${search}`;
 
     const token = req.headers.get("cookie")
       ?.split(";")

@@ -11,7 +11,8 @@ export async function GET(req: Request) {
       return NextResponse.json({ success: false, message: "No token found" }, { status: 401 });
     }
 
-    const response = await fetch("http://localhost:5000/api/auth/me", {
+    const base = process.env.BACKEND_URL!;
+    const response = await fetch(`${base}/api/auth/me`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,

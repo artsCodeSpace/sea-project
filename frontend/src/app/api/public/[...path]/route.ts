@@ -15,6 +15,7 @@ async function handlePublicProxy(req: Request, params: { path: string[] }, metho
   try {
     const pathJoined = params.path.join("/");
     const { search } = new URL(req.url);
+    console.log("BACKEND_URL:", process.env.BACKEND_URL);
     //const targetUrl = `http://localhost:5000/api/public/${pathJoined}${search}`;
     const base = process.env.BACKEND_URL;
     if (!base) throw new Error("BACKEND_URL missing");
