@@ -10,13 +10,30 @@ import { authenticateJWT, requireRole } from "../middleware/auth";
 
 const router = express.Router();
 
-router.use(authenticateJWT);
-router.use(requireRole(["Super Admin", "Administrator", "Editor"]));
-
+// ---------- PUBLIC ----------
 router.get("/", getBlogs);
 router.get("/:id", getBlogById);
-router.post("/", createBlog);
-router.put("/:id", updateBlog);
-router.delete("/:id", deleteBlog);
+
+// ---------- ADMIN ----------
+router.post(
+  "/",
+  authenticateJWT,
+  requireRole(["Super Admin", "Administrator", "Editor"]),
+  createBlog
+);
+
+router.put(
+  "/:id",
+  authenticateJWT,
+  requireRole(["Super Admin", "Administrator", "Editor"]),
+  updateBlog
+);
+
+router.delete(
+  "/:id",
+  authenticateJWT,
+  requireRole(["Super Admin", "Administrator", "Editor"]),
+  deleteBlog
+);
 
 export default router;
