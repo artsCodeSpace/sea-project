@@ -1,18 +1,19 @@
+import { headers } from "next/dist/server/request/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 
 // Public (unauthenticated) proxy — forwards requests to /api/public/* on the Express backend.
 // No token required.
 
-export async function GET(req: Request, context: { params: Promise<{ path: string[] }> } ) {
+export async function GET(req: NextRequest, context: { params: Promise<{ path: string[] }> } ) {
   return handlePublicProxy(req, await context.params, "GET");
 }
 
-export async function POST(req: Request, context: { params: Promise<{ path: string[] }> }) {
+export async function POST(req: NextRequest, context: { params: Promise<{ path: string[] }> }) {
   return handlePublicProxy(req, await context.params, "POST");
 }
 
-async function handlePublicProxy(req: Request, params: { path: string[] }, method: string) {
+async function handlePublicProxy(req: NextRequest, params: { path: string[] }, method: string) {
   try {
     const pathJoined = params.path.join("/");
     const { search } = new URL(req.url);
@@ -22,7 +23,23 @@ async function handlePublicProxy(req: Request, params: { path: string[] }, metho
     if (!base) throw new Error("BACKEND_URL missing");
 
     const targetUrl = `${base}/api/public/${pathJoined}${search}`;
-    const headers: Record<string, string> = {};
+    //const headers: Record<string, string> = {};
+    //const headers = new Headers(req.headers);
+    //headers.delete("host");
+    //headers.delete("content-length");
+    const headers = new Headers();
+
+    const allowedHeaders = [
+      "authorization",
+      "content-type",
+      "accept",
+      "cookie",
+    ];
+
+    for (const key of allowedHeaders) {
+      const value = req.headers.get(key);
+      if (value) headers.set(key, value);
+    }
 
     let body: BodyInit | undefined = undefined;
 
