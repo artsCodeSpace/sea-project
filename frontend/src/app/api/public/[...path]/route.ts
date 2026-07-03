@@ -57,7 +57,7 @@ async function handlePublicProxy(req: NextRequest, params: { path: string[] }, m
         const data = await response.json().catch(() => ({}));
         return NextResponse.json(data, { status: response.status });
       } else {
-        headers["Content-Type"] = "application/json";
+        headers.set("Content-Type", "application/json");
         body = JSON.stringify(await req.json().catch(() => ({})));
       }
     }
