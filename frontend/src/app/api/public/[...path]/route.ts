@@ -1,4 +1,5 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+
 
 // Public (unauthenticated) proxy — forwards requests to /api/public/* on the Express backend.
 // No token required.
@@ -52,3 +53,4 @@ async function handlePublicProxy(req: Request, params: { path: string[] }, metho
     return NextResponse.json({ success: false, message: "Public proxy error" }, { status: 500 });
   }
 }
+

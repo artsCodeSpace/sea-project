@@ -118,6 +118,7 @@ export default function AboutUs() {
         title="About Seatown Container Line"
         subtitle="Charting Safe Ocean Shipping Routes Worldwide"
         bgImage="/aboutus.png"
+        
       />
 
       {/* ═══════════════════════════════════════════════════

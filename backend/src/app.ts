@@ -11,7 +11,10 @@ import contactRoutes from "./routes/contact.routes";
 import analyticsRoutes from "./routes/analytics.routes";
 import publicRoutes from "./routes/public.routes";
 
+
 const app = express();
+
+app.use('/api/public', contactRoutes);
 
 app.use(cors({
   origin: [

@@ -25,19 +25,19 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section
       className="relative w-full mt-20 overflow-hidden select-none isolate
-                 min-h-[420px] sm:min-h-[480px] md:min-h-[560px] lg:min-h-[640px]
+                 min-h-[260px] sm:min-h-[320px] md:min-h-[560px] lg:min-h-[640px]
                  flex items-end md:items-center bg-primary"
       aria-label={title}
     >
       {/* Background image — rendered with Next.js Image for optimization */}
       <Image
         src={bgImage}
-        alt=""
+        alt="banner image"
         aria-hidden="true"
         loading="eager"
         priority
         fill
-        className="absolute inset-0 h-full w-full object-cover object-center md:object-right
+        className="absolute inset-0 h-full w-full object-cover md:object-cover object-center md:object-right
                    pointer-events-none -z-10"
         draggable={false}
       />
@@ -62,8 +62,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
       <div
         className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8
-                   py-12 md:py-16 flex flex-col items-center md:items-start
-                   text-center md:text-left"
+                   py-10 md:py-16 flex flex-col items-start
+                   text-left "
       >
         <motion.span
           initial={{ opacity: 0, y: 15 }}
@@ -72,8 +72,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           className="mb-5 inline-flex items-center rounded-full
            border border-accent
            bg-accent
-           px-4 py-1.5
-           text-[11px] sm:text-xs font-black uppercase
+           px-3 py-1
+           text-[10px] sm:text-xs font-black uppercase
            tracking-[0.18em]
            text-white
            shadow-lg shadow-accent/40"
@@ -94,7 +94,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
           className="mb-4 max-w-xl lg:max-w-3xl text-balance
-                     text-3xl sm:text-4xl md:text-5xl lg:text-6xl
+                     text-2xl sm:text-3xl md:text-5xl lg:text-6xl
                      font-black leading-[1.1] tracking-tight
                      text-primary-foreground
                     "
@@ -114,7 +114,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-          className="max-w-xl text-pretty text-sm sm:text-base md:text-lg
+          className="max-w-xl text-pretty text-xs sm:text-sm md:text-lg
                      font-medium leading-relaxed
                      text-primary-foreground/85"
                      

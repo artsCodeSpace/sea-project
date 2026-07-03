@@ -331,69 +331,84 @@ export default function Home() {
       {/* SECTION 1 - HERO BANNER */}
       {/* SECTION 1 - HERO BANNER & STATS BAR */}
       <section 
-        className="relative min-h-[96vh] flex flex-col justify-between bg-white pt-32 pb-0 overflow-hidden text-primary"
-        style={{
-          backgroundImage: "linear-gradient(to right, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.6) 35%, rgba(255,255,255,0) 60%), url('/banners/home.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center right",
-          backgroundRepeat: "no-repeat"
-        }}
+        className="relative overflow-hidden bg-white text-primary
+                  min-h-[320px] sm:min-h-[420px] md:min-h-[96vh]
+                  pt-24 md:pt-32 pb-0"
       >
-        {/* Subtle grid layout overlay */}
-        <div className="absolute inset-0 pointer-events-none z-0" 
-             style={{ 
-               backgroundImage: "radial-gradient(rgba(193, 147, 63, 0.15) 1px, transparent 1px)", 
-               backgroundSize: "32px 32px" 
-             }} 
+        {/* Background Image */}
+        <Image
+          src="/banners/home.png"
+          alt="home banner"
+          fill
+          priority
+          sizes="100vw"
+          className="absolute inset-0 object-contain object-right"
         />
 
+        {/* White gradient */}
+        <div
+          className="absolute inset-0 -z-20"
+          style={{
+            background: "linear-gradient(to right, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.68) 38%, rgba(255,255,255,0.15) 65%)"
+          }}
+        />
 
+        {/* Subtle grid */}
+        <div 
+          className="absolute inset-0 pointer-events-none z-0" 
+          style={{ 
+            backgroundImage: "radial-gradient(rgba(193, 147, 63, 0.10) 1px, transparent 1px)", 
+            backgroundSize: "32px 32px" 
+          }} 
+        />
 
         {/* Hero Content Area */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full flex-grow flex items-center mt-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 w-full">
-            <div className="lg:col-span-8 flex flex-col items-start text-left max-w-xl md:max-w-2xl">
-              {/* NEXT GEN LABEL */}
-              <div className="flex items-center gap-3 mb-6">
-                <span className="w-8 h-[2px] bg-[#C1933F]" />
-                <span className="text-accent text-sm md:text-base font-black tracking-[0.2em] uppercase">
-                  NEXT GEN MARITIME LOGISTICS
-                </span>
-              </div>
+        <div className="relative z-20 w-full flex justify-center px-4">
+          <div className="origin-top-left scale-[0.85] sm:scale-95 md:scale-100 w-[118%] sm:w-[105%] md:w-full max-w-5xl overflow-hidden">
+            
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 w-full">
+              <div className="lg:col-span-8 flex flex-col items-start text-left">
+                
+                {/* NEXT GEN LABEL */}
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="w-8 h-[2px] bg-[#C1933F]" />
+                  <span className="text-accent text-[11px] sm:text-xs md:text-base font-black tracking-[0.2em] uppercase">
+                    NEXT GEN MARITIME LOGISTICS
+                  </span>
+                </div>
 
-              {/* HEADING (matching mock layout) */}
-              <h1 className="text-[38px] sm:text-[48px] lg:text-[58px] font-black leading-[1.08] mb-6 tracking-tight text-primary">
-                Connecting Global <br />
-                Trade <span className="text-primary">Across</span> <br />
-                <span className="text-[#C1933F]">Oceans & Borders</span>
-              </h1>
+                {/* HEADING */}
+                <h1 className="text-[27px] sm:text-[34px] md:text-[46px] lg:text-[58px] font-black leading-[1.08] mb-6 tracking-tight text-primary">
+                  Connecting Global <br />
+                  Trade <span className="text-primary">Across</span> <br />
+                  <span className="text-[#C1933F]">Oceans & Borders</span>
+                </h1>
 
-              <p className="text-gray-600 font-semibold text-sm sm:text-base mb-8 leading-relaxed max-w-lg">
-                Seatown Container Line links major global markets with certified container shipping services, custom clearance networks, and premium cargo care.
-              </p>
+                <p className="text-gray-600 font-semibold text-[13px] sm:text-sm md:text-base mb-8 leading-relaxed max-w-lg">
+                  Seatown Container Line links major global markets with certified container shipping services, custom clearance networks, and premium cargo care.
+                </p>
 
-              {/* Action Buttons */}
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/contact?quote=1"
-                  className="bg-[#C1933F] hover:brightness-110 text-white pl-8 pr-6 py-3.5 rounded-full font-bold uppercase tracking-widest text-[11px] shadow-lg transition-all flex items-center gap-2 group"
-                >
-                  Get Quote
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                </Link>
-                <Link
-                  href="/services"
-                  className="bg-white border border-primary hover:bg-gray-50 text-primary pl-8 pr-6 py-3.5 rounded-full font-bold uppercase tracking-widest text-[11px] transition-all flex items-center gap-2 shadow-sm"
-                >
-                  Explore Services
-                  <Ship className="w-4 h-4 text-primary" />
-                </Link>
+                {/* Action Buttons */}
+                <div className="flex flex-row gap-3 sm:gap-4">
+                  <Link
+                    href="/contact?quote=1"
+                    className="bg-[#C1933F] hover:brightness-110 text-white px-6 py-3 rounded-full font-bold uppercase tracking-widest text-[10px] sm:text-[11px] shadow-lg transition-all flex items-center gap-2 group flex-shrink-0"
+                  >
+                    Get Quote
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
+                  <Link
+                    href="/services"
+                    className="bg-white border border-primary hover:bg-gray-50 text-primary px-6 py-3 rounded-full font-bold uppercase tracking-widest text-[10px] sm:text-[11px] shadow-sm transition-all flex items-center gap-2 flex-shrink-0"
+                  >
+                    Explore Services
+                    <Ship className="w-4 h-4 text-primary" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-
       </section>
 
       {/* SECTION 3 - PREMIUM SPLIT-SCREEN ABOUT */}
