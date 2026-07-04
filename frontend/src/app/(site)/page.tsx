@@ -342,7 +342,7 @@ export default function Home() {
           fill
           priority
           sizes="100vw"
-          className="absolute inset-0 object-contain object-right"
+          className="absolute inset-0 object-cover object-left"
         />
 
         {/* White gradient */}

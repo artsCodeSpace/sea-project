@@ -14,7 +14,7 @@ import publicRoutes from "./routes/public.routes";
 
 const app = express();
 
-app.use('/api/public', contactRoutes);
+//app.use('/api/public', contactRoutes);
 
 app.use(cors({
   origin: [
@@ -34,7 +34,7 @@ app.use("/api/content", contentRoutes);
 app.use("/api/media", mediaRoutes);
 app.use("/api/contacts", contactRoutes);
 app.use("/api/analytics", analyticsRoutes);
-app.use("/api/public", publicRoutes);
+app.use("/api/public/", publicRoutes);
 
 app.get("/", (_, res) => {
   res.send("Backend is running 🚀");

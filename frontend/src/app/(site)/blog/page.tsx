@@ -10,116 +10,60 @@ interface Post {
   title: string;
   category: string;
   date: string;
-  readTime: string | number;
+  readTime: string;
   author: string;
   excerpt: string;
   avatar: string;
-  slug?: string;
+  slug: string;
 }
 
-/*const blogPosts: Post[] = [
-  {
-    id: 1,
-    title: "Navigating Ocean Route Congestion in 2026",
-    category: "Shipping",
-    date: "June 12, 2026",
-    readTime: "5 min read",
-    author: "Capt. Rajesh Iyer",
-    excerpt: "An in-depth analysis of major trade hub choke points and how feeder routes can circumvent port detention delays.",
-    avatar: "RI",
-  },
-  {
-    id: 2,
-    title: "Understanding NVOCC Slot Charters & FCL Commitments",
-    category: "Logistics",
-    date: "May 28, 2026",
-    readTime: "7 min read",
-    author: "Sarah Al-Mansoori",
-    excerpt: "How freight brokers can secure container slot allocations during high peak seasons using private NVOCC cargo networks.",
-    avatar: "SM",
-  },
-  {
-    id: 3,
-    title: "The Rise of Eco-Friendly Bio-Fuels in Maritime Shipping",
-    category: "Industry News",
-    date: "May 15, 2026",
-    readTime: "6 min read",
-    author: "Lin Jin-Wei",
-    excerpt: "Inspecting carbon offset initiatives and the transition of regional feeder vessels toward sustainable power modules.",
-    avatar: "LW",
-  },
-  {
-    id: 4,
-    title: "Optimizing Multi-Modal Trucking from Dock to Warehouse",
-    category: "Freight",
-    date: "April 30, 2026",
-    readTime: "4 min read",
-    author: "Alex Vance",
-    excerpt: "Practical metrics for reducing final mile delivery latency using automated trailer chassis allocation systems.",
-    avatar: "AV",
-  },
-  {
-    id: 5,
-    title: "Customs Tariff Classification Guide for SME Shippers",
-    category: "Logistics",
-    date: "April 18, 2026",
-    readTime: "8 min read",
-    author: "Dinesh Kumar",
-    excerpt: "Avoid expensive customs clearance audit penalties by understanding HS code structures and duty validations.",
-    avatar: "DK",
-  },
-  {
-    id: 6,
-    title: "Understanding Container Freight Station (CFS) Functions",
-    category: "Logistics",
-    date: "June 24, 2026",
-    readTime: "6 min read",
-    author: "James Collins",
-    excerpt: "A comprehensive guide to CFS stuffing, de-stuffing, and cargo consolidation procedures for import-export logistics.",
-    avatar: "JC",
-  }
-]; */
-
 export default function Blog() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [allPosts, setAllPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await fetch("/api/public/blogs");
-        if (res.ok) {
-          const data = await res.json();
-          if (data.success && Array.isArray(data.blogs) && data.blogs.length > 0) {
-            // Map API response to Post shape
-            const mapped: Post[] = data.blogs.map((b: any) => ({
-              id: b.id,
-              title: b.title,
-              category: b.category || "Industry News",
-              date: new Date(b.published_at || b.created_at).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              }),
-              readTime: `${b.reading_time_minutes ?? b.readTime ?? 5} min read`,
-              author: b.author_name || b.author || "Seatown Insights",
-              excerpt: b.excerpt || b.meta_description || "",
-              avatar: (b.author_name || b.author || "S")
-                .split(" ")
-                .map((n: string) => n[0])
-                .join(""),
-              slug: b.slug,
-            }));
-            setAllPosts(mapped);
-          }
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blogs`);
+
+        if (!res.ok) {
+          console.error("Blog API failed:", res.status);
+          setAllPosts([]);
+          return;
         }
-      } catch {
-        // silently fall back to static data
+
+        const data = await res.json();
+
+        const blogs = Array.isArray(data?.blogs) ? data.blogs : [];
+
+        const mapped: Post[] = blogs.map((b: any) => ({
+          id: b.id,
+          title: b.title || "Untitled",
+          category: b.category || "Industry News",
+          date: new Date(b.published_at || b.created_at || Date.now()).toLocaleDateString(
+            "en-US",
+            { year: "numeric", month: "long", day: "numeric" }
+          ),
+          readTime: `${b.reading_time_minutes ?? 5} min read`,
+          author: b.author_name || b.author || "Seatown Insights",
+          excerpt: b.excerpt || b.meta_description || "",
+          avatar: (b.author_name || b.author || "S")
+            .split(" ")
+            .map((n: string) => n[0])
+            .join(""),
+          slug: b.slug || String(b.id),
+        }));
+
+        setAllPosts(mapped);
+      } catch (err) {
+        console.error("Blog fetch error:", err);
+        setAllPosts([]);
       } finally {
         setLoading(false);
       }
     };
+
     fetchBlogs();
   }, []);
 
@@ -131,65 +75,66 @@ export default function Blog() {
     );
   }
 
-  if (!loading && allPosts.length === 0) {
-    return (
-      <div className = "flex justify-center items-center h-screen">
-        <p className = "text-gray-400 text-lg">No blog posts available</p>
-      </div>
-    );
-  }
+  const categories = [
+    "All",
+    ...Array.from(new Set(allPosts.map((p) => p.category))),
+  ];
 
-  // Build category list dynamically from loaded posts
-  const categories = ["All", ...Array.from(new Set(allPosts.map((p) => p.category)))];
-
-  const filteredPosts = selectedCategory === "All"
-    ? allPosts
-    : allPosts.filter((p) => p.category === selectedCategory);
+  const filteredPosts =
+    selectedCategory === "All"
+      ? allPosts
+      : allPosts.filter((p) => p.category === selectedCategory);
 
   return (
     <div className="w-full flex flex-col bg-white">
-      <HeroSection 
+      <HeroSection
         badge="Publications"
         title="Seatown Industry Insights & Logistics Blog"
         subtitle="Stay updated with global trade trends, customs brokerage guidelines, and maritime route analyses."
         bgImage="/blog.png"
       />
 
-      {/* BLOG CONTENT SECTION */}
       <section className="py-20 bg-white relative overflow-hidden">
-        {/* Globe & Trade Route Watermark */}
+        {/* Background SVG (fixed namespace) */}
         <div className="absolute inset-0 pointer-events-none z-0">
-          <svg viewBox="0 0 1000 800" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75%] max-w-3xl opacity-[0.025] mix-blend-multiply" xmlns="https://upload.wikimedia.org/wikipedia/commons/8/81/Ship.svg" fill="none" stroke="#0B1F3A" strokeWidth="12">
-            {/* Globe outer circle */}
-            <circle cx="500" cy="400" r="330"/>
-            {/* Latitude lines */}
-            <ellipse cx="500" cy="400" rx="330" ry="110"/>
-            <ellipse cx="500" cy="400" rx="280" ry="90"/>
-            <ellipse cx="500" cy="400" rx="165" ry="55"/>
-            <ellipse cx="500" cy="250" rx="230" ry="75"/>
-            <ellipse cx="500" cy="550" rx="230" ry="75"/>
-            {/* Longitude lines */}
-            <line x1="500" y1="70" x2="500" y2="730"/>
-            <ellipse cx="500" cy="400" rx="165" ry="330"/>
-            <ellipse cx="500" cy="400" rx="90" ry="330"/>
-            {/* Trade route arc */}
-            <path d="M200 320 Q400 180 680 280 Q820 320 870 400" strokeWidth="18" strokeLinecap="round" fill="none"/>
-            <circle cx="200" cy="320" r="20" fill="#0B1F3A" stroke="none"/>
-            <circle cx="870" cy="400" r="20" fill="#0B1F3A" stroke="none"/>
+          <svg
+            viewBox="0 0 1000 800"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="#0B1F3A"
+            strokeWidth="12"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75%] max-w-3xl opacity-[0.03]"
+          >
+            <circle cx="500" cy="400" r="330" />
+            <ellipse cx="500" cy="400" rx="330" ry="110" />
+            <ellipse cx="500" cy="400" rx="280" ry="90" />
+            <ellipse cx="500" cy="400" rx="165" ry="55" />
+            <ellipse cx="500" cy="250" rx="230" ry="75" />
+            <ellipse cx="500" cy="550" rx="230" ry="75" />
+            <line x1="500" y1="70" x2="500" y2="730" />
+            <ellipse cx="500" cy="400" rx="165" ry="330" />
+            <ellipse cx="500" cy="400" rx="90" ry="330" />
+            <path
+              d="M200 320 Q400 180 680 280 Q820 320 870 400"
+              strokeWidth="18"
+              strokeLinecap="round"
+            />
+            <circle cx="200" cy="320" r="20" fill="#0B1F3A" />
+            <circle cx="870" cy="400" r="20" fill="#0B1F3A" />
           </svg>
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-0">
-          
-          {/* Category Filter Bar */}
-          <div className="flex flex-wrap items-center justify-center gap-2.5 mb-14 relative z-0">
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-2 mb-14">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-300 cursor-pointer ${
+                className={`px-5 py-2 rounded-full text-xs font-bold uppercase border transition ${
                   selectedCategory === cat
-                    ? "bg-accent text-white border-accent shadow-sm scale-[1.02]"
-                    : "bg-gray-50 text-gray-600 border-gray-100 hover:bg-gray-100 hover:border-gray-200"
+                    ? "bg-accent text-white border-accent"
+                    : "bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100"
                 }`}
               >
                 {cat}
@@ -197,72 +142,65 @@ export default function Blog() {
             ))}
           </div>
 
-          {/* Blogs Grid */}
-          {loading ? (
-            <div className="flex justify-center py-20">
-              <Loader2 className="w-8 h-8 text-primary animate-spin" />
-            </div>
-          ) : filteredPosts.length === 0 ? (
-            <div className="text-center py-20 text-gray-400">
-              No posts available in this category yet.
+          {/* Grid */}
+          {filteredPosts.length === 0 ? (
+            <div className="text-center text-gray-400 py-20">
+              No posts available.
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map((post) => (
-                <article key={post.id} className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col group text-left">
-                  {/* Header Category Stripe */}
-                  <div className="p-6 pb-0 flex items-center justify-between">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-accent bg-accent/10 px-3 py-1 rounded-md">
+                <article
+                  key={post.id}
+                  className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col"
+                >
+                  <div className="p-6 pb-0 flex justify-between items-center">
+                    <span className="text-[10px] font-bold uppercase text-accent bg-accent/10 px-3 py-1 rounded-md">
                       {post.category}
                     </span>
-                    <div className="flex items-center gap-1.5 text-gray-400 text-xs font-semibold">
-                      <Clock className="w-3.5 h-3.5" />
-                      <span>{post.readTime}</span>
+
+                    <div className="flex items-center gap-1 text-gray-400 text-xs">
+                      <Clock className="w-3 h-3" />
+                      {post.readTime}
                     </div>
                   </div>
 
-                  {/* Content */}
-                  <div className="p-6 flex-grow flex flex-col justify-between">
-                    <div>
-                      <h3 className="font-extrabold text-lg lg:text-xl text-primary mb-3 leading-snug group-hover:text-accent transition-colors">
-                        {post.title}
-                      </h3>
-                      <p className="text-gray-500 text-sm leading-relaxed mb-6 font-medium">
-                        {post.excerpt}
-                      </p>
-                    </div>
+                  <div className="p-6 flex flex-col flex-grow">
+                    <h3 className="font-bold text-lg text-primary mb-2">
+                      {post.title}
+                    </h3>
 
-                    {/* Footer Author & Date */}
-                    <div className="border-t border-gray-100 pt-4 mt-auto flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-primary/10 text-primary font-bold text-xs flex items-center justify-center border border-primary/5">
+                    <p className="text-sm text-gray-500 mb-4 flex-grow">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="flex justify-between items-center border-t pt-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-xs font-bold">
                           {post.avatar}
                         </div>
                         <div>
-                          <div className="text-xs font-bold text-primary">{post.author}</div>
-                          <div className="text-[10px] font-semibold text-gray-400">{post.date}</div>
+                          <div className="text-xs font-semibold">
+                            {post.author}
+                          </div>
+                          <div className="text-[10px] text-gray-400">
+                            {post.date}
+                          </div>
                         </div>
                       </div>
 
-                      {post.slug ? (
-                        <Link
-                          href={`/blog/${post.slug}`}
-                          className="text-accent hover:text-accent-hover font-bold uppercase tracking-wider text-[10px] flex items-center gap-1 group/link"
-                        >
-                          Read More <ArrowRight className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform" />
-                        </Link>
-                      ) : (
-                        <span className="text-accent font-bold uppercase tracking-wider text-[10px] flex items-center gap-1">
-                          Read More <ArrowRight className="w-3 h-3" />
-                        </span>
-                      )}
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className="text-accent text-[10px] font-bold uppercase flex items-center gap-1"
+                      >
+                        Read <ArrowRight className="w-3 h-3" />
+                      </Link>
                     </div>
                   </div>
                 </article>
               ))}
             </div>
           )}
-
         </div>
       </section>
     </div>
